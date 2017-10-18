@@ -1,0 +1,31 @@
+.type-article header {
+  text-align: center;
+}
+
+.type-article .entry-content {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+h1.entry-title {
+  font-size: 32px;
+  line-height: 1.2em;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.sb-article-feature-img {
+  margin-bottom: 22px;
+}
+
+.project-ref a,
+.project-ref a:active,
+.project-ref a:link,
+.project-ref a:hover,
+.project-ref a:visited {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #aaa;
+  font-size: 14px;
+  text-decoration: none;
+}

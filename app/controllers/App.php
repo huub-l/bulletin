@@ -30,4 +30,15 @@ class App extends Controller
         }
         return get_the_title();
     }
+
+    public static function sbPrintProjectRef($id){
+        $ref = get_post_meta($id, "sb-project-ref");
+        if($ref) {
+            $text = '<p class="text-muted project-ref">';
+            $text .= '<a href="'.get_post_meta($id, "sb-project-elib-url")[0].'">'.$ref[0].'</a></p>';
+            return print($text);
+        } else {
+            return "";
+        }
+    }
 }
