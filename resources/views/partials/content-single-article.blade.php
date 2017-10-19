@@ -1,7 +1,7 @@
 <article @php(post_class())>
   <header>
     <?php if ( has_post_thumbnail() ) : ?>
-        <?php the_post_thumbnail('medium_large', ['class' => 'sb-article-feature-img']); ?>
+      <?php the_post_thumbnail('medium_large', ['class' => 'sb-article-feature-img img-responsive']); ?>
     <?php endif; ?>
     
     <?php App::sbPrintProjectRef(get_the_ID()); ?>

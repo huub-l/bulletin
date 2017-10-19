@@ -35,7 +35,10 @@ class App extends Controller
         $ref = get_post_meta($id, "sb-project-ref");
         if($ref) {
             $text = '<p class="text-muted project-ref">';
-            $text .= '<a href="'.get_post_meta($id, "sb-project-elib-url")[0].'">'.$ref[0].'</a></p>';
+            $text .= '<a data-toggle="tooltip" title="Read more about this project on APN E-Lib"
+                       href="'.get_post_meta($id, "sb-project-elib-url")[0].'">'
+                  .$ref[0]
+                  .'</a></p>';
             return print($text);
         } else {
             return "";
