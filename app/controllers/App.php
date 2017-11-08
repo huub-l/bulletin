@@ -20,7 +20,16 @@ class App extends Controller
             return __('Latest Posts', 'sage');
         }
         if (is_archive()) {
-            return get_the_archive_title();
+            if (is_author()){
+                if ( function_exists( 'coauthors_posts_links' ) ){
+                    $author = get_queried_object();
+                    return $author->display_name;
+                }else{
+                    return sprintf( __( 'Author: %s' ), '<span class="vcard">' . get_the_author() . '</span>' );
+                }
+            }else{
+                return get_the_archive_title();
+            }
         }
         if (is_search()) {
             return sprintf(__('Search Results for %s', 'sage'), get_search_query());
