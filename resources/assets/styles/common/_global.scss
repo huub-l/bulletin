@@ -1,7 +1,7 @@
 * {
   line-height: 1.7em;
   font-size: 18px;
-  font-family: "Source Sans Pro", serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 h1,
@@ -10,9 +10,29 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Merriweather, serif;
+  font-family: "Source Sans Pro", sans-serif;
   margin: 1em auto 0.5em;
   line-height: 1.45em;
+}
+
+.entry-content h1 {
+  font-size: 1.3em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.entry-content h2 {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: $primary-color;
+}
+
+.entry-content h3 {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #666;
 }
 
 p {

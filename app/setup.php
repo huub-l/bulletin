@@ -126,3 +126,11 @@ add_action('after_setup_theme', function () {
         return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
     });
 });
+
+
+// Show posts of 'post', 'page' and 'movie' post types on home page
+add_action( 'pre_get_posts', function ( $query ) {
+  if ( $query->is_main_query() )
+    $query->set( 'post_type', array('article') );
+  return $query;
+});

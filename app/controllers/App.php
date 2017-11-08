@@ -50,7 +50,12 @@ class App extends Controller
                   .'</a></p>';
             return print($text);
         } else {
-            return "";
+            return print('<p class="text-muted project-ref">"sb-project-ref"</p>');
         }
+    }
+
+    public static function sbGetCoauthorDescription(){
+        $author = get_queried_object();
+        return $author->description;
     }
 }
