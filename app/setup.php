@@ -237,3 +237,6 @@ add_action( 'pre_get_posts', function ( $query ) {
     $query->set( 'post_type', 'article' );
   return $query;
 });
+
+add_image_size( 'home-small', 255, 100, true );
+add_image_size( 'home-featured', 570, 400, true );

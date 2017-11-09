@@ -2,9 +2,9 @@
   <div class="thumbnail">
     <a href="{{get_permalink()}}">
       @if(has_post_thumbnail())
-        <img src="@php(the_post_thumbnail_url( 'home-small' ))" alt="{{get_the_title()}}">
+        <img src="@php(the_post_thumbnail_url( 'home-small' ))" alt="{{get_the_title()}}" width="100%">
       @else
-        <img src="http://via.placeholder.com/255x100?text=Science+Bulletin" alt="{{get_the_title()}}">
+        <img src="http://via.placeholder.com/255x100?text=Science+Bulletin" alt="{{get_the_title()}}" width="100%">
       @endif
     </a>
     

@@ -99,11 +99,23 @@ class App extends Controller
 
     public static function sbGetArticleQuery(){
 
-        $args = [
-            'post_type' => 'article',
-        ];
-
+        $args = array( 'post_type' => 'article' );
         return new WP_Query( $args );
 
+    }
+
+    public static function sbGetFeaturedQuery(){
+
+        $args = array(
+            'post_type' => 'article',
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'category',
+                    'field'    => 'slug',
+                    'terms'    => array( 'featured' ),
+                )
+            ),
+        );
+        return new WP_Query( $args );
     }
 }
