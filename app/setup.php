@@ -156,8 +156,8 @@ add_action( 'init', function () {
 		"hierarchical" => false,
 		"rewrite" => array( "slug" => "article", "with_front" => true ),
 		"query_var" => true,
-		"supports" => array( "title", "editor", "thumbnail", "excerpt", "custom-fields", "comments", "author" ),
-		"taxonomies" => array( "keyword" ),
+		"supports" => array( "title", "editor", "thumbnail", "excerpt", "custom-fields", "comments", "author"),
+		"taxonomies" => array( "keyword", "programme", "category" ),
 	);
 
 	register_post_type( "article", $args );
@@ -194,13 +194,47 @@ add_action( 'init', function () {
 	register_taxonomy( "keyword", array( "article" ), $args );
 });
 
+
+add_action( 'init', function () {
+
+	/**
+	 * Taxonomy: Programmes.
+	 */
+
+	$labels = array(
+		"name" => __( "Programmes", "sage" ),
+        "singular_name" => __( "Programme", "sage" ),
+        'add_new_item' => __( 'Add New Programme', 'sage' ),
+	);
+
+	$args = array(
+		"label" => __( "Programmes", "sage" ),
+		"labels" => $labels,
+		"public" => true,
+		"hierarchical" => true,
+        "show_ui" => true,
+		"show_in_menu" => false,
+		"show_in_nav_menus" => false,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'programme', 'with_front' => true, ),
+		"show_admin_column" => false,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"show_in_quick_edit" => false,
+	);
+	register_taxonomy( "programme", array( "article" ), $args );
+});
+
+// Hide post menue
 add_action('admin_menu', function (){ 
    remove_menu_page('edit.php');
 });
 
 // Show posts of 'article' post types on home page
 add_action( 'pre_get_posts', function ( $query ) {
-  if ( $query->is_archive() )
+  if ( $query->is_archive() || $query->is_home() )
     $query->set( 'post_type', array('article') );
   return $query;
 });
+
+add_image_size( 'home-small', 255, 100, true );

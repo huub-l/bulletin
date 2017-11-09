@@ -50,7 +50,7 @@ class App extends Controller
                   .'</a></p>';
             return print($text);
         } else {
-            return print('<p class="text-muted project-ref">"sb-project-ref"</p>');
+            return print('<p class="text-muted project-ref" style="color:red !important;">Missing field: sb-project-ref</p>');
         }
     }
 
@@ -60,20 +60,19 @@ class App extends Controller
     }
 
     public static function sbKeywords(){
-        $terms = get_terms( array( 
-            'taxonomy' => 'keyword',
-        ) );
+
+        $terms = wp_get_post_terms(get_the_id(), 'keyword');
 
         if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
             $count = count( $terms );
             $i = 0;
-            $term_list = '<p class="my_term-archive">';
+            $term_list = '<p class="keywords_list">';
             foreach ( $terms as $term ) {
                 $i++;
                 $term_list .= '<a href="' . esc_url( get_term_link( $term ) ) . 
                               '" alt="' . 
                               esc_attr( sprintf( __( 'View all articles wiht keyword %s', 
-                              'my_localization_domain' ), ucfirst($term->name) ) ) . 
+                              'sage' ), ucfirst($term->name) ) ) . 
                               '">' . ucfirst($term->name) . '</a>';
                 if ( $count != $i ) {
                     $term_list .= ' &middot; ';
@@ -82,7 +81,18 @@ class App extends Controller
                     $term_list .= '</p>';
                 }
             }
+            return $term_list;
+        }else{
+            return '<p class="keywords_list" style="color:red">To be added</p>';
         }
-        return $term_list;
+    }
+
+    public static function sbProgramme(){
+
+        $terms = wp_get_post_terms(get_the_id(), 'programme');
+
+        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+            return implode(", ", wp_list_pluck($terms, 'name'));
+        }
     }
 }
