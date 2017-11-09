@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Do not edit anything in this file unless you know what you're doing
+ * Do not edit anything in this file unless you know what you're doing.
  */
-
 use Roots\Sage\Config;
 use Roots\Sage\Container;
 
 /**
- * Helper function for prettying up errors
+ * Helper function for prettying up errors.
+ *
  * @param string $message
  * @param string $subtitle
  * @param string $title
@@ -20,21 +20,21 @@ $sage_error = function ($message, $subtitle = '', $title = '') {
     wp_die($message, $title);
 };
 
-/**
+/*
  * Ensure compatible version of PHP is used
  */
 if (version_compare('7', phpversion(), '>=')) {
     $sage_error(__('You must be using PHP 7 or greater.', 'sage'), __('Invalid PHP version', 'sage'));
 }
 
-/**
+/*
  * Ensure compatible version of WordPress is used
  */
 if (version_compare('4.7.0', get_bloginfo('version'), '>=')) {
     $sage_error(__('You must be using WordPress 4.7.0 or greater.', 'sage'), __('Invalid WordPress version', 'sage'));
 }
 
-/**
+/*
  * Ensure dependencies are loaded
  */
 if (!class_exists('Roots\\Sage\\Container')) {
@@ -47,7 +47,7 @@ if (!class_exists('Roots\\Sage\\Container')) {
     require_once $composer;
 }
 
-/**
+/*
  * Sage required files
  *
  * The mapped array determines the code library included in your theme.
@@ -60,7 +60,7 @@ array_map(function ($file) use ($sage_error) {
     }
 }, ['helpers', 'setup', 'filters', 'admin']);
 
-/**
+/*
  * Here's what's happening with these hooks:
  * 1. WordPress initially detects theme in themes/sage/resources
  * 2. Upon activation, we tell WordPress that the theme is actually in themes/sage/resources/views
@@ -86,7 +86,7 @@ Container::getInstance()
     ->bindIf('config', function () {
         return new Config([
             'assets' => require dirname(__DIR__).'/config/assets.php',
-            'theme' => require dirname(__DIR__).'/config/theme.php',
-            'view' => require dirname(__DIR__).'/config/view.php',
+            'theme'  => require dirname(__DIR__).'/config/theme.php',
+            'view'   => require dirname(__DIR__).'/config/view.php',
         ]);
     }, true);
