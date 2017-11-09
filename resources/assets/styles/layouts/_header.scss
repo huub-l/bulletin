@@ -1,3 +1,16 @@
+nav.nav-primary {
+  float: right;
+}
+
+.banner {
+  height: 80px;
+  border-bottom: 1px solid #ccc;
+}
+
+.bannder .container {
+  height: 100%;
+}
+
 .banner .nav li {
   @extend .nav-item;
 }
@@ -6,6 +19,21 @@
   @extend .nav-link;
 }
 
-.banner {
-  height: 100px;
+.wrap.container {
+  padding-top: 100px;
+}
+
+a.brand {
+  font-size: 32px;
+  letter-spacing: -1px;
+  top: 10px;
+  position: relative;
+}
+
+a.brand:hover {
+  text-decoration: none;
+}
+
+#menu-top-menu a {
+  padding: 25px !important;
 }

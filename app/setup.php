@@ -128,7 +128,73 @@ add_action('after_setup_theme', function () {
 });
 
 
-// Show posts of 'post', 'page' and 'movie' post types on home page
+add_action( 'init', function () {
+
+	/**
+	 * Post Type: SB Articles.
+	 */
+
+	$labels = array(
+		"name" => __( "SB Articles", "sage" ),
+		"singular_name" => __( "SB Article", "sage" ),
+	);
+
+	$args = array(
+		"label" => __( "SB Articles", "sage" ),
+		"labels" => $labels,
+		"description" => "Articles in a science bulletin",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"has_archive" => false,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "article", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail", "excerpt", "custom-fields", "comments", "author" ),
+		"taxonomies" => array( "keyword" ),
+	);
+
+	register_post_type( "article", $args );
+});
+
+
+add_action( 'init', function () {
+
+	/**
+	 * Taxonomy: Keywords.
+	 */
+
+	$labels = array(
+		"name" => __( "Keywords", "sage" ),
+		"singular_name" => __( "Keyword", "sage" ),
+	);
+
+	$args = array(
+		"label" => __( "Keywords", "sage" ),
+		"labels" => $labels,
+		"public" => true,
+		"hierarchical" => false,
+		"label" => "Keywords",
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => array( 'slug' => 'keyword', 'with_front' => true, ),
+		"show_admin_column" => false,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"show_in_quick_edit" => false,
+	);
+	register_taxonomy( "keyword", array( "article" ), $args );
+});
+
+// Show posts of 'article' post types on home page
 add_action( 'pre_get_posts', function ( $query ) {
   if ( $query->is_main_query() )
     $query->set( 'post_type', array('article') );
