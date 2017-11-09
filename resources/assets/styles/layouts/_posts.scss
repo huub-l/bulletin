@@ -4,7 +4,29 @@
 
 .type-article .entry-content {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 760px;
+}
+
+.type-article .entry-content li::before {
+  font-family: 'FontAwesome';
+  content: '\f054';
+  margin: 0 15px 0 -23px;
+  color: $primary-color;
+  font-size: 11px;
+  position: relative;
+  top: -2px;
+}
+
+.type-article .entry-content ul {
+  list-style: none;
+}
+
+.single-abstract-first-words {
+  font-weight: 900;
+  font-family: Merriweather;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
 }
 
 h1.entry-title {

@@ -194,9 +194,13 @@ add_action( 'init', function () {
 	register_taxonomy( "keyword", array( "article" ), $args );
 });
 
+add_action('admin_menu', function (){ 
+   remove_menu_page('edit.php');
+});
+
 // Show posts of 'article' post types on home page
 add_action( 'pre_get_posts', function ( $query ) {
-  if ( $query->is_main_query() )
+  if ( $query->is_archive() )
     $query->set( 'post_type', array('article') );
   return $query;
 });

@@ -10,7 +10,20 @@
     @include('partials/entry-meta')
   </header>
   <div class="entry-content">
+
+    <div id="single-article-exerpt">{{get_the_excerpt()}}</div>
+
+    <div id="article-keywords">
+      <h1 id="h2-keywords">Keywords</h1>
+      {!! App::sbKeywords() !!}
+    </div>
+
+    <div class="index-divider">
+      <i class="fa fa-leaf" aria-hidden="true"></i>
+    </div>
+
     @php(the_content())
+
   </div>
   <footer>
     {!! wp_link_pages(['echo' => 0, 'before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']) !!}

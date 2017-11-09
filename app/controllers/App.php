@@ -58,4 +58,31 @@ class App extends Controller
         $author = get_queried_object();
         return $author->description;
     }
+
+    public static function sbKeywords(){
+        $terms = get_terms( array( 
+            'taxonomy' => 'keyword',
+        ) );
+
+        if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+            $count = count( $terms );
+            $i = 0;
+            $term_list = '<p class="my_term-archive">';
+            foreach ( $terms as $term ) {
+                $i++;
+                $term_list .= '<a href="' . esc_url( get_term_link( $term ) ) . 
+                              '" alt="' . 
+                              esc_attr( sprintf( __( 'View all articles wiht keyword %s', 
+                              'my_localization_domain' ), ucfirst($term->name) ) ) . 
+                              '">' . ucfirst($term->name) . '</a>';
+                if ( $count != $i ) {
+                    $term_list .= ' &middot; ';
+                }
+                else {
+                    $term_list .= '</p>';
+                }
+            }
+        }
+        return $term_list;
+    }
 }

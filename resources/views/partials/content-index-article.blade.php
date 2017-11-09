@@ -3,7 +3,7 @@
     <a href="{{ get_permalink() }}">{{ get_the_title() }}</a>
   </h3>
   <div class="entry-summary">
-    @php(the_excerpt())
+    {{wp_trim_words(get_the_excerpt(), 55, '...')}}
   </div>
 </article>
 
