@@ -6,5 +6,4 @@ use Sober\Controller\Controller;
 
 class About extends Controller
 {
-
 }
