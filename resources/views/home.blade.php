@@ -2,7 +2,11 @@
 
 @section('content')
 
-  @if (!have_posts())
+  @php
+    $query = App::sbGetArticleQuery();
+  @endphp
+
+  @if (!$query->have_posts())
     <div class="alert alert-warning">
       {{ __('Sorry, no results were found.', 'sage') }}
     </div>
@@ -10,7 +14,7 @@
   @endif
 
   <div class="row">
-  @while (have_posts()) @php(the_post())
+  @while ($query->have_posts()) @php($query->the_post())
     @include('partials.home-grid')
   @endwhile
   </div>

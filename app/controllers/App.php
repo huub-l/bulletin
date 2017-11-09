@@ -3,6 +3,7 @@
 namespace App;
 
 use Sober\Controller\Controller;
+use WP_Query;
 
 class App extends Controller
 {
@@ -94,5 +95,15 @@ class App extends Controller
         if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
             return implode(", ", wp_list_pluck($terms, 'name'));
         }
+    }
+
+    public static function sbGetArticleQuery(){
+
+        $args = [
+            'post_type' => 'article',
+        ];
+
+        return new WP_Query( $args );
+
     }
 }
