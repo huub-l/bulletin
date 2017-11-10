@@ -38,3 +38,40 @@ h6 {
 p {
   margin-bottom: 2em;
 }
+
+.index-divider {
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  width: 50%;
+  margin: 0 auto 50px;
+}
+
+.index-divider::before {
+  content: '▉▉';
+  right: -31px;
+  position: relative;
+  top: 15px;
+  background: #fff;
+  color: #fff;
+}
+
+.home-index-divider {
+  margin: 30px auto 50px;
+}
+
+.index-divider i {
+  top: 16px;
+  position: relative;
+  color: #999;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out;
+}
+
+.fade:hover {
+  opacity: 0.75;
+}

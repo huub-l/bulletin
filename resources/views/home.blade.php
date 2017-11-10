@@ -12,8 +12,8 @@
   @endwhile
   </div>
 
-  <div class="index-divider">
-    <i class="fa fa-leaf" aria-hidden="true"></i>
+  <div class="index-divider home-index-divider">
+    <i class="fa fa-paper-plane" aria-hidden="true"></i>
   </div>
 
   @php
