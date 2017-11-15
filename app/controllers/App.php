@@ -106,7 +106,7 @@ class App extends Controller
     public static function sbGetArticleQuery()
     {
         $args = [
-            'post_type' => 'article',
+            'post_type'      => 'article',
             'posts_per_page' => '8',
         ];
 
