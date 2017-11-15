@@ -193,9 +193,9 @@ add_action('init', function () {
 
 add_action('init', function () {
 
-       /**
-        * Taxonomy: Programmes.
-        */
+    /**
+     * Taxonomy: Programmes.
+     */
     $labels = [
                'name'   => __('Programmes', 'sage'),
         'singular_name' => __('Programme', 'sage'),
