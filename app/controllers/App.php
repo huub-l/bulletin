@@ -131,11 +131,11 @@ class App extends Controller
 
     public static function sbGetAllKeywords()
     {
-        $terms = get_terms( array(
-            'taxonomy' => 'keyword',
+        $terms = get_terms([
+            'taxonomy'   => 'keyword',
             'hide_empty' => true,
-            'order_by' => 'count',
-        ));
+            'order_by'   => 'count',
+        ]);
 
         if (!empty($terms) && !is_wp_error($terms)) {
             $count = count($terms);
