@@ -26,4 +26,12 @@
   @endwhile
   </div>
 
+  <div class="row home-section">
+    @include('partials.home-keywords')
+  </div>
+
+  <div class="row home-section">
+    @include('partials.home-page-about')
+  </div>
+
 @endsection

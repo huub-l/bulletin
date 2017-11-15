@@ -128,4 +128,36 @@ class App extends Controller
 
         return new WP_Query($args);
     }
+
+    public static function sbGetAllKeywords()
+    {
+        $terms = get_terms( array(
+            'taxonomy' => 'keyword',
+            'hide_empty' => true,
+            'order_by' => 'count',
+        ));
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            $count = count($terms);
+            $i = 0;
+            $term_list = '<p class="keywords_list">';
+            foreach ($terms as $term) {
+                $i++;
+                $term_list .= '<a href="'.esc_url(get_term_link($term)).
+                              '" alt="'.
+                              esc_attr(sprintf(__('View all articles wiht keyword %s',
+                              'sage'), ucfirst($term->name))).
+                              '">'.ucfirst($term->name).'</a>';
+                if ($count != $i) {
+                    $term_list .= ' &middot; ';
+                } else {
+                    $term_list .= '</p>';
+                }
+            }
+
+            return $term_list;
+        } else {
+            return '<p class="keywords_list" style="color:red">To be added</p>';
+        }
+    }
 }
