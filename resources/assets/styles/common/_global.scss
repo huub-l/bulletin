@@ -89,3 +89,9 @@ figcaption,
   text-transform: uppercase;
   color: #999;
 }
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}

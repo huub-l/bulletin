@@ -1,3 +1,13 @@
+header.banner {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  margin-bottom: 32px;
+}
+
 nav.nav-primary {
   float: right;
 }
@@ -20,7 +30,7 @@ nav.nav-primary {
 }
 
 .wrap.container {
-  padding-top: 60px;
+  padding-top: 120px;
 }
 
 a.brand {

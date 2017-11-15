@@ -51,8 +51,7 @@ class App extends Controller
             $text = '<p class="text-muted project-ref">';
             $text .= '<a data-toggle="tooltip" title="Read more about this project on APN E-Lib"
                        href="'.get_post_meta($id, 'sb-project-elib-url')[0].'">'
-                  .$ref[0]
-                  .'</a></p>';
+                  .'<i class="fa fa-external-link-square"></i> '.$ref[0].'</a></p>';
 
             return print $text;
         } else {
@@ -106,7 +105,10 @@ class App extends Controller
 
     public static function sbGetArticleQuery()
     {
-        $args = ['post_type' => 'article'];
+        $args = [
+            'post_type' => 'article',
+            'posts_per_page' => '8',
+        ];
 
         return new WP_Query($args);
     }
