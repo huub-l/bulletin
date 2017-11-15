@@ -234,5 +234,6 @@ add_action('pre_get_posts', function ($query) {
     return $query;
 });
 
+// Add image sizes
 add_image_size('home-small', 255, 100, true);
 add_image_size('home-featured', 570, 400, true);

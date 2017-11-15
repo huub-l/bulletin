@@ -1,4 +1,12 @@
-<time class="updated" datetime="{{ get_post_time('c', true) }}">{{ get_the_date() }}</time>
+<div class="article-meta-date">
+  <?php if(is_singular('article')): ?>
+    <span class="article-date-title">{{ __('First published online:', 'sage') }}</span>
+    <time class="updated" datetime="{{ get_post_time('c', true) }}">{{ get_the_date() }}</time>
+
+  <?php else: ?>
+    <time class="updated article-date" datetime="{{ get_post_time('c', true) }}">{{ get_the_date() }}</time>
+  <?php endif; ?>
+</div>
 
 <?php if ( function_exists( 'coauthors_posts_links' ) ) : ?>
 

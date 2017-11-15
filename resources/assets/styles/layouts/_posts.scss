@@ -1,3 +1,10 @@
+.article-meta-date * {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  color: #333;
+}
+
 .type-article header {
   text-align: center;
 }
@@ -19,6 +26,11 @@
 
 .type-article .entry-content ul {
   list-style: none;
+}
+
+.type-article .entry-content p {
+  font-size: 1em;
+  line-height: 1.5em;
 }
 
 .single-abstract-first-words {
@@ -48,8 +60,18 @@ p.byline {
   margin: 10px auto 40px;
 }
 
-.sb-article-feature-img {
-  margin-bottom: 22px;
+.article-feature-image {
+  margin-bottom: 42px;
+}
+
+.article-feature-image > div.image-wrap {
+  display: inline-block;
+  text-align: left;
+}
+
+.article-feature-image-caption {
+  font-size: 12px;
+  color: #ccc;
 }
 
 .project-ref a,
@@ -59,7 +81,7 @@ p.byline {
 .project-ref a:visited {
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #aaa;
+  color: #333;
   font-size: 14px;
   text-decoration: none;
 }

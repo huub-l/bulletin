@@ -48,7 +48,7 @@ p {
 
 .index-divider::before {
   content: '▉▉';
-  right: -31px;
+  right: -11px;
   position: relative;
   top: 15px;
   background: #fff;
@@ -61,6 +61,7 @@ p {
 
 .index-divider i {
   top: 16px;
+  left: -20px;
   position: relative;
   color: #999;
 }
@@ -74,4 +75,17 @@ p {
 
 .fade:hover {
   opacity: 0.75;
+}
+
+figcaption,
+.figure-caption,
+.wp-caption-text {
+  font-size: 13px;
+}
+
+.caption-first-words {
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #999;
 }

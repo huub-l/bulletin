@@ -2,7 +2,7 @@ export default {
   init() {
     // JavaScript to be fired on all pages
 
-    // Beautify first 5 words
+    // Beautify first 3 words
     $('#single-article-exerpt').each(function () {
       var word = $(this).html();
       var index = getPosition(word, ' ', 3);
@@ -10,6 +10,19 @@ export default {
         index = word.length;
       }
       $(this).html('<span class="single-abstract-first-words">'  
+                    + word.substring(0, index) 
+                    + '</span>' 
+                    + word.substring(index, word.length));
+    });
+
+    // Beautify first 2 words of caption
+    $('figcaption').each(function () {
+      var word = $(this).html();
+      var index = getPosition(word, ' ', 2);
+      if (index == -1) {
+        index = word.length;
+      }
+      $(this).html('<span class="caption-first-words">'  
                     + word.substring(0, index) 
                     + '</span>' 
                     + word.substring(index, word.length));

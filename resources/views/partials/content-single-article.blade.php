@@ -1,9 +1,14 @@
 <article @php(post_class())>
   <header>
-    <?php if ( has_post_thumbnail() ) : ?>
-      <?php the_post_thumbnail('medium_large', ['class' => 'sb-article-feature-img img-responsive']); ?>
-    <?php endif; ?>
-    
+    <div class="article-feature-image">
+      <div class="image-wrap">
+        <?php if ( has_post_thumbnail() ) : ?>
+          <?php the_post_thumbnail('medium_large', ['class' => 'sb-article-feature-img img-responsive']); ?>
+          <div class="article-feature-image-caption">{{get_post(get_post_thumbnail_id())->post_title}}</div>
+        <?php endif; ?>
+      </div>
+    </div>
+
     <?php App::sbPrintProjectRef(get_the_ID()); ?>
     
     <h1 class="entry-title">{{ get_the_title() }}</h1>
