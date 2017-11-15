@@ -33,3 +33,22 @@
   width: 30%;
   margin: -8px 0;
 }
+
+/* unvisited link */
+a.home-grid-title {
+  font-size: 16px;
+}
+
+a.home-grid-title:link {
+  color: #333;
+}
+
+/* visited link */
+a.home-grid-title:visited {
+  color: $link-visited-color;
+}
+
+/* mouse over link */
+a.home-grid-title:hover {
+  color: $primary-color;
+}

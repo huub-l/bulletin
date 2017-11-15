@@ -12,7 +12,7 @@
       {{App::sbProgramme()}}
     </div>
     <div class="home-thumbnail-caption">
-      <p>{{get_the_title()}}</p>
+      <p><a class="home-grid-title" href="{{get_permalink()}}">{{get_the_title()}}</a></p>
     </div>
   </div>
 </div>
