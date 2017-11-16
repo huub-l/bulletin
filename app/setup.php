@@ -253,7 +253,6 @@ add_action('init', function () {
     register_taxonomy('issue', ['article'], $args);
 });
 
-
 add_action('init', function () {
 
     /**
