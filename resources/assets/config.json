@@ -8,7 +8,7 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/home/vagrant/sbdev/web",
+  "publicPath": "/bulletin/wp-content/themes/sb2",
   "devUrl": "http://sb.dev/wp",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
