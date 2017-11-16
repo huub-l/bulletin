@@ -160,7 +160,7 @@ add_action('init', function () {
         'rewrite'             => ['slug' => 'article', 'with_front' => true],
         'query_var'           => true,
         'supports'            => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'author'],
-        'taxonomies'          => ['keyword', 'programme', 'category'],
+        'taxonomies'          => ['keyword', 'programme', 'issue', 'category'],
     ];
 
     register_post_type('article', $args);
@@ -224,6 +224,35 @@ add_action('init', function () {
     register_taxonomy('programme', ['article'], $args);
 });
 
+add_action('init', function () {
+
+    /**
+     * Taxonomy: Issues.
+     */
+    $labels = [
+               'name'   => __('Issue', 'sage'),
+        'singular_name' => __('Issue', 'sage'),
+        'add_new_item'  => __('Add New Issue', 'sage'),
+       ];
+
+    $args = [
+               'label'              => __('Issue', 'sage'),
+               'labels'             => $labels,
+               'public'             => true,
+               'hierarchical'       => false,
+        'show_ui'                   => true,
+               'show_in_menu'       => false,
+               'show_in_nav_menus'  => true,
+               'query_var'          => true,
+               'rewrite'            => ['slug' => 'issue', 'with_front' => true],
+               'show_admin_column'  => false,
+               'show_in_rest'       => false,
+               'rest_base'          => '',
+               'show_in_quick_edit' => false,
+       ];
+    register_taxonomy('issue', ['article'], $args);
+});
+
 // Hide post menue
 add_action('admin_menu', function () {
     remove_menu_page('edit.php');
@@ -241,3 +270,6 @@ add_action('pre_get_posts', function ($query) {
 // Add image sizes
 add_image_size('home-small', 255, 100, true);
 add_image_size('home-featured', 570, 400, true);
+
+// Add thickbox script
+add_action( 'wp_enqueue_scripts', 'add_thickbox' );

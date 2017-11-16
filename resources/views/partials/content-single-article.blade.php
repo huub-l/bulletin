@@ -35,3 +35,7 @@
   </footer>
   @php(comments_template('/partials/comments.blade.php'))
 </article>
+
+<script>
+jQuery('figure img').parent().addClass('thickbox').attr('rel', 'page');
+</script>
