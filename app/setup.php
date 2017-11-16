@@ -272,4 +272,4 @@ add_image_size('home-small', 255, 100, true);
 add_image_size('home-featured', 570, 400, true);
 
 // Add thickbox script
-add_action( 'wp_enqueue_scripts', 'add_thickbox' );
+add_action('wp_enqueue_scripts', 'add_thickbox');
