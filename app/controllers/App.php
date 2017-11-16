@@ -78,7 +78,7 @@ class App extends Controller
                 $i++;
                 $term_list .= '<a href="'.esc_url(get_term_link($term)).
                               '" alt="'.
-                              esc_attr(sprintf(__('View all articles wiht keyword %s',
+                              esc_attr(sprintf(__('View all articles with keyword %s',
                               'sage'), ucfirst($term->name))).
                               '">'.ucfirst($term->name).'</a>';
                 if ($count != $i) {
@@ -145,7 +145,7 @@ class App extends Controller
                 $i++;
                 $term_list .= '<a href="'.esc_url(get_term_link($term)).
                               '" alt="'.
-                              esc_attr(sprintf(__('View all articles wiht keyword %s',
+                              esc_attr(sprintf(__('View all articles with keyword %s',
                               'sage'), ucfirst($term->name))).
                               '">'.ucfirst($term->name).'</a>';
                 if ($count != $i) {
@@ -158,6 +158,66 @@ class App extends Controller
             return $term_list;
         } else {
             return '<p class="keywords_list" style="color:red">To be added</p>';
+        }
+    }
+
+    public static function sbGetIssue()
+    {
+        $terms = get_terms([
+            'taxonomy'   => 'issue',
+        ]);
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            $count = count($terms);
+            $i = 0;
+            $term_list = '<p class="keywords_list">';
+            foreach ($terms as $term) {
+                $i++;
+                $term_list .= '<a href="'.esc_url(get_term_link($term)).
+                              '" alt="'.
+                              esc_attr(sprintf(__('View all articles under %s',
+                              'sage'), ucfirst($term->name))).
+                              '">'.ucfirst($term->name).'</a>';
+                if ($count != $i) {
+                    $term_list .= ' &middot; ';
+                } else {
+                    $term_list .= '</p>';
+                }
+            }
+
+            return $term_list;
+        } else {
+            return '<p class="keywords_list" style="color:red">To be added</p>';
+        }
+    }
+
+    public static function sbGetPartners()
+    {
+        $terms = get_terms([
+            'taxonomy'   => 'partner',
+        ]);
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            $count = count($terms);
+            $i = 0;
+            $term_list = '<p class="keywords_list">';
+            foreach ($terms as $term) {
+                $i++;
+                $term_list .= '<a href="'.esc_url(get_term_link($term)).
+                              '" alt="'.
+                              esc_attr(sprintf(__('View all articles with keyword %s',
+                              'sage'), ucfirst($term->name))).
+                              '">'.ucfirst($term->name).'</a>';
+                if ($count != $i) {
+                    $term_list .= ' &middot; ';
+                } else {
+                    $term_list .= '</p>';
+                }
+            }
+
+            return $term_list;
+        } else {
+            return false;
         }
     }
 }

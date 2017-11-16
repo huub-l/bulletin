@@ -15,14 +15,6 @@ h6 {
   line-height: 1.45em;
 }
 
-.entry-content h1 {
-  font-size: 1.3em;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #000;
-}
-
 .entry-content h2 {
   font-size: 1.2em;
   font-weight: 500;
@@ -98,4 +90,8 @@ div#TB_window {
   .hidden-xs {
     display: none !important;
   }
+}
+
+svg.at-icon {
+  fill: #aaa !important;
 }

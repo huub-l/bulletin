@@ -3,3 +3,31 @@ footer.content-info {
   color: #fff;
   padding: 50px 0;
 }
+
+/* Footer icons: unvisited link */
+a.footer-social-icon {
+  color: #fff;
+  padding: 12px;
+}
+
+a.footer-social-icon:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* visited link */
+a.footer-social-icon:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a.footer-social-icon:hover {
+  color: #333;
+  background: #fff;
+  text-decoration: none;
+}
+
+#footer-copyright {
+  margin: 24px 0 0;
+}
