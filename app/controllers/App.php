@@ -163,9 +163,7 @@ class App extends Controller
 
     public static function sbGetIssue()
     {
-        $terms = get_terms([
-            'taxonomy'   => 'issue',
-        ]);
+        $terms = wp_get_post_terms(get_the_id(), 'issue');
 
         if (!empty($terms) && !is_wp_error($terms)) {
             $count = count($terms);
