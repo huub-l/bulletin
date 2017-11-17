@@ -151,7 +151,7 @@ add_action('init', function () {
         'show_ui'             => true,
         'show_in_rest'        => false,
         'rest_base'           => '',
-        'has_archive'         => false,
+        'has_archive'         => true,
         'show_in_menu'        => true,
         'exclude_from_search' => false,
         'capability_type'     => 'post',
@@ -180,6 +180,7 @@ add_action('init', function () {
         'label'              => __('Keywords', 'sage'),
         'labels'             => $labels,
         'public'             => true,
+        'publicly_queryable' => true,
         'hierarchical'       => false,
         'label'              => 'Keywords',
         'show_ui'            => true,
@@ -190,7 +191,7 @@ add_action('init', function () {
         'show_admin_column'  => false,
         'show_in_rest'       => false,
         'rest_base'          => '',
-        'show_in_quick_edit' => false,
+        'show_in_quick_edit' => true,
     ];
     register_taxonomy('keyword', ['article'], $args);
 });
@@ -207,19 +208,20 @@ add_action('init', function () {
        ];
 
     $args = [
-               'label'              => __('Programmes', 'sage'),
-               'labels'             => $labels,
-               'public'             => true,
-               'hierarchical'       => true,
-        'show_ui'                   => true,
-               'show_in_menu'       => false,
-               'show_in_nav_menus'  => false,
-               'query_var'          => true,
-               'rewrite'            => ['slug' => 'programme', 'with_front' => true],
-               'show_admin_column'  => false,
-               'show_in_rest'       => false,
-               'rest_base'          => '',
-               'show_in_quick_edit' => false,
+        'label'              => __('Programmes', 'sage'),
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'hierarchical'       => true,
+        'show_ui'            => true,
+        'show_in_menu'       => false,
+        'show_in_nav_menus'  => false,
+        'query_var'          => true,
+        'rewrite'            => ['slug' => 'programme', 'with_front' => true],
+        'show_admin_column'  => false,
+        'show_in_rest'       => false,
+        'rest_base'          => '',
+        'show_in_quick_edit' => true,
        ];
     register_taxonomy('programme', ['article'], $args);
 });
@@ -236,19 +238,20 @@ add_action('init', function () {
        ];
 
     $args = [
-               'label'              => __('Issue', 'sage'),
-               'labels'             => $labels,
-               'public'             => true,
-               'hierarchical'       => false,
-        'show_ui'                   => true,
-               'show_in_menu'       => false,
-               'show_in_nav_menus'  => true,
-               'query_var'          => true,
-               'rewrite'            => ['slug' => 'issue', 'with_front' => true],
-               'show_admin_column'  => false,
-               'show_in_rest'       => false,
-               'rest_base'          => '',
-               'show_in_quick_edit' => false,
+        'label'              => __('Issue', 'sage'),
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'hierarchical'       => false,
+        'show_ui'            => true,
+        'show_in_menu'       => false,
+        'show_in_nav_menus'  => true,
+        'query_var'          => true,
+        'rewrite'            => ['slug' => 'issue', 'with_front' => true],
+        'show_admin_column'  => false,
+        'show_in_rest'       => false,
+        'rest_base'          => '',
+        'show_in_quick_edit' => true,
        ];
     register_taxonomy('issue', ['article'], $args);
 });
@@ -256,7 +259,7 @@ add_action('init', function () {
 add_action('init', function () {
 
     /**
-     * Taxonomy: Issues.
+     * Taxonomy: Partners.
      */
     $labels = [
                'name'   => __('Partners', 'sage'),
@@ -265,19 +268,20 @@ add_action('init', function () {
        ];
 
     $args = [
-               'label'              => __('Partner', 'sage'),
-               'labels'             => $labels,
-               'public'             => true,
-               'hierarchical'       => false,
-        'show_ui'                   => true,
-               'show_in_menu'       => false,
-               'show_in_nav_menus'  => true,
-               'query_var'          => true,
-               'rewrite'            => ['slug' => 'partner', 'with_front' => true],
-               'show_admin_column'  => false,
-               'show_in_rest'       => false,
-               'rest_base'          => '',
-               'show_in_quick_edit' => false,
+        'label'              => __('Partner', 'sage'),
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'hierarchical'       => false,
+        'show_ui'            => true,
+        'show_in_menu'       => false,
+        'show_in_nav_menus'  => true,
+        'query_var'          => true,
+        'rewrite'            => ['slug' => 'partner', 'with_front' => true],
+        'show_admin_column'  => false,
+        'show_in_rest'       => false,
+        'rest_base'          => '',
+        'show_in_quick_edit' => false,
        ];
     register_taxonomy('partner', ['article'], $args);
 });
