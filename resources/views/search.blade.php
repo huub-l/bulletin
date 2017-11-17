@@ -11,7 +11,7 @@
   @endif
 
   @while(have_posts()) @php(the_post())
-    @include('partials.content-search')
+    @include('partials.content-index-article')
   @endwhile
 
   {!! get_the_posts_navigation() !!}
