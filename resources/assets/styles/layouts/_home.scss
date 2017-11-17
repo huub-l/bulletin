@@ -39,8 +39,12 @@ a.home-grid-title:link {
   margin-top: -9px;
   font-size: 2em;
   font-weight: 900;
-  line-height: 1.2em;
+  line-height: 45px;
   padding-right: 50px;
+}
+
+.home-featured-h1 a {
+  line-height: 45px;
 }
 
 /* visited link */
