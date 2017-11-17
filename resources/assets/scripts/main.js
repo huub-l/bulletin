@@ -1,5 +1,6 @@
 // import external dependencies
 import 'jquery';
+import 'bootstrap/dist/js/bootstrap'
 
 // Import everything from autoload
 import "./autoload/**/*"

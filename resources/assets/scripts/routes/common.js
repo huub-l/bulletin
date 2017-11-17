@@ -2,7 +2,9 @@ export default {
   init() {
     // JavaScript to be fired on all pages
 
-    // Beautify first 3 words
+    /**
+     * Beautify first 3 words in the "Abstract" of articles
+     */ 
     $('#single-article-exerpt').each(function () {
       var word = $(this).html();
       var index = getPosition(word, ' ', 3);
@@ -15,7 +17,9 @@ export default {
                     + word.substring(index, word.length));
     });
 
-    // Beautify first 2 words of caption
+    /**
+     * Beautify first 2 words of image caption
+     */ 
     $('figcaption').each(function () {
       var word = $(this).html();
       var index = getPosition(word, ' ', 2);
@@ -28,9 +32,79 @@ export default {
                     + word.substring(index, word.length));
     });
 
+    /**
+     * Generate ToC for articles
+     * 
+     */ 
+    var sbtoc = '<ul class="sb-toc">';
+
+    $('.type-article h1:not(#sb-entry-title)').each(function(){
+      var title = $(this).html().trim();
+      var titleSlug = sluggify(title);
+
+      $(this).attr('id', titleSlug);
+
+      if (title.toLowerCase() != 'keywords'){
+        sbtoc += '<li class="sb-toc-item"><a href="#'+titleSlug+'">'+title+'</a></li>';
+      }
+
+    });
+
+    $('#sb-toc-wrap').html(sbtoc+'</ul>');
+
+    /**
+     *  Captures click events of all <a> elements with href starting with #
+     * 
+     */
+    $(document).on('click', 'a[href^="#"]', function () {
+      // Click events are captured before hashchanges. Timeout
+      // causes offsetAnchor to be called after the page jump.
+
+    });
+
+    /**
+     * Get position of a certain occurance of a subString in string
+     */ 
     function getPosition(string, subString, index) {
       return string.split(subString, index).join(subString).length;
     }
+
+    /** 
+     * Sluggyfy a string
+     * Courtesy of @codeguy https://gist.github.com/codeguy/6684588
+     * 
+     */
+    function sluggify(str) {
+      str = str.replace(/^\s+|\s+$/g, ''); // trim
+      str = str.toLowerCase();
+
+      // remove accents, swap ñ for n, etc
+      var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+      var to = "aaaaeeeeiiiioooouuuunc------";
+      for (var i = 0, l = from.length; i < l; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      }
+
+      str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+        .replace(/\s+/g, '-') // collapse whitespace and replace by -
+        .replace(/-+/g, '-'); // collapse dashes
+
+      return str;
+    }
+
+    /**
+     * Smooth scroll for ToC
+     * 
+     */
+    $(".sb-toc-item a").click(function () {
+      
+      var heading = $(this).attr('href');
+
+      $('html, body').animate({
+        scrollTop: $(heading).offset().top - 100,
+      }, 500);
+
+    });
 
   },
   finalize() {

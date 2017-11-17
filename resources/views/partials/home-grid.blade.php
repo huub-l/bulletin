@@ -2,9 +2,9 @@
   <div class="thumbnail">
     <a href="{{get_permalink()}}">
       @if(has_post_thumbnail())
-        <img class="fade" src="@php(the_post_thumbnail_url( 'home-small' ))" alt="{{get_the_title()}}" width="100%">
+        <img class="sb-fade" src="@php(the_post_thumbnail_url( 'home-small' ))" alt="{{get_the_title()}}" width="100%">
       @else
-        <img class="fade" src="http://via.placeholder.com/255x100?text=Science+Bulletin" alt="{{get_the_title()}}" width="100%">
+        <img class="sb-fade" src="//via.placeholder.com/255x100?text=Science+Bulletin" alt="{{get_the_title()}}" width="100%">
       @endif
     </a>
     

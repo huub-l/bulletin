@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="entry-content col-lg-9 col-md-12">
+  <div class="entry-content col-lg-9">
     <article @php(post_class())>
       <header>
         <div class="article-feature-image">
           <div class="image-wrap">
             <?php if ( has_post_thumbnail() ) : ?>
-              <?php the_post_thumbnail('medium_large', ['class' => 'sb-article-feature-img img-responsive']); ?>
+              <?php the_post_thumbnail('medium_large', ['class' => 'sb-article-feature-img img-fluid']); ?>
               <div class="article-feature-image-caption">{{get_post(get_post_thumbnail_id())->post_title}}</div>
             <?php endif; ?>
           </div>
@@ -30,13 +30,13 @@
 
         @php(the_content())
 
-    </div>
-  </article>
-
+    </article>
+  </div>
   <aside class="col-lg-3">
-    @include('partials.article-aside')
+    <div id="article-aside-wrap">
+      @include('partials.article-aside')
+    </div>
   </aside>
-
 </div><!--row-->
 
 <footer>
