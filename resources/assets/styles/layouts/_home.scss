@@ -9,14 +9,6 @@
   margin-top: 10px;
 }
 
-.home-featured-h1 {
-  margin-top: -9px;
-  font-size: 2em;
-  font-weight: 900;
-  line-height: 1.2em;
-  padding-right: 50px;
-}
-
 .home-section {
   margin-top: 40px;
   border-top: 1px solid #ccc;
@@ -43,13 +35,23 @@ a.home-grid-title:link {
   color: #333;
 }
 
+.home-featured-h1 {
+  margin-top: -9px;
+  font-size: 2em;
+  font-weight: 900;
+  line-height: 1.2em;
+  padding-right: 50px;
+}
+
 /* visited link */
-a.home-grid-title:visited {
+a.home-grid-title:visited,
+.home-featured-h1 a:visited {
   color: $link-visited-color;
 }
 
 /* mouse over link */
-a.home-grid-title:hover {
+a.home-grid-title:hover,
+.home-featured-h1 a:hover {
   color: $primary-color;
 }
 

@@ -9,7 +9,7 @@
     </a>
     
     <div class="home-meta-programme">
-      {{App::sbProgramme()}}
+      {{App::sbGetProgrammeString()}}
     </div>
     <div class="home-thumbnail-caption">
       <p><a class="home-grid-title" href="{{get_permalink()}}">{{get_the_title()}}</a></p>

@@ -11,5 +11,5 @@
 </div>
 
 <div class="col-lg-6">
-    <h1 class="home-featured-h1">{{get_the_title()}}</h1>
+    <h1 class="home-featured-h1"><a href="{{get_permalink()}}">{{get_the_title()}}</a></h1>
 </div>

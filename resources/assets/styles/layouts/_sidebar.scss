@@ -17,6 +17,7 @@ h3.sb-aside-h3:first-child {
 .sb-toc {
   list-style: none;
   padding: 0;
+  margin-bottom: 2em;
 }
 
 .type-article li {
@@ -44,6 +45,10 @@ h3.sb-aside-h3:first-child {
 li.sb-toc-item {
   border-bottom: 1px dotted #ccc;
   padding: 5px 0;
+}
+
+#article-aside-wrap a {
+  font-size: 14px;
 }
 
 @media (min-width: 992px) {

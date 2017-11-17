@@ -94,7 +94,7 @@ class App extends Controller
         }
     }
 
-    public static function sbProgramme()
+    public static function sbGetProgrammeString()
     {
         $terms = wp_get_post_terms(get_the_id(), 'programme');
 
@@ -191,9 +191,7 @@ class App extends Controller
 
     public static function sbGetPartners()
     {
-        $terms = get_terms([
-            'taxonomy'   => 'partner',
-        ]);
+        $terms = wp_get_post_terms(get_the_id(), 'partner');
 
         if (!empty($terms) && !is_wp_error($terms)) {
             $count = count($terms);
@@ -203,7 +201,35 @@ class App extends Controller
                 $i++;
                 $term_list .= '<a href="'.esc_url(get_term_link($term)).
                               '" alt="'.
-                              esc_attr(sprintf(__('View all articles with keyword %s',
+                              esc_attr(sprintf(__('View all articles with the involvement of %s',
+                              'sage'), ucfirst($term->name))).
+                              '">'.ucfirst($term->name).'</a>';
+                if ($count != $i) {
+                    $term_list .= ' &middot; ';
+                } else {
+                    $term_list .= '</p>';
+                }
+            }
+
+            return $term_list;
+        } else {
+            return false;
+        }
+    }
+
+    public static function sbGetProgramme()
+    {
+        $terms = wp_get_post_terms(get_the_id(), 'programme');
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            $count = count($terms);
+            $i = 0;
+            $term_list = '<p class="keywords_list">';
+            foreach ($terms as $term) {
+                $i++;
+                $term_list .= '<a href="'.esc_url(get_term_link($term)).
+                              '" alt="'.
+                              esc_attr(sprintf(__('View all articles funded under programme %s',
                               'sage'), ucfirst($term->name))).
                               '">'.ucfirst($term->name).'</a>';
                 if ($count != $i) {
