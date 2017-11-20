@@ -306,3 +306,10 @@ add_image_size('home-featured', 570, 400, true);
 
 // Add thickbox script
 add_action('wp_enqueue_scripts', 'add_thickbox');
+
+// Add menu to Admin Guide
+add_action( 'admin_menu', function(){
+    global $menu;
+    add_menu_page( 'SB Admin Guide', 'SB Admin Guide', 'read', 'sb-admin-guide', '', 'dashicons-editor-help', 1 );
+    $menu[1][2] = "https://www.apn-gcr.org/bulletin/wp-admin/sb-admin-guide/site/";
+});

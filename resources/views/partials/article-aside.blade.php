@@ -10,9 +10,10 @@
 <h3 class="sb-aside-h3">Programme</h3>
 {!!App::sbGetProgramme()!!}
 @endif
+<div id="article-aside-wrap">
+    <h3 class="sb-aside-h3">Contents</h3>
+    <div id="sb-toc-wrap"></div>
 
-<h3 class="sb-aside-h3">Contents</h3>
-<div id="sb-toc-wrap"></div>
-
-<h3 class="sb-aside-h3">Share</h3>
-<div class="addthis_inline_share_toolbox"></div>
+    <h3 class="sb-aside-h3">Share</h3>
+    <div class="addthis_inline_share_toolbox"></div>
+</div>

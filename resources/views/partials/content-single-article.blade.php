@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="entry-content col-lg-9">
+  <div class="entry-content col-lg-7 offset-lg-1">
     <article @php(post_class())>
       <header>
         <div class="article-feature-image">
@@ -32,10 +32,8 @@
 
     </article>
   </div>
-  <aside class="col-lg-3">
-    <div id="article-aside-wrap">
-      @include('partials.article-aside')
-    </div>
+  <aside class="col-lg-3 offset-lg-1">
+    @include('partials.article-aside')
   </aside>
 </div><!--row-->
 
