@@ -25,18 +25,21 @@ h3.sb-aside-h3:first-child {
 }
 
 /* unvisited link */
-.sb-toc-item a,
+.sb-toc-item-a,
+#sb-article-aside a,
 #article-aside-wrap .keywords_list a {
   color: #333;
 }
 
-.sb-toc-item a:link,
+.sb-toc-item-a:link,
+#sb-article-aside a:link,
 #article-aside-wrap .keywords_list a:link {
   color: #333;
 }
 
 /* mouse over link */
-.sb-toc-item a:hover,
+.sb-toc-item-a:hover,
+#sb-article-aside a:hover,
 #article-aside-wrap .keywords_list a:hover {
   color: $primary-color;
   text-decoration: none;

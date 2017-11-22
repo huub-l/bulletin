@@ -32,7 +32,7 @@
 
     </article>
   </div>
-  <aside class="col-lg-3 offset-lg-1">
+  <aside class="col-lg-3 offset-lg-1" id="sb-article-aside">
     @include('partials.article-aside')
   </aside>
 </div><!--row-->

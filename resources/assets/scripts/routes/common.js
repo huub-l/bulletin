@@ -45,22 +45,12 @@ export default {
       $(this).attr('id', titleSlug);
 
       if (title.toLowerCase() != 'keywords'){
-        sbtoc += '<li class="sb-toc-item"><a href="#'+titleSlug+'">'+title+'</a></li>';
+        sbtoc += '<a class="sb-toc-item-a" href="#' + titleSlug + '"><li class="sb-toc-item">' + title +'</li></a>';
       }
 
     });
 
     $('#sb-toc-wrap').html(sbtoc+'</ul>');
-
-    /**
-     *  Captures click events of all <a> elements with href starting with #
-     * 
-     */
-    $(document).on('click', 'a[href^="#"]', function () {
-      // Click events are captured before hashchanges. Timeout
-      // causes offsetAnchor to be called after the page jump.
-
-    });
 
     /**
      * Get position of a certain occurance of a subString in string
@@ -96,7 +86,7 @@ export default {
      * Smooth scroll for ToC
      * 
      */
-    $(".sb-toc-item a").click(function () {
+    $(".sb-toc-item-a").click(function () {
       
       var heading = $(this).attr('href');
 
