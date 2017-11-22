@@ -117,6 +117,7 @@ class App extends Controller
     {
         $args = [
             'post_type' => 'article',
+            'posts_per_page' => 1,
             'tax_query' => [
                 [
                     'taxonomy' => 'category',
