@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="entry-content col-lg-7 offset-lg-1">
+  <div class="entry-content col-md-12 col-lg-8">
     <article @php(post_class())>
       <header>
         <div class="article-feature-image">
