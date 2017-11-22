@@ -116,9 +116,9 @@ class App extends Controller
     public static function sbGetFeaturedQuery()
     {
         $args = [
-            'post_type' => 'article',
+            'post_type'      => 'article',
             'posts_per_page' => 1,
-            'tax_query' => [
+            'tax_query'      => [
                 [
                     'taxonomy' => 'category',
                     'field'    => 'slug',
