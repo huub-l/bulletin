@@ -11,7 +11,7 @@
       @if(has_post_thumbnail($page))
         <img class="sb-fade" src="{{get_the_post_thumbnail_url($page, 'medium')}}" alt="{{get_the_title()}}" width="100%" />
       @else
-        <img class="sb-fade"  src="//via.placeholder.com/1110x400?text=Science+Bulletin" alt="{{get_the_title()}}">
+        <img class="sb-fade"  src="//via.placeholder.com/248x248?text=Science+Bulletin" alt="{{get_the_title()}}">
       @endif
     </div>
   </div>
