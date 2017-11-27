@@ -5,7 +5,7 @@
     <div class="col-lg-7" id="home-about-text">
       <h1 class="home-section-title">{{$page->post_title}}</h1>
       <div class="home-section-title-rule"></div>
-      {{ $page->post_content}}
+      {!! $page->post_content !!}
     </div>
     <div class="col-lg-3 offset-lg-2">
       @if(has_post_thumbnail($page))
