@@ -16,7 +16,7 @@
 }
 */
 
-.type-article li::before {
+.type-article ul > li::before {
   font-family: 'FontAwesome';
   content: '\f054';
   margin: 0 15px 0 -22.5px;
@@ -30,9 +30,13 @@
   list-style: none;
 }
 
-.type-article p {
-  font-size: 1em;
-  line-height: 1.5em;
+.type-article ul {
+  list-style: none;
+}
+
+.type-article p + ul:not(.keep-space),
+.type-article p + ol:not(.keep-space) {
+  margin-top: -20px;
 }
 
 .single-abstract-first-words {
