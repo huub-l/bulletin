@@ -141,7 +141,7 @@ class App extends Controller
         if (!empty($terms) && !is_wp_error($terms)) {
             $count = count($terms);
             $i = 0;
-            $term_list = '<p class="keywords_list">';
+            $term_list = '';
             foreach ($terms as $term) {
                 $i++;
                 $term_list .= '<a href="'.esc_url(get_term_link($term)).
@@ -152,7 +152,7 @@ class App extends Controller
                 if ($count != $i) {
                     $term_list .= ' &middot; ';
                 } else {
-                    $term_list .= '</p>';
+                    $term_list .= '';
                 }
             }
 

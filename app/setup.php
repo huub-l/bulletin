@@ -302,7 +302,7 @@ add_action('pre_get_posts', function ($query) {
 
 // Add image sizes
 add_image_size('home-small', 255, 100, true);
-add_image_size('home-featured', 570, 400, true);
+add_image_size('home-featured', 1110, 400, true);
 
 // Add thickbox script
 add_action('wp_enqueue_scripts', 'add_thickbox');

@@ -26,25 +26,38 @@
   margin: -8px 0 32px;
 }
 
+#home-section-about {
+  width: 100%;
+  background: #eee;
+  padding: 100px 0;
+  background-image: url("../../images/abstract.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 /* unvisited link */
 a.home-grid-title {
   font-size: 15px;
 }
 
-a.home-grid-title:link {
+a.home-grid-title:link,
+.home-featured-h1 a:link {
   color: #333;
 }
 
 .home-featured-h1 {
-  margin-top: -9px;
-  font-size: 2em;
-  font-weight: 900;
-  line-height: 45px;
-  padding-right: 50px;
+  width: 70%;
+  line-height: 38px;
+}
+
+p.home-keywords-list {
+  line-height: 2em;
 }
 
 .home-featured-h1 a {
-  line-height: 45px;
+  font-size: 24px;
+  font-family: Merriweather, serif;
+  font-weight: 500;
 }
 
 /* visited link */
