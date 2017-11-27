@@ -30,9 +30,19 @@
   width: 100%;
   background: #eee;
   padding: 100px 0;
-  background-image: url("../images/abstract.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-image: url("../images/abstract.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.home-grid-single {
+  margin-bottom: 60px;
+}
+
+#home-about-text {
+  font-size: 20px;
 }
 
 /* unvisited link */

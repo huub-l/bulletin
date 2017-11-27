@@ -1,5 +1,5 @@
 <div class="col-sm-6 col-md-3">
-  <div class="thumbnail">
+  <div class="thumbnail home-grid-single">
     <a href="{{get_permalink()}}">
       @if(has_post_thumbnail())
         <img class="sb-fade" src="@php(the_post_thumbnail_url( 'home-small' ))" alt="{{get_the_title()}}" width="100%">

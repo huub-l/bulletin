@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-7" id="home-about-text">
       <h1 class="home-section-title">{{$page->post_title}}</h1>
       <div class="home-section-title-rule"></div>
       {{ $page->post_content}}
