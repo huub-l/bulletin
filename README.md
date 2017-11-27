@@ -6,5 +6,5 @@ A Wordpress theme for APN Science Bulletin online, based on Roots/Sage.
 
 ## Credits
 
-Roots\Sage
-Home background image: [Kjpargeter - Freepik.com](https://www.freepik.com/free-vector/abstract-background-with-a-watercolor-texture_886474.htm)
+- Roots\Sage
+- Home background image: [Kjpargeter - Freepik.com](https://www.freepik.com/free-vector/abstract-background-with-a-watercolor-texture_886474.htm)
