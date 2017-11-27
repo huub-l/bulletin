@@ -96,6 +96,34 @@ export default {
 
     });
 
+    /**
+     * Manipulate tables in the article
+     * 
+     */
+    $('article.type-article table').each(function () {
+      
+      var table = $(this);
+      
+      table.addClass('table table-striped article-table')
+           .wrap('<div class="article-table-wrap"></div>')
+           .after('<div class="article-table-overlay"><span class="view-table-text">View table</span></div>');
+
+    })
+
+    $('.article-table-overlay').click(function(){
+
+      var table = $(this).prev();
+
+      table.clone().appendTo('body')
+           .addClass('overlay-table')
+           .wrap('<div class="clone-table-wrap"></div>');
+
+      $('.clone-table-wrap').click(function () {
+        $(this).fadeOut(300, function () { $(this).remove(); });
+      })
+
+    });
+
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
