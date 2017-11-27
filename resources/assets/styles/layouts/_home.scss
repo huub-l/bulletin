@@ -28,9 +28,8 @@
 
 #home-section-about {
   width: 100%;
-  background: #eee;
   padding: 100px 0;
-  background-image: url("../images/abstract.jpg") no-repeat center center fixed;
+  background: url("../images/abstract.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -43,6 +42,7 @@
 
 #home-about-text {
   font-size: 20px;
+  line-height: 36px;
 }
 
 /* unvisited link */
@@ -60,7 +60,7 @@ a.home-grid-title:link,
   line-height: 38px;
 }
 
-p.home-keywords-list {
+p#home-keywords-list {
   line-height: 2em;
 }
 
