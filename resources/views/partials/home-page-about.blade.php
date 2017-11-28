@@ -9,7 +9,7 @@
     </div>
     <div class="col-lg-3 offset-lg-2">
       @if(has_post_thumbnail($page))
-        <img src="{{get_the_post_thumbnail_url($page, 'medium')}}" alt="{{get_the_title()}}" width="100%" />
+        <img src="{{get_the_post_thumbnail_url($page, 'medium')}}" alt="{{get_the_title()}}" />
       @else
         <img src="//via.placeholder.com/248x248?text=Science+Bulletin" alt="{{get_the_title()}}">
       @endif
