@@ -9,13 +9,6 @@
   text-align: center;
 }
 
-/*
-.type-article .entry-content {
-  margin: 0 auto;
-  max-width: 760px;
-}
-*/
-
 .type-article ul > li::before {
   font-family: 'FontAwesome';
   content: '\f054';
@@ -39,9 +32,39 @@
   margin-top: -20px;
 }
 
+.type-article blockquote {
+  margin: 2em;
+}
+
+.type-article blockquote::before {
+  content: "\f1d8";
+  font-size: 80px;
+  font-family: FontAwesome;
+  color: #eee;
+  position: relative;
+  bottom: -42px;
+  left: -36px;
+  z-index: -1;
+}
+
+.type-article blockquote p {
+  font-family: Merriweather, serif;
+  font-size: 20px;
+  line-height: 35px;
+}
+
+.type-article blockquote p.quote-meta {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  text-align: right;
+  line-height: 18px;
+  margin-left: 20%;
+  margin-top: -2em;
+}
+
 .single-abstract-first-words {
   font-weight: 900;
-  font-family: Merriweather;
+  font-family: Merriweather, serif;
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 2px;
@@ -80,7 +103,7 @@ p.byline {
 
 .article-feature-image-caption {
   font-size: 12px;
-  color: #ccc;
+  color: #bbb;
 }
 
 .project-ref a,
