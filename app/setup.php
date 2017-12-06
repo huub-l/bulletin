@@ -301,7 +301,7 @@ add_action('pre_get_posts', function ($query) {
 });
 
 // Add image sizes
-add_image_size('home-small', 255, 100, true);
+add_image_size('home-small', 510, 200, true);
 add_image_size('home-featured', 1110, 400, true);
 
 // Add thickbox script
