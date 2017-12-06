@@ -244,7 +244,7 @@ add_action('init', function () {
         'publicly_queryable' => true,
         'hierarchical'       => false,
         'show_ui'            => true,
-        'show_in_menu'       => false,
+        'show_in_menu'       => true,
         'show_in_nav_menus'  => true,
         'query_var'          => true,
         'rewrite'            => ['slug' => 'issue', 'with_front' => true],

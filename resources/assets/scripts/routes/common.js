@@ -86,7 +86,7 @@ export default {
      * Smooth scroll for ToC
      * 
      */
-    $(".sb-toc-item-a").click(function () {
+    $(".sb-toc-item-a, .type-article a").click(function () {
       
       var heading = $(this).attr('href');
 
