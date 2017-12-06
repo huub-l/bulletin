@@ -23,6 +23,19 @@
   list-style: none;
 }
 
+.type-article .article-content a:link {
+  color: #333;
+  text-decoration: underline;
+  text-decoration-style: double;
+  text-decoration-color: $tertiary-color;
+}
+
+.type-article .article-content a:hover {
+  color: $secondary-color;
+  text-decoration-color: $secondary-color;
+  transition: all 0.2s;
+}
+
 .type-article ul {
   list-style: none;
 }
