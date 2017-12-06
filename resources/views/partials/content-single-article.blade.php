@@ -28,7 +28,9 @@
         <i class="fa fa-leaf" aria-hidden="true"></i>
       </div>
 
+      <div class="article-content">
         @php(the_content())
+      </div>
 
     </article>
   </div>
