@@ -23,7 +23,9 @@
   list-style: none;
 }
 
-.type-article .article-content a:link {
+.type-article .article-content a,
+.type-article .article-content a:link,
+.type-article .article-content a:visited {
   color: #333;
   text-decoration: underline;
   text-decoration-style: double;
