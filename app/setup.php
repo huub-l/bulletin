@@ -232,7 +232,7 @@ add_action('init', function () {
      * Taxonomy: Issues.
      */
     $labels = [
-               'name'   => __('Issue', 'sage'),
+               'name'   => __('Issues', 'sage'),
         'singular_name' => __('Issue', 'sage'),
         'add_new_item'  => __('Add New Issue', 'sage'),
        ];
