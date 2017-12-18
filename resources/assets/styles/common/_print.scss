@@ -1,0 +1,10 @@
+@media print {
+  .hidden-xs {
+    display: none !important;
+  }
+
+  header.banner,
+  #disqus_thread {
+    display: none;
+  }
+}
