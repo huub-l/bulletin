@@ -317,24 +317,21 @@ add_action('admin_menu', function () {
 // Add editor style
 add_editor_style();
 
-/* Add custom metadata to the "Issue" term. 
- * 
+/* Add custom metadata to the "Issue" term.
+ *
  * - **Form of publication (print, online, both)**
  * - E-Lib URL (legacy issues)
  * - Cover image md5 (legacy issues)
- * 
- */ 
+ *
+ */
 
 // Add "publication form" field for "issues"
-add_action( 'issue_add_form_fields', function($taxonomy){
-
-    $issue_types = array(
+add_action('issue_add_form_fields', function ($taxonomy) {
+    $issue_types = [
         'onlineprint' => __('Online & print', 'sage'),
-        'online' => __('Online', 'sage'),
-        'print' => __('Print', 'sage'),
-    );
-
-    ?><div class="form-field term-group">
+        'online'      => __('Online', 'sage'),
+        'print'       => __('Print', 'sage'),
+    ]; ?><div class="form-field term-group">
         <label for="issue_type"><?php _e('Publication form', 'sage'); ?></label>
         <select class="postform" id="issue_type" name="issue_type">
             <?php foreach ($issue_types as $key => $issue_type) : ?>
@@ -343,154 +340,127 @@ add_action( 'issue_add_form_fields', function($taxonomy){
             <?php endforeach; ?>
         </select>
     </div><?php
-
-}, 10, 2 );
-
+}, 10, 2);
 
 // Save the issue "publication form"
-add_action( 'created_issue', function($term_id, $tt_id){
-
-    if( isset( $_POST['issue_type'] ) && '' !== $_POST['issue_type'] ){
-        $issue_type = sanitize_title( $_POST['issue_type'] );
-        add_term_meta( $term_id, 'issue_type', $issue_type, true );
+add_action('created_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['issue_type']) && '' !== $_POST['issue_type']) {
+        $issue_type = sanitize_title($_POST['issue_type']);
+        add_term_meta($term_id, 'issue_type', $issue_type, true);
     }
-
-}, 10, 2 );
-
+}, 10, 2);
 
 // Edit the issue "publication form"
-add_action( 'issue_edit_form_fields', function($term, $taxonomy){
-
-    $issue_types = array(
+add_action('issue_edit_form_fields', function ($term, $taxonomy) {
+    $issue_types = [
         'onlineprint' => __('Online & print', 'sage'),
-        'online' => __('Online', 'sage'),
-        'print' => __('Print', 'sage'),
-    );
+        'online'      => __('Online', 'sage'),
+        'print'       => __('Print', 'sage'),
+    ];
 
-    $selected_issue_type = get_term_meta( $term->term_id, 'issue_type', true );
-
-    ?><tr class="form-field term-group-wrap">
-        <th scope="row"><label for="issue_type"><?php _e( 'Publication form', 'sage' ); ?></label></th>
+    $selected_issue_type = get_term_meta($term->term_id, 'issue_type', true); ?><tr class="form-field term-group-wrap">
+        <th scope="row"><label for="issue_type"><?php _e('Publication form', 'sage'); ?></label></th>
         <td><select class="postform" id="issue_type" name="issue_type">
-            <?php foreach( $issue_types as $key => $issue_type ) : ?>
-                <option value="<?php echo $key; ?>" <?php selected( $selected_issue_type, $key ); ?>><?php echo $issue_type; ?></option>
+            <?php foreach ($issue_types as $key => $issue_type) : ?>
+                <option value="<?php echo $key; ?>" <?php selected($selected_issue_type, $key); ?>><?php echo $issue_type; ?></option>
             <?php endforeach; ?>
         </select></td>
     </tr><?php
-
-}, 10, 2 );
-
+}, 10, 2);
 
 // Save the edited issue "publication form"
-add_action( 'edited_issue', function($term_id, $tt_id){
-
-    if( isset( $_POST['issue_type'] ) && '' !== $_POST['issue_type'] ){
-        $issue_type = sanitize_title( $_POST['issue_type'] );
-        update_term_meta( $term_id, 'issue_type', $issue_type );
+add_action('edited_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['issue_type']) && '' !== $_POST['issue_type']) {
+        $issue_type = sanitize_title($_POST['issue_type']);
+        update_term_meta($term_id, 'issue_type', $issue_type);
     }
-
-}, 10, 2 );
-
+}, 10, 2);
 
 // Show "publication form" column in the term list
-add_filter('manage_edit-issue_columns', function($columns){
+add_filter('manage_edit-issue_columns', function ($columns) {
+    $columns['issue_type'] = __('Publication form', 'sage');
 
-    $columns['issue_type'] = __( 'Publication form', 'sage' );
     return $columns;
-
-} );
+});
 
 // Add "publication form" text to column in term list
-add_filter('manage_issue_custom_column', function($content, $column_name, $term_id){
-
-    $issue_types = array(
+add_filter('manage_issue_custom_column', function ($content, $column_name, $term_id) {
+    $issue_types = [
         'onlineprint' => __('Online & print', 'sage'),
-        'online' => __('Online', 'sage'),
-        'print' => __('Print', 'sage'),
-    );
+        'online'      => __('Online', 'sage'),
+        'print'       => __('Print', 'sage'),
+    ];
 
-    if( $column_name !== 'issue_type' ){
+    if ($column_name !== 'issue_type') {
         return $content;
     }
 
-    $term_id = absint( $term_id );
-    $issue_type = get_term_meta( $term_id, 'issue_type', true );
+    $term_id = absint($term_id);
+    $issue_type = get_term_meta($term_id, 'issue_type', true);
 
-    if( !empty( $issue_type ) ){
-        $content .= esc_attr( $issue_types[ $issue_type ] );
+    if (!empty($issue_type)) {
+        $content .= esc_attr($issue_types[$issue_type]);
     }
 
     return $content;
+}, 10, 3);
 
-}, 10, 3 );
-
-/* Add custom metadata to the "Issue" term. 
- * 
+/* Add custom metadata to the "Issue" term.
+ *
  * - Form of publication (print, online, both)
  * - **E-Lib URL (legacy issues)**
  * - Cover image md5 (legacy issues)
- * 
- */ 
+ *
+ */
 
 // Add "Elib URL" field for "issues"
-add_action( 'issue_add_form_fields', function($taxonomy){
-
+add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
         <label for="elib_url"><?php _e('Full Elib URL (legacy)', 'sage'); ?></label>
         <input id="elib_url" name="elib_url" type="text">
         <p class="description">For issues 1-6, paste the full URL of the publication on E-Lib. 
         Ignore this if the issue is not housed in E-Lib.</p>
     </div><?php
-
-}, 10, 2 );
+}, 10, 2);
 
 // Save the issue "Elib URL"
-add_action( 'created_issue', function($term_id, $tt_id){
-
-    if( isset( $_POST['elib_url'] ) && '' !== $_POST['elib_url'] ){
-        $elib_url = sanitize_text_field( $_POST['elib_url'] );
-        add_term_meta( $term_id, 'elib_url', $elib_url, true );
+add_action('created_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['elib_url']) && '' !== $_POST['elib_url']) {
+        $elib_url = sanitize_text_field($_POST['elib_url']);
+        add_term_meta($term_id, 'elib_url', $elib_url, true);
     }
-
-}, 10, 2 );
+}, 10, 2);
 
 // Edit the issue "Elib URL"
-add_action( 'issue_edit_form_fields', function($term, $taxonomy){
-
-    $selected_elib_url = get_term_meta( $term->term_id, 'elib_url', true );
-
-    ?><tr class="form-field term-group-wrap">
-        <th scope="row"><label for="elib_url"><?php _e( 'Elib URL (legacy)', 'sage' ); ?></label></th>
+add_action('issue_edit_form_fields', function ($term, $taxonomy) {
+    $selected_elib_url = get_term_meta($term->term_id, 'elib_url', true); ?><tr class="form-field term-group-wrap">
+        <th scope="row"><label for="elib_url"><?php _e('Elib URL (legacy)', 'sage'); ?></label></th>
         <td><div class="form-field term-group">
         <input id="elib_url" name="elib_url" type="text" value="<?php echo $selected_elib_url; ?>">
         <p class="description">For issues 1-6, paste the full URL of the publication on E-Lib. 
         Ignore this if the issue is not housed in E-Lib.</p>
     </div></td>
     </tr><?php
-
-}, 10, 2 );
+}, 10, 2);
 
 // Save the edited issue "Elib URL"
-add_action( 'edited_issue', function($term_id, $tt_id){
-
-    if( isset( $_POST['elib_url'] ) && '' !== $_POST['elib_url'] ){
-        $elib_url = sanitize_title( $_POST['elib_url'] );
-        update_term_meta( $term_id, 'elib_url', $elib_url );
+add_action('edited_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['elib_url']) && '' !== $_POST['elib_url']) {
+        $elib_url = sanitize_title($_POST['elib_url']);
+        update_term_meta($term_id, 'elib_url', $elib_url);
     }
+}, 10, 2);
 
-}, 10, 2 );
-
-/* Add custom metadata to the "Issue" term. 
- * 
+/* Add custom metadata to the "Issue" term.
+ *
  * - Form of publication (print, online, both)
  * - E-Lib URL (legacy issues)
  * - **Cover image md5 (legacy issues)**
- * 
- */ 
+ *
+ */
 
 // Add "Cover image md5" field for "issues"
-add_action( 'issue_add_form_fields', function($taxonomy){
-
+add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
         <label for="cover_image_md5"><?php _e('Cover image md5 (legacy)', 'sage'); ?></label>
         <input id="cover_image_md5" name="cover_image_md5" type="text">
@@ -498,26 +468,20 @@ add_action( 'issue_add_form_fields', function($taxonomy){
         This is used to construct the cover image from print issues housed in E-Lib. Ignore
         this for new issues. Example: 6dc710544598a0ad8d8b9bf13a1d7e6a for issue 6.</p>
     </div><?php
-
-}, 10, 2 );
+}, 10, 2);
 
 // Save the issue "Cover image md5"
-add_action( 'created_issue', function($term_id, $tt_id){
-
-    if( isset( $_POST['cover_image_md5'] ) && '' !== $_POST['cover_image_md5'] ){
-        $cover_image_md5 = sanitize_text_field( $_POST['cover_image_md5'] );
-        add_term_meta( $term_id, 'cover_image_md5', $cover_image_md5, true );
+add_action('created_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['cover_image_md5']) && '' !== $_POST['cover_image_md5']) {
+        $cover_image_md5 = sanitize_text_field($_POST['cover_image_md5']);
+        add_term_meta($term_id, 'cover_image_md5', $cover_image_md5, true);
     }
-
-}, 10, 2 );
+}, 10, 2);
 
 // Edit the issue "Cover image md5"
-add_action( 'issue_edit_form_fields', function($term, $taxonomy){
-
-    $selected_md5 = get_term_meta( $term->term_id, 'cover_image_md5', true );
-
-    ?><tr class="form-field term-group-wrap">
-        <th scope="row"><label for="cover_image_md5"><?php _e( 'Cover image md5 (legacy)', 'sage' ); ?></label></th>
+add_action('issue_edit_form_fields', function ($term, $taxonomy) {
+    $selected_md5 = get_term_meta($term->term_id, 'cover_image_md5', true); ?><tr class="form-field term-group-wrap">
+        <th scope="row"><label for="cover_image_md5"><?php _e('Cover image md5 (legacy)', 'sage'); ?></label></th>
         <td><div class="form-field term-group">
         <input id="cover_image_md5" name="cover_image_md5" type="text" value="<?php echo $selected_md5; ?>">
         <p class="description">For issues 1-6, paste the "md5" part from the cover image URL. 
@@ -525,38 +489,33 @@ add_action( 'issue_edit_form_fields', function($term, $taxonomy){
         this for new issues. Example: 6dc710544598a0ad8d8b9bf13a1d7e6a for issue 6.</p>
     </div></td>
     </tr><?php
-
-}, 10, 2 );
+}, 10, 2);
 
 // Save the edited issue "Cover image md5"
-add_action( 'edited_issue', function($term_id, $tt_id){
-
-    if( isset( $_POST['cover_image_md5'] ) && '' !== $_POST['cover_image_md5'] ){
-        $cover_image_md5 = sanitize_title( $_POST['cover_image_md5'] );
-        update_term_meta( $term_id, 'cover_image_md5', $cover_image_md5 );
+add_action('edited_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['cover_image_md5']) && '' !== $_POST['cover_image_md5']) {
+        $cover_image_md5 = sanitize_title($_POST['cover_image_md5']);
+        update_term_meta($term_id, 'cover_image_md5', $cover_image_md5);
     }
-
-}, 10, 2 );
+}, 10, 2);
 
 // Show "cover image" column in the term list
-add_filter('manage_edit-issue_columns', function($columns){
+add_filter('manage_edit-issue_columns', function ($columns) {
+    $columns['cover_image_md5'] = __('Cover image', 'sage');
 
-    $columns['cover_image_md5'] = __( 'Cover image', 'sage' );
     return $columns;
-
-} );
+});
 
 // Add "cover image" text to column in term list
-add_filter('manage_issue_custom_column', function($content, $column_name, $term_id){
+add_filter('manage_issue_custom_column', function ($content, $column_name, $term_id) {
+    $term_id = absint($term_id);
+    $cover_image_md5 = get_term_meta($term_id, 'cover_image_md5', true);
 
-    $term_id = absint( $term_id );
-    $cover_image_md5 = get_term_meta( $term_id, 'cover_image_md5', true );
-    
-    if( $column_name !== 'cover_image_md5' ){
+    if ($column_name !== 'cover_image_md5') {
         return $content;
     }
 
-    if( !empty( $cover_image_md5 ) ){
+    if (!empty($cover_image_md5)) {
         $content .= '<img width="60%" alt="Cover image this issue" 
                       src="//www.apn-gcr.org/resources/files/thumbnails/'
                       .$cover_image_md5.
@@ -564,5 +523,4 @@ add_filter('manage_issue_custom_column', function($content, $column_name, $term_
     }
 
     return $content;
-
-}, 10, 3 );
+}, 10, 3);
