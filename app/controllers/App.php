@@ -68,30 +68,35 @@ class App extends Controller
 
     public static function sbGetCoauthorsByPostId($post_id)
     {
-        if ( function_exists( 'coauthors_posts_links' ) ) {
+        if (function_exists('coauthors_posts_links')) {
             return get_coauthors($post_id);
-        }else{
+        } else {
             return get_the_author();
         }
     }
 
-    public static function sbGetContributorFirst($display_name){
+    public static function sbGetContributorFirst($display_name)
+    {
         $name_array = explode(' ', $display_name);
         array_pop($name_array);
+
         return ucfirst(strtolower(implode(' ', $name_array)));
     }
 
-    public static function sbGetContributorLast($display_name){
+    public static function sbGetContributorLast($display_name)
+    {
         $name_array = explode(' ', $display_name);
+
         return ucfirst(strtolower(end($name_array)));
     }
 
-    public static function sbGetCitation($id) {
+    public static function sbGetCitation($id)
+    {
         $citation = get_post_meta($id, 'sb-citation-auto');
         if ($citation) {
             if ('' != $citation[0]) {
                 return $citation[0];
-            }else{
+            } else {
                 return false;
             }
         } else {
