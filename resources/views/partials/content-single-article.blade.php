@@ -11,7 +11,7 @@
           </div>
         </div>
 
-        <?php App::sbPrintProjectRef(get_the_ID()); ?>
+        <?php echo App::sbGetProjectRef(get_the_ID()); ?>
         
         <h1 id="sb-entry-title">{{ get_the_title() }}</h1>
         @include('partials.entry-meta')

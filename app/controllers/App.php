@@ -44,7 +44,7 @@ class App extends Controller
         return get_the_title();
     }
 
-    public static function sbPrintProjectRef($id)
+    public static function sbGetProjectRef($id)
     {
         $ref = get_post_meta($id, 'sb-project-ref');
         if ($ref) {
@@ -53,9 +53,9 @@ class App extends Controller
                        href="'.get_post_meta($id, 'sb-project-elib-url')[0].'">'
                   .'<i class="fa fa-external-link-square"></i> '.$ref[0].'</a></p>';
 
-            return print $text;
+            return $text;
         } else {
-            return print '<p class="text-muted project-ref" style="color:red !important;">Missing field: sb-project-ref</p>';
+            return '<p class="text-muted project-ref" style="color:red !important;">Missing field: sb-project-ref</p>';
         }
     }
 
@@ -64,6 +64,39 @@ class App extends Controller
         $author = get_queried_object();
 
         return $author->description;
+    }
+
+    public static function sbGetCoauthorsByPostId($post_id)
+    {
+        if ( function_exists( 'coauthors_posts_links' ) ) {
+            return get_coauthors($post_id);
+        }else{
+            return get_the_author();
+        }
+    }
+
+    public static function sbGetContributorFirst($display_name){
+        $name_array = explode(' ', $display_name);
+        array_pop($name_array);
+        return ucfirst(strtolower(implode(' ', $name_array)));
+    }
+
+    public static function sbGetContributorLast($display_name){
+        $name_array = explode(' ', $display_name);
+        return ucfirst(strtolower(end($name_array)));
+    }
+
+    public static function sbGetCitation($id) {
+        $citation = get_post_meta($id, 'sb-citation-auto');
+        if ($citation) {
+            if ('' != $citation[0]) {
+                return $citation[0];
+            }else{
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     public static function sbKeywords()
