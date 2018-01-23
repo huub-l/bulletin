@@ -87,6 +87,23 @@ a.home-grid-title:hover,
   font-size: 18px;
 }
 
+.home-article-grid__caption {
+  padding: 8px;
+}
+
+.home-article-grid__caption p {
+  margin-bottom: 6px;
+}
+
+.home-article-grid__thumbnail {
+  transition: box-shadow 0.3s;
+}
+
+.home-article-grid__thumbnail:hover {
+  box-shadow: 0 0 6px #ccc;
+  transition: box-shadow 0.3s;
+}
+
 @media (max-width: 991px) {
   .home-featured-h1 {
     margin-top: 32px;
