@@ -379,6 +379,7 @@ add_action('edited_issue', function ($term_id, $tt_id) {
 // Show "publication form" column in the term list
 add_filter('manage_edit-issue_columns', function ($columns) {
     $columns['issue_type'] = __('Publication form', 'sage');
+
     return $columns;
 });
 
@@ -443,7 +444,7 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
     </tr><?php
 }, 10, 2);
 
-// Save the edited issue "Elib URL" 
+// Save the edited issue "Elib URL"
 add_action('edited_issue', function ($term_id, $tt_id) {
     if (isset($_POST['elib_url']) && '' !== $_POST['elib_url']) {
         $elib_url = sanitize_title($_POST['elib_url']);
@@ -491,8 +492,6 @@ add_action('edited_issue', function ($term_id, $tt_id) {
     }
 }, 10, 2);
 
-
-
 // Add "Imprint page URL" field for "issues" ----------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
@@ -528,7 +527,6 @@ add_action('edited_issue', function ($term_id, $tt_id) {
         update_term_meta($term_id, 'imprint_page_url', $imprint_page_url);
     }
 }, 10, 2);
-
 
 // Show "cover image" column in the term list--------------------------------//
 add_filter('manage_edit-issue_columns', function ($columns) {

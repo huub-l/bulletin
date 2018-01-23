@@ -202,11 +202,11 @@ class App extends Controller
 
     public static function sbGetAllIssues()
     {
-      return get_terms( 'issue', array(
+        return get_terms('issue', [
                 'hide_empty' => false,
-                'orderby' => 'name',
-                'order' => 'DESC',
-                ));
+                'orderby'    => 'name',
+                'order'      => 'DESC',
+                ]);
     }
 
     public static function sbGetIssue()
