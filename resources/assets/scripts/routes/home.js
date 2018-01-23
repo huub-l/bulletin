@@ -3,6 +3,10 @@ export default {
     // JavaScript to be fired on the home page
   },
   finalize() {
-    // JavaScript to be fired on the home page, after the init JS
+    $('.home-cover-image__img')
+      .mouseenter(function () {
+        $(this).addClass("home-cover-image__img--hover");})
+      .mouseleave(function () {
+        $(this).removeClass("home-cover-image__img--hover");});
   },
 };

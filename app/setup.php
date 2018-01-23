@@ -379,7 +379,6 @@ add_action('edited_issue', function ($term_id, $tt_id) {
 // Show "publication form" column in the term list
 add_filter('manage_edit-issue_columns', function ($columns) {
     $columns['issue_type'] = __('Publication form', 'sage');
-
     return $columns;
 });
 
@@ -410,10 +409,11 @@ add_filter('manage_issue_custom_column', function ($content, $column_name, $term
  * - Form of publication (print, online, both)
  * - **E-Lib URL (legacy issues)**
  * - Cover image md5 (legacy issues)
+ * - Imprint URL
  *
  */
 
-// Add "Elib URL" field for "issues"
+// Add "Elib URL" field for "issues" -----------------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
         <label for="elib_url"><?php _e('Full Elib URL (legacy)', 'sage'); ?></label>
@@ -443,7 +443,7 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
     </tr><?php
 }, 10, 2);
 
-// Save the edited issue "Elib URL"
+// Save the edited issue "Elib URL" 
 add_action('edited_issue', function ($term_id, $tt_id) {
     if (isset($_POST['elib_url']) && '' !== $_POST['elib_url']) {
         $elib_url = sanitize_title($_POST['elib_url']);
@@ -451,15 +451,7 @@ add_action('edited_issue', function ($term_id, $tt_id) {
     }
 }, 10, 2);
 
-/* Add custom metadata to the "Issue" term.
- *
- * - Form of publication (print, online, both)
- * - E-Lib URL (legacy issues)
- * - **Cover image md5 (legacy issues)**
- *
- */
-
-// Add "Cover image md5" field for "issues"
+// Add "Cover image md5" field for "issues" ----------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
         <label for="cover_image_md5"><?php _e('Cover image md5 (legacy)', 'sage'); ?></label>
@@ -499,7 +491,46 @@ add_action('edited_issue', function ($term_id, $tt_id) {
     }
 }, 10, 2);
 
-// Show "cover image" column in the term list
+
+
+// Add "Imprint page URL" field for "issues" ----------------------------------//
+add_action('issue_add_form_fields', function ($taxonomy) {
+    ?><div class="form-field term-group">
+        <label for="imprint_page_url"><?php _e('URL of the imprint page', 'sage'); ?></label>
+        <input id="imprint_page_url" name="imprint_page_url" type="text">
+        <p class="description">Full URL of the imprint page for the current issue.</p>
+    </div><?php
+}, 10, 2);
+
+// Save the issue "Imprint page URL"
+add_action('created_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['imprint_page_url']) && '' !== $_POST['imprint_page_url']) {
+        $imprint_page_url = sanitize_text_field($_POST['imprint_page_url']);
+        add_term_meta($term_id, 'imprint_page_url', $imprint_page_url, true);
+    }
+}, 10, 2);
+
+// Edit the issue "Imprint page URL"
+add_action('issue_edit_form_fields', function ($term, $taxonomy) {
+    $imprint_page_url = get_term_meta($term->term_id, 'imprint_page_url', true); ?><tr class="form-field term-group-wrap">
+        <th scope="row"><label for="imprint_page_url"><?php _e('URL of the imprint page', 'sage'); ?></label></th>
+        <td><div class="form-field term-group">
+        <input id="imprint_page_url" name="imprint_page_url" type="text" value="<?php echo $imprint_page_url; ?>">
+        <p class="description">Full URL of the imprint page for the current issue.</p>
+    </div></td>
+    </tr><?php
+}, 10, 2);
+
+// Save the edited issue "Imprint page URL"
+add_action('edited_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['imprint_page_url']) && '' !== $_POST['imprint_page_url']) {
+        $imprint_page_url = sanitize_text_field($_POST['imprint_page_url']);
+        update_term_meta($term_id, 'imprint_page_url', $imprint_page_url);
+    }
+}, 10, 2);
+
+
+// Show "cover image" column in the term list--------------------------------//
 add_filter('manage_edit-issue_columns', function ($columns) {
     $columns['cover_image_md5'] = __('Cover image', 'sage');
 
