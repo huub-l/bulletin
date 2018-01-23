@@ -87,13 +87,6 @@ a.home-grid-title:hover,
   font-size: 18px;
 }
 
-.home-cover-image__img--hover {
-  margin-top: -8px;
-  margin-bottom: 8px;
-  -webkit-transition: margin 0.3s; /* Safari */
-  transition: margin 0.3s;
-}
-
 @media (max-width: 991px) {
   .home-featured-h1 {
     margin-top: 32px;

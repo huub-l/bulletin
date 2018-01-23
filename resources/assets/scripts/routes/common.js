@@ -124,6 +124,15 @@ export default {
 
     });
 
+    /* Animation on cover images */
+
+    $('.sb-cover-image__img')
+      .mouseenter(function () {
+        $(this).addClass("sb-cover-image__img--hover");
+      })
+      .mouseleave(function () {
+        $(this).removeClass("sb-cover-image__img--hover");
+      });
   },
   finalize() {
     // JavaScript to be fired on all pages, after page specific JS is fired
