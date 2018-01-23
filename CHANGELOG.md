@@ -1,8 +1,15 @@
+# Changelog
 
-### 0.1.1: 12 December 2017
+## 0.1.2: 23 January 2018
+
+* Registered taxonomy metadata for back issues.
+* Added "back issues" section to the home page.
+* Added a "back issues" page.
+
+## 0.1.1: 12 December 2017
 
 * Added citations using EasyBib.
 
-### 0.1.0: 12 December 2017
+## 0.1.0: 12 December 2017
 
 * First public version released.

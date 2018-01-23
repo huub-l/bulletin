@@ -37,4 +37,8 @@
       @include('partials.home-keywords')
   </div>
 
+  <div class="jumbotron" style="width:100%; background:#fff; padding:100px 0; margin-bottom:0;">
+      @include('partials.home-back-issues')
+  </div>
+
 @endsection

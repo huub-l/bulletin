@@ -200,6 +200,15 @@ class App extends Controller
         }
     }
 
+    public static function sbGetAllIssues()
+    {
+        return get_terms('issue', [
+                'hide_empty' => false,
+                'orderby'    => 'name',
+                'order'      => 'DESC',
+                ]);
+    }
+
     public static function sbGetIssue()
     {
         $terms = wp_get_post_terms(get_the_id(), 'issue');
