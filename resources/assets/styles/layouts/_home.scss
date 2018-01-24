@@ -48,6 +48,7 @@
 /* unvisited link */
 a.home-grid-title {
   font-size: 16px;
+  display: block;
 }
 
 a.home-grid-title:link,
@@ -95,13 +96,14 @@ a.home-grid-title:hover,
   margin-bottom: 6px;
 }
 
-.home-article-grid__thumbnail {
-  transition: box-shadow 0.3s;
+.home-article-grid__thumbnail:hover {
+  box-shadow: 0 0 8px #bbb;
+  transition: 0.2s;
 }
 
-.home-article-grid__thumbnail:hover {
-  box-shadow: 0 0 6px #ccc;
-  transition: box-shadow 0.3s;
+.home-article-grid__thumbnail {
+  box-shadow: 0 0 8px #eee;
+  transition: 0.2s;
 }
 
 @media (max-width: 991px) {
