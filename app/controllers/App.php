@@ -46,12 +46,12 @@ class App extends Controller
 
     public static function sbGetProjectRef($id)
     {
-        $ref = get_post_meta($id, 'sb-project-ref');
-        if ($ref) {
+        $ref = get_post_meta($id, 'sb-project-ref', true);
+        if (!empty($ref)) {
             $text = '<p class="text-muted project-ref">';
             $text .= '<a data-toggle="tooltip" title="Read more about this project on APN E-Lib"
-                       href="'.get_post_meta($id, 'sb-project-elib-url')[0].'">'
-                  .'<i class="fa fa-external-link-square"></i> '.$ref[0].'</a></p>';
+                       href="'.get_post_meta($id, 'sb-project-elib-url', true).'">'
+                  .'<i class="fa fa-external-link-square"></i> '.$ref.'</a></p>';
 
             return $text;
         } else {
@@ -234,6 +234,17 @@ class App extends Controller
             return $term_list;
         } else {
             return '<p class="keywords_list" style="color:red">To be added</p>';
+        }
+    }
+
+    public static function sbGetDoiLink($id)
+    {
+        $doi = get_post_meta($id, 'sb-doi', true);
+        if (!empty($doi)) {
+             $text = '<a href="https://dx.doi.org/'.$doi.'"><i class="fa fa-external-link-square"></i> https://dx.doi.org/'.$doi.'</a>';
+            return $text;
+        } else {
+            return false;
         }
     }
 

@@ -6,6 +6,11 @@
 {!!App::sbGetPartners()!!}
 @endif
 
+@if(App::sbGetDoiLink(get_the_id()))
+<h3 class="sb-aside-h3">DOI</h3>
+<p class="article-aside-doi">{!!App::sbGetDoiLink(get_the_id())!!}</p>
+@endif
+
 @if(App::sbGetCitation(get_the_id()))
 <h3 class="sb-aside-h3">Citation</h3>
 <p class="article-citation">{!!App::sbGetCitation(get_the_id())!!}</p>

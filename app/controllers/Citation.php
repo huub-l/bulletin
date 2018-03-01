@@ -14,8 +14,9 @@ class Citation extends Controller
     public $pubjournal;
     public $contributors;
     public $issn;
+    public $doi;
 
-    public function __construct($title = 'Title missing')
+    public function __construct($title = 'Title missing', $doi = '')
     {
         $this->key = '99bfaab36cf64c5d9dc86f79520acabe';
         $this->source = 'journal';
@@ -23,6 +24,7 @@ class Citation extends Controller
         $this->pubtype = 'pubjournal';
         $this->issn = '2522-7971';
         $this->title = $title;
+        $this->doi = $doi;
     }
 
     public function __get($property)
@@ -45,7 +47,7 @@ class Citation extends Controller
      * @param $pubjournal Object
      * @param $contributors Object
      */
-    public function getCitation($pubjournal, $contributors)
+    public function getBib($pubjournal, $contributors)
     {
         $this->pubjournal = $pubjournal;
         $this->contributors = $contributors;
@@ -63,6 +65,9 @@ class Citation extends Controller
             'contributors' => $this->contributors,
             'pubjournal'   => $this->pubjournal,
             'issn'         => $this->issn,
+            'doi'          => [
+                'doi' => $this->doi,
+            ],
         ]);
 
         $result = $this->callAPI('POST', 'https://api.citation-api.com/2.1/rest/cite', $data);

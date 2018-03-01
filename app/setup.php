@@ -569,7 +569,7 @@ add_action('save_post', function ($post_id, $post, $update) {
         return;
     }
 
-    $citation = new Citation(get_the_title());
+    $citation = new Citation(get_the_title($post_id));
     $journal = new PubJournal();
     $authors = App::sbGetCoauthorsByPostId($post_id);
     $contributors = [];
@@ -594,8 +594,11 @@ add_action('save_post', function ($post_id, $post, $update) {
         $contributors[] = $contributor;
     }
 
-    $journal->year = '2017';
+    // Set DOI
+    $citation->doi = get_post_meta($post_id, 'sb-doi', true);
+
+    $journal->year = get_the_date("Y", $post_id);
 
     // - Update the article's metadata.
-    update_post_meta($post_id, 'sb-citation-auto', $citation->getCitation($journal, $contributors));
+    update_post_meta($post_id, 'sb-citation-auto', $citation->getBib($journal, $contributors));
 }, 10, 3);
