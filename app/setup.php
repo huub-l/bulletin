@@ -597,7 +597,7 @@ add_action('save_post', function ($post_id, $post, $update) {
     // Set DOI
     $citation->doi = get_post_meta($post_id, 'sb-doi', true);
 
-    $journal->year = get_the_date("Y", $post_id);
+    $journal->year = get_the_date('Y', $post_id);
 
     // - Update the article's metadata.
     update_post_meta($post_id, 'sb-citation-auto', $citation->getBib($journal, $contributors));
