@@ -241,7 +241,8 @@ class App extends Controller
     {
         $doi = get_post_meta($id, 'sb-doi', true);
         if (!empty($doi)) {
-             $text = '<a href="https://dx.doi.org/'.$doi.'"><i class="fa fa-external-link-square"></i> https://dx.doi.org/'.$doi.'</a>';
+            $text = '<a href="https://dx.doi.org/'.$doi.'"><i class="fa fa-external-link-square"></i> https://dx.doi.org/'.$doi.'</a>';
+
             return $text;
         } else {
             return false;
