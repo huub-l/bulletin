@@ -414,7 +414,6 @@ add_filter('manage_issue_custom_column', function ($content, $column_name, $term
  *
  */
 
-
 // Add "Volume" field for "issues" ----------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
@@ -457,7 +456,6 @@ add_action('edited_issue', function ($term_id, $tt_id) {
     }
 }, 100, 2);
 
-
 // Add "Issue" field for "issues" ----------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
@@ -493,8 +491,6 @@ add_action('edited_issue', function ($term_id, $tt_id) {
         update_term_meta($term_id, 'issue', $issue);
     }
 }, 100, 2);
-
-
 
 // Add "Elib URL" field for "issues" -----------------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
@@ -677,15 +673,14 @@ add_action('save_post', function ($post_id, $post, $update) {
         $contributors[] = $contributor;
     }
 
-
     // Set DOI
     $citation->doi = get_post_meta($post_id, 'sb-doi', true);
 
     $journal->year = get_the_date('Y', $post_id);
 
     if ($issueTerm) {
-        $journal->volume = get_term_meta( $issueTerm->term_id, 'volume', true );
-        $journal->issue = get_term_meta( $issueTerm->term_id, 'issue', true );
+        $journal->volume = get_term_meta($issueTerm->term_id, 'volume', true);
+        $journal->issue = get_term_meta($issueTerm->term_id, 'issue', true);
     }
 
     // - Update the article's metadata.
