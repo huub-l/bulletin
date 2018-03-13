@@ -340,7 +340,7 @@ add_action('issue_add_form_fields', function ($taxonomy) {
             <?php endforeach; ?>
         </select>
     </div><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the issue "publication form"
 add_action('created_issue', function ($term_id, $tt_id) {
@@ -348,7 +348,7 @@ add_action('created_issue', function ($term_id, $tt_id) {
         $issue_type = sanitize_title($_POST['issue_type']);
         add_term_meta($term_id, 'issue_type', $issue_type, true);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Edit the issue "publication form"
 add_action('issue_edit_form_fields', function ($term, $taxonomy) {
@@ -366,7 +366,7 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
             <?php endforeach; ?>
         </select></td>
     </tr><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the edited issue "publication form"
 add_action('edited_issue', function ($term_id, $tt_id) {
@@ -374,7 +374,7 @@ add_action('edited_issue', function ($term_id, $tt_id) {
         $issue_type = sanitize_title($_POST['issue_type']);
         update_term_meta($term_id, 'issue_type', $issue_type);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Show "publication form" column in the term list
 add_filter('manage_edit-issue_columns', function ($columns) {
@@ -403,7 +403,7 @@ add_filter('manage_issue_custom_column', function ($content, $column_name, $term
     }
 
     return $content;
-}, 10, 3);
+}, 100, 3);
 
 /* Add custom metadata to the "Issue" term.
  *
@@ -414,6 +414,84 @@ add_filter('manage_issue_custom_column', function ($content, $column_name, $term
  *
  */
 
+// Add "Volume" field for "issues" ----------------------------------//
+add_action('issue_add_form_fields', function ($taxonomy) {
+    ?><div class="form-field term-group">
+        <label for="volume"><?php _e('Volume number', 'sage'); ?></label>
+        <input id="volume" name="volume" type="text">
+        <p class="description">To go in line with jounal style terminology,
+        use volume number to indicate the number of years the Bulletin has
+        been in circulation. Since it started in 2011, then all 2018 articles,
+        for example, should be under "Volume 8"</p>
+    </div><?php
+}, 100, 2);
+
+// Save the issue "Volume number"
+add_action('created_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['volume']) && '' !== $_POST['volume']) {
+        $volume = sanitize_text_field($_POST['volume']);
+        add_term_meta($term_id, 'volume', $volume, true);
+    }
+}, 100, 2);
+
+// Edit the issue "Volume number"
+add_action('issue_edit_form_fields', function ($term, $taxonomy) {
+    $selected_volume = get_term_meta($term->term_id, 'volume', true); ?><tr class="form-field term-group-wrap">
+        <th scope="row"><label for="volume"><?php _e('Volume number', 'sage'); ?></label></th>
+        <td><div class="form-field term-group">
+        <input id="volume" name="volume" type="text" value="<?php echo $selected_volume; ?>">
+        <p class="description">To go in line with jounal style terminology,
+        use volume number to indicate the number of years the Bulletin has
+        been in circulation. Since it started in 2011, then all 2018 articles,
+        for example, should be under "Volume 8"</p>
+    </div></td>
+    </tr><?php
+}, 100, 2);
+
+// Save the edited issue "Volume number"
+add_action('edited_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['volume']) && '' !== $_POST['volume']) {
+        $volume = sanitize_title($_POST['volume']);
+        update_term_meta($term_id, 'volume', $volume);
+    }
+}, 100, 2);
+
+// Add "Issue" field for "issues" ----------------------------------//
+add_action('issue_add_form_fields', function ($taxonomy) {
+    ?><div class="form-field term-group">
+        <label for="issue"><?php _e('Issue number', 'sage'); ?></label>
+        <input id="issue" name="issue" type="text" value="1">
+        <p class="description">Unless there's a special issue, use 1.</p>
+    </div><?php
+}, 100, 2);
+
+// Save the issue "issue number"
+add_action('created_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['issue']) && '' !== $_POST['issue']) {
+        $issue = sanitize_text_field($_POST['issue']);
+        add_term_meta($term_id, 'issue', $issue, true);
+    }
+}, 100, 2);
+
+// Edit the issue "issue number"
+add_action('issue_edit_form_fields', function ($term, $taxonomy) {
+    $selected_issue = get_term_meta($term->term_id, 'issue', true); ?><tr class="form-field term-group-wrap">
+        <th scope="row"><label for="issue"><?php _e('Issue number', 'sage'); ?></label></th>
+        <td><div class="form-field term-group">
+        <input id="issue" name="issue" type="text" value="<?php echo $selected_issue; ?>">
+        <p class="description">Unless there's a special issue, use 1.</p>
+    </div></td>
+    </tr><?php
+}, 100, 2);
+
+// Save the edited issue "issue number"
+add_action('edited_issue', function ($term_id, $tt_id) {
+    if (isset($_POST['issue']) && '' !== $_POST['issue']) {
+        $issue = sanitize_title($_POST['issue']);
+        update_term_meta($term_id, 'issue', $issue);
+    }
+}, 100, 2);
+
 // Add "Elib URL" field for "issues" -----------------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">
@@ -422,7 +500,7 @@ add_action('issue_add_form_fields', function ($taxonomy) {
         <p class="description">For issues 1-6, paste the full URL of the publication on E-Lib. 
         Ignore this if the issue is not housed in E-Lib.</p>
     </div><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the issue "Elib URL"
 add_action('created_issue', function ($term_id, $tt_id) {
@@ -430,7 +508,7 @@ add_action('created_issue', function ($term_id, $tt_id) {
         $elib_url = sanitize_text_field($_POST['elib_url']);
         add_term_meta($term_id, 'elib_url', $elib_url, true);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Edit the issue "Elib URL"
 add_action('issue_edit_form_fields', function ($term, $taxonomy) {
@@ -442,7 +520,7 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
         Ignore this if the issue is not housed in E-Lib.</p>
     </div></td>
     </tr><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the edited issue "Elib URL"
 add_action('edited_issue', function ($term_id, $tt_id) {
@@ -450,7 +528,7 @@ add_action('edited_issue', function ($term_id, $tt_id) {
         $elib_url = sanitize_title($_POST['elib_url']);
         update_term_meta($term_id, 'elib_url', $elib_url);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Add "Cover image md5" field for "issues" ----------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
@@ -461,7 +539,7 @@ add_action('issue_add_form_fields', function ($taxonomy) {
         This is used to construct the cover image from print issues housed in E-Lib. Ignore
         this for new issues. Example: 6dc710544598a0ad8d8b9bf13a1d7e6a for issue 6.</p>
     </div><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the issue "Cover image md5"
 add_action('created_issue', function ($term_id, $tt_id) {
@@ -469,7 +547,7 @@ add_action('created_issue', function ($term_id, $tt_id) {
         $cover_image_md5 = sanitize_text_field($_POST['cover_image_md5']);
         add_term_meta($term_id, 'cover_image_md5', $cover_image_md5, true);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Edit the issue "Cover image md5"
 add_action('issue_edit_form_fields', function ($term, $taxonomy) {
@@ -482,7 +560,7 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
         this for new issues. Example: 6dc710544598a0ad8d8b9bf13a1d7e6a for issue 6.</p>
     </div></td>
     </tr><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the edited issue "Cover image md5"
 add_action('edited_issue', function ($term_id, $tt_id) {
@@ -490,7 +568,7 @@ add_action('edited_issue', function ($term_id, $tt_id) {
         $cover_image_md5 = sanitize_title($_POST['cover_image_md5']);
         update_term_meta($term_id, 'cover_image_md5', $cover_image_md5);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Add "Imprint page URL" field for "issues" ----------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
@@ -499,7 +577,7 @@ add_action('issue_add_form_fields', function ($taxonomy) {
         <input id="imprint_page_url" name="imprint_page_url" type="text">
         <p class="description">Full URL of the imprint page for the current issue.</p>
     </div><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the issue "Imprint page URL"
 add_action('created_issue', function ($term_id, $tt_id) {
@@ -507,7 +585,7 @@ add_action('created_issue', function ($term_id, $tt_id) {
         $imprint_page_url = sanitize_text_field($_POST['imprint_page_url']);
         add_term_meta($term_id, 'imprint_page_url', $imprint_page_url, true);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Edit the issue "Imprint page URL"
 add_action('issue_edit_form_fields', function ($term, $taxonomy) {
@@ -518,7 +596,7 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
         <p class="description">Full URL of the imprint page for the current issue.</p>
     </div></td>
     </tr><?php
-}, 10, 2);
+}, 100, 2);
 
 // Save the edited issue "Imprint page URL"
 add_action('edited_issue', function ($term_id, $tt_id) {
@@ -526,7 +604,7 @@ add_action('edited_issue', function ($term_id, $tt_id) {
         $imprint_page_url = sanitize_text_field($_POST['imprint_page_url']);
         update_term_meta($term_id, 'imprint_page_url', $imprint_page_url);
     }
-}, 10, 2);
+}, 100, 2);
 
 // Show "cover image" column in the term list--------------------------------//
 add_filter('manage_edit-issue_columns', function ($columns) {
@@ -552,7 +630,7 @@ add_filter('manage_issue_custom_column', function ($content, $column_name, $term
     }
 
     return $content;
-}, 10, 3);
+}, 100, 3);
 
  /*
  * Create a citation custom field for articles on save / update
@@ -572,6 +650,7 @@ add_action('save_post', function ($post_id, $post, $update) {
     $citation = new Citation(get_the_title($post_id));
     $journal = new PubJournal();
     $authors = App::sbGetCoauthorsByPostId($post_id);
+    $issueTerm = App::sbGetIssueTermByPostId($post_id);
     $contributors = [];
 
     foreach ($authors as $author) {
@@ -599,6 +678,11 @@ add_action('save_post', function ($post_id, $post, $update) {
 
     $journal->year = get_the_date('Y', $post_id);
 
+    if ($issueTerm) {
+        $journal->volume = get_term_meta($issueTerm->term_id, 'volume', true);
+        $journal->issue = get_term_meta($issueTerm->term_id, 'issue', true);
+    }
+
     // - Update the article's metadata.
     update_post_meta($post_id, 'sb-citation-auto', $citation->getBib($journal, $contributors));
-}, 10, 3);
+}, 100, 3);

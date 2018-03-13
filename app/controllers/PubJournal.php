@@ -15,9 +15,9 @@ class PubJournal
     public function __construct()
     {
         $this->title = 'APN Science Bulletin';
-        $this->volume = '7';
-        $this->issue = '1';
-        $this->year = '2017';
+        $this->volume = '9';
+        $this->issue = '9';
+        $this->year = '9999';
     }
 
     public function __get($property)

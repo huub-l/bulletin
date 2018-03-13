@@ -75,6 +75,17 @@ class App extends Controller
         }
     }
 
+    public static function sbGetIssueTermByPostId($post_id)
+    {
+        $terms = wp_get_post_terms($post_id, 'issue');
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            return $terms[0];
+        } else {
+            return false;
+        }
+    }
+
     public static function sbGetContributorFirst($display_name)
     {
         $name_array = explode(' ', $display_name);
