@@ -104,11 +104,18 @@ export default {
       
       var table = $(this);
       
-      table.addClass('table table-striped article-table')
-           .wrap('<div class="article-table-wrap"></div>')
-           .after('<div class="article-table-overlay"><span class="view-table-text">View table</span></div>');
+      table.addClass('table table-bordered table-condensed table-responsive article-table');
 
-    })
+      if (window.matchMedia("screen").matches) {
+        if (table.children('tbody').width() > 730 || table.children('tbody').height() > 500 ) {
+          table.wrap('<div class="article-table-wrap"></div>') 
+              .after('<div class="article-table-overlay"> \
+                      <button class="btn btn-primary view-table-text"> \
+                      View table<span class="print-only"> online</span> \
+                      </button></div>');
+        }
+      }
+    });
 
     $('.article-table-overlay').click(function(){
 
