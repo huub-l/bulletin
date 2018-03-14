@@ -115,6 +115,12 @@ div#TB_window {
   }
 }
 
+@media screen {
+  .print-only {
+    display: none;
+  }
+}
+
 svg.at-icon {
   fill: #aaa !important;
 }

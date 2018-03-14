@@ -153,6 +153,7 @@ p.byline {
 
 .article-table-overlay {
   position: absolute;
+  border: 1px solid #ccc;
   top: 0;
   bottom: 0;
   left: 0;
@@ -160,27 +161,30 @@ p.byline {
   height: 100%;
   width: 100%;
   transition: 0.3s ease;
-  background: -webkit-linear-gradient(rgba(255, 0, 0, 0) 0%, rgba(255, 255, 255, 1) 85%);
-  background: -o-linear-gradient(rgba(255, 0, 0, 0) 0%, rgba(255, 255, 255, 1) 85%);
-  background: -moz-linear-gradient(rgba(255, 0, 0, 0) 0%, rgba(255, 255, 255, 1) 85%);
-  background: linear-gradient(rgba(255, 0, 0, 0) 0%, rgba(255, 255, 255, 1) 85%);
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
+  background: -o-linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
+  background: linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
 }
 
 .article-table-overlay:hover {
   background: #333;
   opacity: 0.75;
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 .article-table-overlay:hover .view-table-text {
-  color: #fff;
+  cursor: pointer;
+  background: #333;
+  border: none;
 }
 
 .view-table-text {
-  color: #333;
+  padding: 5px 20px;
+  border-radius: 10px;
   top: 50%;
   position: absolute;
-  font-size: 50px;
+  font-size: 2em;
   left: 50%;
   margin: 0 auto;
   transform: translate(-50%, -50%);
@@ -197,7 +201,7 @@ p.byline {
 
 .article-table td {
   width: auto !important;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .overlay-table td {
@@ -225,8 +229,8 @@ p.byline {
   background: #fff;
   z-index: 1001;
   position: absolute;
-  max-width: 90% !important;
-  max-height: 90% !important;
+  max-width: 95% !important;
+  max-height: 95% !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
