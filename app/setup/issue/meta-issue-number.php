@@ -6,7 +6,6 @@
  *
  */
 
-
 // Add "Issue" field for "issues" ----------------------------------//
 add_action('issue_add_form_fields', function ($taxonomy) {
     ?><div class="form-field term-group">

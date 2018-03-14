@@ -2,7 +2,7 @@
 
 namespace App;
 
- /*
+/*
  * Create a citation custom field for articles on save / update
  *
  * @param int $post_id The post ID.

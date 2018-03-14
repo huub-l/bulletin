@@ -7,19 +7,19 @@ use Roots\Sage\Container;
 use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
-@include('setup/sidebars.php');
-@include('setup/tax-article.php');
-@include('setup/tax-keyword.php');
-@include('setup/tax-programme.php');
-@include('setup/tax-issue.php');
-@include('setup/issue/meta-publication-form.php');
-@include('setup/issue/meta-volume-number.php');
-@include('setup/issue/meta-issue-number.php');
-@include('setup/issue/meta-imprint-page-url.php');
-@include('setup/issue/meta-elib-url.php');
-@include('setup/issue/meta-cover-image-md5.php');
-@include('setup/issue/issue-index.php');
-@include('setup/article/citation.php');
+@include 'setup/sidebars.php';
+@include 'setup/tax-article.php';
+@include 'setup/tax-keyword.php';
+@include 'setup/tax-programme.php';
+@include 'setup/tax-issue.php';
+@include 'setup/issue/meta-publication-form.php';
+@include 'setup/issue/meta-volume-number.php';
+@include 'setup/issue/meta-issue-number.php';
+@include 'setup/issue/meta-imprint-page-url.php';
+@include 'setup/issue/meta-elib-url.php';
+@include 'setup/issue/meta-cover-image-md5.php';
+@include 'setup/issue/issue-index.php';
+@include 'setup/article/citation.php';
 
 /*
  * Theme assets
