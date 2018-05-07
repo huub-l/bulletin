@@ -252,7 +252,19 @@ class App extends Controller
     {
         $doi = get_post_meta($id, 'sb-doi', true);
         if (!empty($doi)) {
-            $text = '<a href="https://doi.org/'.$doi.'"><i class="fa fa-external-link-square"></i> https://doi.org/'.$doi.'</a>';
+            $text = '<a href="https://doi.org/'.$doi.'">https://doi.org/'.$doi.'</a>';
+
+            return $text;
+        } else {
+            return false;
+        }
+    }
+
+    public static function sbGetPdfLink($id)
+    {
+        $pdf = get_post_meta($id, 'sb-pdf-url', true);
+        if (!empty($pdf)) {
+            $text = '<a href="'.$pdf.'">View PDF</a>';
 
             return $text;
         } else {
