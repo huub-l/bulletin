@@ -5,6 +5,10 @@
   color: #333;
 }
 
+.article-meta-date {
+  margin-bottom: 40px;
+}
+
 .type-article header {
   text-align: center;
 }
@@ -104,7 +108,7 @@
 p.byline {
   max-width: 500px;
   text-align: center;
-  margin: 10px auto 40px;
+  margin: 10px auto;
 }
 
 .article-feature-image {
