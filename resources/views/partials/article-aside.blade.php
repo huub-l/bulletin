@@ -20,10 +20,16 @@
 <h3 class="sb-aside-h3">Programme</h3>
 {!!App::sbGetProgramme()!!}
 @endif
+
 <div id="article-aside-wrap">
-    <h3 class="sb-aside-h3">Contents</h3>
+    <h3 class="sb-aside-h3"><i class="fa fa-list"></i> Contents</h3>
     <div id="sb-toc-wrap"></div>
 
-    <h3 class="sb-aside-h3">Share</h3>
+    @if(App::sbGetPdfLink(get_the_id()))
+        <h3 class="sb-aside-h3"><i class="fa fa-file-pdf-o"></i>  {!!App::sbGetPdfLink(get_the_id())!!}</h3>
+        <p class="article-citation"></p>
+    @endif
+
+    <h3 class="sb-aside-h3"><i class="fa fa-share-alt"></i> Share</h3>
     <div class="addthis_inline_share_toolbox"></div>
 </div>
