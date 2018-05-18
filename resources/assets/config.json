@@ -9,7 +9,7 @@
     ]
   },
   "publicPath": "/bulletin/wp-content/themes/sb2",
-  "devUrl": "http://sb.dev/wp",
+  "devUrl": "http://apn.test/bulletin",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
