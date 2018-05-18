@@ -233,6 +233,7 @@ p.byline {
   background: #fff;
   z-index: 1001;
   position: absolute;
+  min-width: 80% !important;
   max-width: 95% !important;
   max-height: 95% !important;
   top: 50%;
