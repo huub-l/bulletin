@@ -23,13 +23,16 @@
     <div class="index-divider home-index-divider">
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </div>
-    <div class="row" style="margin:100px auto;">
+    <div class="row">
       @php
         $query = App::sbGetArticleQuery();
       @endphp
       @while ($query->have_posts()) @php($query->the_post())
         @include('partials.home-grid')
       @endwhile
+      <div class="col-md-12">
+        <a class="home-grid__button btn btn-success" href="<?php echo get_post_type_archive_link('article'); ?>">All</a>
+      </div>
     </div>
   </div>
 
