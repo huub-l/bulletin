@@ -39,7 +39,7 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
 // Save the edited issue "Elib URL"
 add_action('edited_issue', function ($term_id, $tt_id) {
     if (isset($_POST['elib_url']) && '' !== $_POST['elib_url']) {
-        $elib_url = sanitize_title($_POST['elib_url']);
+        $elib_url = sanitize_text_field($_POST['elib_url']);
         update_term_meta($term_id, 'elib_url', $elib_url);
     }
 }, 100, 2);
