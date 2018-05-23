@@ -20,6 +20,7 @@ use Roots\Sage\Template\BladeProvider;
 @include 'setup/issue/meta-cover-image-md5.php';
 @include 'setup/issue/issue-index.php';
 @include 'setup/article/citation.php';
+@include 'setup/article/meta.php';
 
 /*
  * Theme assets
