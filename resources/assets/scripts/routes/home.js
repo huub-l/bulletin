@@ -1,6 +1,12 @@
 export default {
   init() {
-    // JavaScript to be fired on the home page
+
+    $('.home-keywords__button').on('click', function(event){
+      event.preventDefault();
+      $('#home-keyword-list__div').toggleClass('home-keyword-list__div--short');
+      $('.home-keywords__button').toggleClass('hidden');
+    });
+
   },
   finalize() {
     

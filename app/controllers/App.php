@@ -182,9 +182,11 @@ class App extends Controller
     public static function sbGetAllKeywords()
     {
         $terms = get_terms([
-            'taxonomy'   => 'keyword',
-            'hide_empty' => true,
-            'order_by'   => 'count',
+            'taxonomy' => 'keyword', 
+            'orderby' => 'name',
+            'order' => 'ASC',
+            'hide_empty' => true, 
+            'number' => 100,
         ]);
 
         if (!empty($terms) && !is_wp_error($terms)) {
