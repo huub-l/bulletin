@@ -1,5 +1,11 @@
 .archive-block__h3 {
-  margin-top: 0 !important;
+  margin-top: 6px !important;
+}
+
+.archive-block__h3 a {
+  font-size: 22px;
+  line-height: 1;
+  font-family: $serif;
 }
 
 .archive-block__img {
@@ -22,4 +28,9 @@
 
 .archive-keywords__div a:hover {
   text-decoration: underline;
+}
+
+.posts-navigation {
+  display: table;
+  margin: 0 auto;
 }

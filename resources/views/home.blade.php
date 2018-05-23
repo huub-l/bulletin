@@ -31,7 +31,7 @@
         @include('partials.home-grid')
       @endwhile
       <div class="col-md-12">
-        <a class="home-grid__button btn btn-success" href="<?php echo get_post_type_archive_link('article'); ?>">All</a>
+        <a class="home-grid__button btn btn-primary btn-square" href="<?php echo get_post_type_archive_link('article'); ?>">View all</a>
       </div>
     </div>
   </div>

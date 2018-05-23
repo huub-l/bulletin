@@ -14,5 +14,9 @@
     @include('partials.content-index-'.get_post_type())
   @endwhile
 
-  {!! get_the_posts_navigation() !!}
+  {!! get_the_posts_navigation(array(
+            'prev_text'          => __( 'Older articles' ),
+            'next_text'          => __( 'Newer articles' ),
+            'screen_reader_text' => __( 'Articles navigation' ),
+  )) !!}
 @endsection
