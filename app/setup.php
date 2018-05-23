@@ -155,10 +155,10 @@ add_editor_style();
 
 // Add style to paginator navigation
 
-add_filter('next_posts_link_attributes', function() {
+add_filter('next_posts_link_attributes', function () {
     return 'class="btn btn-primary btn-square prev-post"';
 });
 
-add_filter('previous_posts_link_attributes', function() {
+add_filter('previous_posts_link_attributes', function () {
     return 'class="btn btn-primary btn-square next-post"';
 });
