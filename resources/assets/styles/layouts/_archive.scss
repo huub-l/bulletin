@@ -1,0 +1,36 @@
+.archive-block__h3 {
+  margin-top: 6px !important;
+}
+
+.archive-block__h3 a {
+  font-size: 22px;
+  line-height: 1;
+  font-family: $serif;
+}
+
+.archive-block__img {
+  margin-top: 15px;
+}
+
+.archive-keywords__div {
+  margin-top: 12px;
+  width: 75%;
+}
+
+.archive-keywords__div,
+.archive-keywords__div a,
+.archive-keywords__div a:link,
+.archive-keywords__div a:hover,
+.archive-keywords__div a:visited {
+  color: #000;
+  font-size: 12px;
+}
+
+.archive-keywords__div a:hover {
+  text-decoration: underline;
+}
+
+.posts-navigation {
+  display: table;
+  margin: 0 auto;
+}

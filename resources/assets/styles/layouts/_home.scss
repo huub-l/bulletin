@@ -1,11 +1,10 @@
 .home-thumbnail-caption p {
   font-size: 16px;
   line-height: 22px;
-  font-weight: 700;
 }
 
 .home-meta-programme {
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 10px;
 }
 
@@ -68,7 +67,7 @@ p#home-keywords-list {
 
 .home-featured-h1 a {
   font-size: 24px;
-  font-family: Merriweather, serif;
+  font-family: $serif;
   font-weight: 500;
 }
 
@@ -91,6 +90,17 @@ a.home-grid-title:hover,
 
 .home-article-grid__caption {
   padding: 8px;
+  max-height: 103px;
+  overflow: hidden;
+  -moz-transition: $speed-fast;
+  -ms-transition: $speed-fast;
+  -o-transition: $speed-fast;
+  -webkit-transition: $speed-fast;
+  transition: $speed-fast;
+}
+
+.home-article-grid__caption:hover {
+  max-height: 500px;
 }
 
 .home-article-grid__caption p {
@@ -99,12 +109,18 @@ a.home-grid-title:hover,
 
 .home-article-grid__thumbnail:hover {
   box-shadow: 0 0 8px #bbb;
-  transition: 0.2s;
+  transition: $speed-super-fast;
 }
 
 .home-article-grid__thumbnail {
   box-shadow: 0 0 8px #eee;
-  transition: 0.2s;
+  transition: $speed-super-fast;
+}
+
+.home-grid__button {
+  display: block;
+  width: 120px;
+  margin: 0 auto 40px;
 }
 
 @media (max-width: 991px) {

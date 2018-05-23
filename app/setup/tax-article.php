@@ -25,7 +25,7 @@ add_action('init', function () {
         'capability_type'     => 'post',
         'map_meta_cap'        => true,
         'hierarchical'        => false,
-        'rewrite'             => ['slug' => 'article', 'with_front' => true],
+        'rewrite'             => ['slug' => 'article', 'with_front' => false],
         'query_var'           => true,
         'supports'            => ['title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'comments', 'author'],
         'taxonomies'          => ['keyword', 'programme', 'issue', 'partners', 'category'],
