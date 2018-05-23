@@ -99,6 +99,10 @@ a.home-grid-title:hover,
   transition: $speed-fast;
 }
 
+.sb-fade:hover + .home-article-grid__caption {
+  max-height: 500px;
+}
+
 .home-article-grid__caption:hover {
   max-height: 500px;
 }
