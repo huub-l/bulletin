@@ -107,9 +107,25 @@ div#TB_window {
   padding-bottom: 22px;
 }
 
+@media (max-width: 510px) {
+  .nav-primary {
+    display: none !important;
+  }
+}
+
 @media (max-width: 767px) {
   .hidden-xs {
     display: none !important;
+  }
+
+  .home-featured-h1 {
+    line-height: 0.5 !important;
+    width: 100% !important;
+  }
+
+  .home-featured-h1 a,
+  .home-featured-h1 a:link {
+    font-size: 18px !important;
   }
 }
 

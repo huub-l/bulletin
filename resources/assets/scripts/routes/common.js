@@ -86,7 +86,7 @@ export default {
      * Smooth scroll for ToC
      * 
      */
-    $(".sb-toc-item-a, .type-article a").click(function () {
+    $(".sb-toc-item-a").click(function () {
       
       var heading = $(this).attr('href');
 
@@ -131,7 +131,90 @@ export default {
 
     });
 
-    /* Animation on cover images */
+
+    /**
+     * Use popups instead of scrolls for anchor references.
+     * https://github.com/APN-ComDev/bulletin/issues/69
+     */
+    
+    $('.article-content a').each(function(){
+           
+      var $anchor = $(this);
+      var href = $anchor.attr('href');
+
+      if (href && href.substring(0,1) == '#') {
+      // This is is an in-text anchor
+
+        var $reference   = $(href);
+        var popupId = 'ref-popup-' + href.slice(1) + Math.random().toString(36).substr(2, 5);
+        var $referenceLi = $reference.parent();
+
+        if($referenceLi.is('li')) {
+        // There's a corresponding anchor in the ref list
+
+          $('article').append(
+            '<span class="ref-popup__span ref-popup__span--hidden" id="' + popupId + '"> \
+                <button type = "button" class= "close ref-popup__close-button" aria-label="Close" > \
+                   <span aria-hidden="true">&times;</span> \
+                </button> \
+            </span>'
+          );
+
+          var $popupText = $referenceLi.clone();
+
+          $popupText.find('a').each( function(){
+          // Resolve duplicated anchor ID
+            
+            var $anchor = $(this);
+
+            if ( $anchor.text().trim().length == 0 ) {
+
+              $anchor.remove();
+
+            } else {
+
+              $anchor.removeAttr('id');
+
+            }
+
+          });
+
+          // Add reference text to the popup span
+          $('#' + popupId).css('max-width', $('.article-content').outerWidth())
+                        .append($popupText.contents());
+          
+          // Listen to click events on in-text citations
+          $anchor.on('click', function(event) {
+
+            event.preventDefault();
+
+            $('.ref-popup__span').removeClass('slideInUp')
+              .addClass('ref-popup__span--hidden');
+
+            $('#' + popupId).removeClass('ref-popup__span--hidden')
+                            .addClass('animated slideInUp');
+
+          });
+        }
+      }
+
+    });
+
+    /**
+     * 
+     * Close ref-popup
+     * 
+     */
+
+    $('.ref-popup__close-button').on('click', function(){
+      $('.ref-popup__span').removeClass('slideInUp')
+        .addClass('ref-popup__span--hidden');
+    });
+
+    /** 
+     * Animation on cover images 
+     * 
+     * */
 
     $('.sb-cover-image__img')
       .mouseenter(function () {

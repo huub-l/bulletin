@@ -253,3 +253,37 @@ p.byline {
   margin-top: 8px;
   font-size: 14px;
 }
+
+.ref-popup__span {
+  display: block;
+  color: $link-visited-color;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  font-size: 18px;
+  width: auto;
+  z-index: 99;
+  padding: 40px 30px 50px;
+  box-shadow: 0 0 8px #ccc;
+}
+
+.ref-popup__span--hidden {
+  display: none;
+}
+
+.ref-popup__close-button:hover {
+  cursor: pointer;
+}
+
+.ref-popup__close-button {
+  margin-top: -40px;
+  font-size: 2em;
+  margin-right: -14px;
+}
+
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+  -webkit-animation-duration: $speed-fast;
+  animation-duration: $speed-fast;
+}
