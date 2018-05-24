@@ -29,6 +29,8 @@ class App extends Controller
             $title = post_type_archive_title('', false);
         } elseif (is_tax()) {
             $title = single_term_title('', false);
+        } else {
+            $title = get_the_title();
         }
 
         return $title;
