@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-md-3">
+<div class="col-sm-6 col-md-4 col-lg-3">
   <a href="{{get_permalink()}}" class="home-grid-title">
     <div class="thumbnail home-grid-single home-article-grid__thumbnail">
       @if(has_post_thumbnail())
