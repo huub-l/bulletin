@@ -14,34 +14,23 @@ class App extends Controller
 
     public static function title()
     {
-        if (is_home()) {
-            if ($home = get_option('page_for_posts', true)) {
-                return get_the_title($home);
-            }
-
-            return __('Latest Posts', 'sage');
-        }
-        if (is_archive()) {
-            if (is_author()) {
-                if (function_exists('coauthors_posts_links')) {
-                    $author = get_queried_object();
-
-                    return $author->display_name;
-                } else {
-                    return sprintf(__('Author: %s'), '<span class="vcard">'.get_the_author().'</span>');
-                }
+        if ( is_category() ) {
+            $title = single_cat_title( '', false );
+        } elseif ( is_tag() ) {
+            $title = single_tag_title( '', false );
+        } elseif ( is_author() ) {
+            if (function_exists('coauthors_posts_links')) {
+                $author = get_queried_object();
+                $title = $author->display_name;
             } else {
-                return get_the_archive_title();
+                $title = sprintf(__('Author: %s'), '<span class="vcard">'.get_the_author().'</span>');
             }
+        } elseif ( is_post_type_archive() ) {
+            $title = post_type_archive_title( '', false );
+        } elseif ( is_tax() ) {
+            $title = single_term_title( '', false );
         }
-        if (is_search()) {
-            return sprintf(__('Search Results for %s', 'sage'), get_search_query());
-        }
-        if (is_404()) {
-            return __('Not Found', 'sage');
-        }
-
-        return get_the_title();
+        return $title;
     }
 
     public static function sbGetProjectRef($id)

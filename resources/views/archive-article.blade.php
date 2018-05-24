@@ -2,6 +2,8 @@
 
 @section('content')
   @include('partials.page-header')
+  
+  <div class="archive-header-rule"></div>
 
   @if (!have_posts())
     <div class="alert alert-warning">

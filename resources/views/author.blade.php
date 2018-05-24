@@ -3,7 +3,10 @@
 @section('content')
   @include('partials.page-header')
 
-  {!! nl2br(e(App::sbGetCoauthorDescription())) !!}
+  <div class="archive-desc author_disc">
+    {!! nl2br(e(App::sbGetCoauthorDescription())) !!}
+  </div>
+  <div class="archive-header-rule"></div>
 
   @if (!have_posts())
     <div class="alert alert-warning">
