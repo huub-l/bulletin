@@ -1,5 +1,11 @@
 # Changelog
 
+
+## 1.0.0: 25 May 2018
+
+* Release version 1.0.0.
+
+
 ## 0.1.2: 23 January 2018
 
 * Registered taxonomy metadata for back issues.
