@@ -21,6 +21,8 @@ use Roots\Sage\Template\BladeProvider;
 @include 'setup/issue/issue-index.php';
 @include 'setup/article/citation.php';
 @include 'setup/article/meta.php';
+@include 'setup/article/meta-box-authors.php';
+@include 'setup/article/tax-corresponding-author.php';
 
 /*
  * Theme assets

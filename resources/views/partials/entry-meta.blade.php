@@ -2,7 +2,7 @@
 
   <p class="byline author vcard">
     {{ __('By', 'sage') }} 
-    <?php coauthors_posts_links(); ?>
+    {!! App::sbGetCoauthorsLinks(get_the_ID()) !!}
   </p>
 
 <?php else: ?>

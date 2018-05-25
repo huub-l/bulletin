@@ -67,6 +67,82 @@ class App extends Controller
         }
     }
 
+    public static function sbGetCoauthorsLinks($post_id)
+    {
+
+        if (function_exists('coauthors_posts_links')) {
+            
+            $authors = self::sbGetCoauthorsByPostId($post_id);
+            $links = '';
+
+            switch ( sizeof($authors) ) {
+                case 0 :
+                    break;
+                case 1 : 
+                    $links .= self::sbGetCoauthorLink($author[0]);
+                    break;
+                default:                    
+                    $maxKey = sizeof($authors) - 1 ;
+
+                    foreach ($authors as $k => $author) {
+
+                        if ( $k == $maxKey) {
+                            $links .= "and ";
+                        }
+
+                        $links .= self::sbGetCoauthorLink($author);
+                        
+                        if ( $k != $maxKey) {
+                            $links .= ', ';
+                        }
+                    }
+            }
+
+            return $links;
+
+        } else {
+
+            return get_the_author();
+
+        }
+    }
+
+    public static function sbGetCoauthorLink($author) {
+
+        $url = get_author_posts_url( $author->ID, $author->user_nicename );
+
+        // Add hyperlink
+        $link = '<a href="' . $url . '"'
+                . 'title="Articles by '
+                . $author->display_name 
+                . '" class="author url fn" rel="author">';
+
+        $link .= $author->display_name;
+
+        // Add envelop to corresponding authors
+        $correspondingAuthorIds = self::sbGetCorrespondingAuthorIds(get_the_ID());
+
+        foreach ($correspondingAuthorIds as $id) {
+            if ($author->ID == $id) {
+                $link .= ' <sup aria-hidden="true"><i class="fa fa-envelope-o"></i></sup>';
+                break;
+            }
+        }
+
+        $link .= '</a>';
+        
+        return $link;
+    }
+
+    public static function sbGetCorrespondingAuthorIds($post_id)
+    {
+        return wp_get_post_terms(
+            get_the_id(), 
+            'corresponding-author-id', 
+            array("fields" => "names")
+        );
+    }
+
     public static function sbGetIssueTermByPostId($post_id)
     {
         $terms = wp_get_post_terms($post_id, 'issue');
