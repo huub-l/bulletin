@@ -107,7 +107,7 @@ class App extends Controller
 
         // Add hyperlink
         $link = '<a href="'.$url.'"'
-                .'title="Articles by '
+                .' title="Articles by '
                 .$author->display_name
                 .'" class="author url fn" rel="author">';
 
