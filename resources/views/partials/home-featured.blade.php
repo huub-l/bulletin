@@ -14,8 +14,20 @@
 
 <div class="col-lg-12">
     <h1 class="home-featured-h1 text-center"><a href="{{get_permalink()}}">{{get_the_title()}}</a></h1>
-    <p class="byline author vcard">
-      {{ __('By', 'sage') }} 
-      <?php coauthors_posts_links(); ?>
-    </p>
+    <?php if ( function_exists( 'coauthors_posts_links' ) ) : ?>
+
+      <p class="byline author vcard">
+        {{ __('By', 'sage') }} 
+        <?php coauthors_posts_links(); ?>
+      </p>
+
+    <?php else: ?>
+
+      <p class="byline author vcard">
+        {{ __('By', 'sage') }} <a href="{{ get_author_posts_url(get_the_author_meta('ID')) }}" rel="author" class="fn">
+          {{ get_the_author() }}
+        </a>
+      </p>
+
+    <?php endif; ?>
 </div>
