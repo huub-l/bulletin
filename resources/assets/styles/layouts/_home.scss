@@ -102,6 +102,7 @@ a.home-grid-title:hover,
 .home-article-grid__caption {
   position: absolute;
   max-height: 100px;
+  min-height: 100px;
   overflow: hidden;
   transition: $speed-fast;
   bottom: 80px;
