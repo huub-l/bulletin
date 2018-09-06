@@ -9,12 +9,11 @@ namespace App;
 
 add_action('wp_head', function () {
     if ('article' == get_post_type()) {
-
         $articleId = get_the_ID();
-        $authors   = App::sbGetCoauthorsByPostId($articleId);
-        $pdfUrl    = App::sbGetPdfUrl($articleId);
-        $doi       = App::sbGetDoi($articleId);
-        $keywords  = App::sbGetKeywords($articleId);
+        $authors = App::sbGetCoauthorsByPostId($articleId);
+        $pdfUrl = App::sbGetPdfUrl($articleId);
+        $doi = App::sbGetDoi($articleId);
+        $keywords = App::sbGetKeywords($articleId);
 
         echo "\n<!-- Article meta -->\n";
 
@@ -33,7 +32,7 @@ add_action('wp_head', function () {
         }
 
         // Keywords
-        if($keywords) {
+        if ($keywords) {
             foreach ($keywords as $keyword) {
                 echo '<meta name="citation_keywords" content="'.$keyword->name.'">'."\n";
             }
@@ -46,18 +45,18 @@ add_action('wp_head', function () {
         echo '<meta name="citation_journal_title" content="APN Science Bulletin">'."\n";
 
         // DOI
-        if($doi) {
-          echo '<meta name="citation_doi" content="'. $doi .'">'."\n";
+        if ($doi) {
+            echo '<meta name="citation_doi" content="'.$doi.'">'."\n";
         }
 
         // PDF URL
-        if($pdfUrl) {
-          echo '<meta name="citation_pdf_url" content="'. $pdfUrl .'">'."\n";
+        if ($pdfUrl) {
+            echo '<meta name="citation_pdf_url" content="'.$pdfUrl.'">'."\n";
         }
 
         // HTML URL
-        if(wp_get_shortlink()){
-            echo '<meta name="citation_fulltext_html_url" content="'. wp_get_shortlink() .'">'."\n";
+        if (wp_get_shortlink()) {
+            echo '<meta name="citation_fulltext_html_url" content="'.wp_get_shortlink().'">'."\n";
         }
     }
 });

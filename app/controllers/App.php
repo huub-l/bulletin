@@ -177,16 +177,15 @@ class App extends Controller
         }
     }
 
-    
     public static function sbGetKeywords($id)
     {
-      $terms = wp_get_post_terms($id, 'keyword');
-      
-      if (!empty($terms) && !is_wp_error($terms)) {
-        return $terms;
-      }
+        $terms = wp_get_post_terms($id, 'keyword');
 
-      return false;
+        if (!empty($terms) && !is_wp_error($terms)) {
+            return $terms;
+        }
+
+        return false;
     }
 
     public static function sbKeywords()
@@ -329,27 +328,28 @@ class App extends Controller
         $doi = get_post_meta($id, 'sb-doi', true);
         if (!empty($doi)) {
             return $doi;
-        } 
-        
+        }
+
         return false;
     }
 
     public static function sbGetDoiLink($id)
     {
-        $doi = App::sbGetDoi($id);
+        $doi = self::sbGetDoi($id);
 
         if (!empty($doi)) {
             $text = '<a href="https://doi.org/'.$doi.'">https://doi.org/'.$doi.'</a>';
+
             return $text;
         }
-        
+
         return false;
     }
 
     public static function sbGetPdfUrl($id)
     {
         $url = get_post_meta($id, 'sb-pdf-url', true);
-        
+
         if (!empty($url)) {
             return $url;
         }
@@ -359,15 +359,15 @@ class App extends Controller
 
     public static function sbGetPdfLink($id)
     {
-        $url = App::sbGetPdfUrl($id);
+        $url = self::sbGetPdfUrl($id);
 
         if (!empty($url)) {
             $text = '<a href="'.$url.'">View PDF</a>';
-            return $text;
-        } 
-        
-        return false;
 
+            return $text;
+        }
+
+        return false;
     }
 
     public static function sbGetPartners()
