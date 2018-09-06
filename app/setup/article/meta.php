@@ -9,7 +9,10 @@ namespace App;
 
 add_action('wp_head', function () {
     if ('article' == get_post_type()) {
-        $authors = App::sbGetCoauthorsByPostId(get_the_ID());
+
+        $articleId = get_the_ID();
+        $authors   = App::sbGetCoauthorsByPostId($articleId);
+        $pdfUrl    = App::sbGetPdfUrl($articleId);
 
         // Article title
         echo '<meta name="citation_title" content="'.get_the_title().'">'."\n";
@@ -25,5 +28,11 @@ add_action('wp_head', function () {
 
         // Journal title
         echo '<meta name="citation_journal_title" content="APN Science Bulletin">'."\n";
+
+        // PDF URL
+        if($pdfUrl) {
+          echo '<meta name="citation_pdf_url" content="'. $pdfUrl .'">'."\n";
+        }
+
     }
 });

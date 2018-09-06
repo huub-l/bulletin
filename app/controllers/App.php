@@ -324,16 +324,28 @@ class App extends Controller
         }
     }
 
+    public static function sbGetPdfUrl($id)
+    {
+        $url = get_post_meta($id, 'sb-pdf-url', true);
+        
+        if (!empty($pdf)) {
+            return $url;
+        }
+
+        return false;
+    }
+
     public static function sbGetPdfLink($id)
     {
-        $pdf = get_post_meta($id, 'sb-pdf-url', true);
-        if (!empty($pdf)) {
-            $text = '<a href="'.$pdf.'">View PDF</a>';
+        $url = App::sbGetPdfUrl($id);
 
+        if (!empty($url)) {
+            $text = '<a href="'.$url.'">View PDF</a>';
             return $text;
-        } else {
-            return false;
-        }
+        } 
+        
+        return false;
+
     }
 
     public static function sbGetPartners()

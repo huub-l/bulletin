@@ -6,7 +6,7 @@ add_action('init', function () {
      * Taxonomy: Corresponding author.
      */
     $labels = [
-               'name'                => __('Corresponding Author ID', 'sage'),
+        'name'                       => __('Corresponding Author ID', 'sage'),
         'singular_name'              => __('Corresponding Author ID', 'sage'),
         'add_new_item'               => __('Add Corresponding Author ID', 'sage'),
         'popular_items'              => __('Popular Author IDs', 'sage'),
