@@ -177,6 +177,18 @@ class App extends Controller
         }
     }
 
+    
+    public static function sbGetKeywords($id)
+    {
+      $terms = wp_get_post_terms($id, 'keyword');
+      
+      if (!empty($terms) && !is_wp_error($terms)) {
+        return $terms;
+      }
+
+      return false;
+    }
+
     public static function sbKeywords()
     {
         $terms = wp_get_post_terms(get_the_id(), 'keyword');
@@ -312,23 +324,33 @@ class App extends Controller
         }
     }
 
-    public static function sbGetDoiLink($id)
+    public static function sbGetDoi($id)
     {
         $doi = get_post_meta($id, 'sb-doi', true);
         if (!empty($doi)) {
-            $text = '<a href="https://doi.org/'.$doi.'">https://doi.org/'.$doi.'</a>';
+            return $doi;
+        } 
+        
+        return false;
+    }
 
+    public static function sbGetDoiLink($id)
+    {
+        $doi = App::sbGetDoi($id);
+
+        if (!empty($doi)) {
+            $text = '<a href="https://doi.org/'.$doi.'">https://doi.org/'.$doi.'</a>';
             return $text;
-        } else {
-            return false;
         }
+        
+        return false;
     }
 
     public static function sbGetPdfUrl($id)
     {
         $url = get_post_meta($id, 'sb-pdf-url', true);
         
-        if (!empty($pdf)) {
+        if (!empty($url)) {
             return $url;
         }
 
