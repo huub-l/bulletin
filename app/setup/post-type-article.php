@@ -6,14 +6,14 @@ add_action('init', function () {
      * Post Type: SB Articles.
      */
     $labels = [
-        'name'          => __('SB Articles', 'sage'),
-        'singular_name' => __('SB Article', 'sage'),
+        'name'          => __('Science Bulletin Articles', 'sage'),
+        'singular_name' => __('Science Bulletin Article', 'sage'),
     ];
 
     $args = [
-        'label'               => __('SB Articles', 'sage'),
+        'label'               => __('Science Bulletin Articless', 'sage'),
         'labels'              => $labels,
-        'description'         => 'Articles in a science bulletin',
+        'description'         => 'Articles in an issue of the APN Science Bulletin',
         'public'              => true,
         'publicly_queryable'  => true,
         'show_ui'             => true,
