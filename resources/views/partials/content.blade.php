@@ -4,6 +4,6 @@
     @include('partials/entry-meta')
   </header>
   <div class="entry-summary">
-    @php(the_excerpt())
+    {{ get_the_excerpt() }}
   </div>
 </article>

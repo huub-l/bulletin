@@ -8,7 +8,7 @@ use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
 @include 'setup/sidebars.php';
-@include 'setup/tax-article.php';
+@include 'setup/post-type-article.php';
 @include 'setup/tax-keyword.php';
 @include 'setup/tax-programme.php';
 @include 'setup/tax-issue.php';
