@@ -150,7 +150,7 @@ add_action('wp_enqueue_scripts', 'add_thickbox');
 add_action('admin_menu', function () {
     global $menu;
     add_menu_page('SB Admin Guide', 'SB Admin Guide', 'read', 'sb-admin-guide', '', 'dashicons-editor-help', 1);
-    $menu[1][2] = 'https://www.apn-gcr.org/bulletin/wp-admin/sb-admin-guide/site/';
+    $menu[1][2] = 'https://apn.gitbook.io/sop-comdev/science-bulletin';
 });
 
 // Add editor style
