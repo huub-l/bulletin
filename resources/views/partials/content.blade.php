@@ -4,6 +4,6 @@
     @include('partials/entry-meta')
   </header>
   <div class="entry-summary">
-    {{ get_the_excerpt() }}
+    {!! strip_tags(get_the_excerpt(), '<sub>,<sup>,<i>') !!}
   </div>
 </article>

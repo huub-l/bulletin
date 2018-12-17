@@ -17,7 +17,7 @@
         @include('partials.entry-meta')
       </header>
 
-      <div id="single-article-exerpt">{{get_the_excerpt()}}</div>
+      <div id="single-article-exerpt">{!! strip_tags(get_the_excerpt(), '<sub>,<sup>,<i>') !!}</div>
 
       <div id="article-keywords">
         <h1 id="h2-keywords">Keywords</h1>
