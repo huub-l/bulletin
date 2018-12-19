@@ -17,19 +17,20 @@
         @include('partials.entry-meta')
       </header>
 
-      <div id="single-article-exerpt">{!! strip_tags(get_the_excerpt(), '<sub>,<sup>,<i>') !!}</div>
-
-      <div id="article-keywords">
-        <h1 id="h2-keywords">Keywords</h1>
-        {!! App::sbKeywords() !!}
-      </div>
-
-      <div class="index-divider">
-        <i class="fa fa-leaf" aria-hidden="true"></i>
-      </div>
-
       <div class="article-content">
+        <div id="single-article-exerpt">{!! strip_tags(get_the_excerpt(), '<sub>,<sup>,<i>') !!}</div>
+
+        <div id="article-keywords">
+          <h1 id="h2-keywords">Keywords</h1>
+          {!! App::sbKeywords() !!}
+        </div>
+
+        <div class="index-divider">
+          <i class="fa fa-leaf" aria-hidden="true"></i>
+        </div>
+
         @php(the_content())
+        
       </div>
 
     </article>
