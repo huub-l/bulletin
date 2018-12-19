@@ -31,14 +31,14 @@
 .type-article .article-content a:link,
 .type-article .article-content a:visited {
   color: #333;
-  text-decoration: underline;
-  text-decoration-style: double;
-  text-decoration-color: $tertiary-color;
+  text-decoration: none;
+  border-bottom: 1px solid $shade-of-grey;
 }
 
 .type-article .article-content a:hover {
   color: $secondary-color;
-  text-decoration-color: $secondary-color;
+  border-bottom: 1px solid $secondary-color;
+  text-decoration: none;
   transition: $speed-super-fast;
 }
 
