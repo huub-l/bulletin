@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Controllers\App;
+
 /*
  * Add metadata to the article
  * https://github.com/APN-ComDev/bulletin/issues/66

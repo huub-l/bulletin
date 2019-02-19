@@ -2,12 +2,13 @@
 
 @section('content')
 
-  @php
-    $query = App::sbGetFeaturedQuery();
-  @endphp
+  <?php
+    $query = App\Controllers\App::sbGetFeaturedQuery();
+  ?>
 
   <div class="row">
-  @while ($query->have_posts()) @php($query->the_post())
+  @while ($query->have_posts()) 
+    <?php $query->the_post() ?>
     @include('partials.home-featured')
   @endwhile
   </div>
@@ -24,10 +25,9 @@
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </div>
     <div class="row">
-      @php
-        $query = App::sbGetArticleQuery();
-      @endphp
-      @while ($query->have_posts()) @php($query->the_post())
+      <?php $query = App\Controllers\App::sbGetArticleQuery(); ?>
+      @while ($query->have_posts()) 
+        <?php $query->the_post(); ?>
         @include('partials.home-grid')
       @endwhile
       <div class="col-md-12">

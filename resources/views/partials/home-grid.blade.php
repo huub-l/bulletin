@@ -8,7 +8,7 @@
       @endif
       <div class="home-thumbnail-caption home-article-grid__caption">
         <span class="home-meta-programme">
-          {{App::sbGetProgrammeString()}}
+          {{App\Controllers\App::sbGetProgrammeString()}}
         </span>
         <p>{{get_the_title()}}</p>
       </div>

@@ -4,7 +4,7 @@
   @include('partials.page-header')
 
   <div class="archive-desc author_disc">
-    {!! nl2br(e(App::sbGetCoauthorDescription())) !!}
+    {!! nl2br(e(App\Controllers\App::sbGetCoauthorDescription())) !!}
   </div>
   <div class="archive-header-rule"></div>
 

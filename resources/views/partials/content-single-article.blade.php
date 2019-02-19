@@ -11,7 +11,7 @@
           </div>
         </div>
 
-        <?php echo App::sbGetProjectRef(get_the_ID()); ?>
+        <?php echo App\Controllers\App::sbGetProjectRef(get_the_ID()); ?>
         
         <h1 id="sb-entry-title">{{ get_the_title() }}</h1>
         @include('partials.entry-meta')
@@ -22,7 +22,7 @@
 
         <div id="article-keywords">
           <h1 id="h2-keywords">Keywords</h1>
-          {!! App::sbKeywords() !!}
+          {!! App\Controllers\App::sbKeywords() !!}
         </div>
 
         <div class="index-divider">

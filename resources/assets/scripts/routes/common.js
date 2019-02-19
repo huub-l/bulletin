@@ -69,8 +69,8 @@ export default {
       str = str.toLowerCase();
 
       // remove accents, swap ñ for n, etc
-      var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-      var to = "aaaaeeeeiiiioooouuuunc------";
+      var from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
+      var to = 'aaaaeeeeiiiioooouuuunc------';
       for (var i = 0, l = from.length; i < l; i++) {
         str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
       }
@@ -86,7 +86,7 @@ export default {
      * Smooth scroll for ToC
      * 
      */
-    $(".sb-toc-item-a").click(function () {
+    $('.sb-toc-item-a').click(function () {
       
       var heading = $(this).attr('href');
 
@@ -106,7 +106,7 @@ export default {
       
       table.addClass('table table-bordered table-condensed table-responsive article-table');
 
-      if (window.matchMedia("screen").matches) {
+      if (window.matchMedia('screen').matches) {
         if (table.children('tbody').width() > 730 || table.children('tbody').height() > 500 ) {
           table.wrap('<div class="article-table-wrap"></div>') 
               .after('<div class="article-table-overlay"> \
@@ -218,10 +218,10 @@ export default {
 
     $('.sb-cover-image__img')
       .mouseenter(function () {
-        $(this).addClass("sb-cover-image__img--hover");
+        $(this).addClass('sb-cover-image__img--hover');
       })
       .mouseleave(function () {
-        $(this).removeClass("sb-cover-image__img--hover");
+        $(this).removeClass('sb-cover-image__img--hover');
       });
   },
   finalize() {

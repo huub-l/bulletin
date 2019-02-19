@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Controllers\App;
+
 /*
  * Create a meta box that shows author IDs
  */

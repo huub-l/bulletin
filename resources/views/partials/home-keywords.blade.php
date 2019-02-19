@@ -6,7 +6,7 @@
     </div>
     <div id="home-keyword-list__div" class="col-md-7 home-keyword-list__div--short">
       <p class="keywords_list" class="home-keyword-list__p">
-      {!! App::sbGetAllKeywords() !!}
+      {!! App\Controllers\App::sbGetAllKeywords() !!}
       </p>
     </div>
     <div class="col-md-5">

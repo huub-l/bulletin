@@ -1,4 +1,4 @@
-<?php $terms = App::sbGetAllIssues(); ?>
+<?php $terms = App\Controllers\App::sbGetAllIssues(); ?>
 
 <div class="row">
   <?php

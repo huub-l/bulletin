@@ -2,6 +2,11 @@
 
 namespace App;
 
+use App\Controllers\App;
+use App\Controllers\Citation;
+use App\Controllers\PubJournal;
+use App\Controllers\Contributor;
+
 /*
  * Create a citation custom field for articles on save / update
  *

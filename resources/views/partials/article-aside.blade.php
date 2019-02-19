@@ -1,32 +1,32 @@
 <h3 class="sb-aside-h3">Issue</h3>
-{!!App::sbGetIssue()!!}
+{!!App\Controllers\App::sbGetIssue()!!}
 
-@if(App::sbGetPartners())
+@if(App\Controllers\App::sbGetPartners())
 <h3 class="sb-aside-h3">Partners</h3>
-{!!App::sbGetPartners()!!}
+{!!App\Controllers\App::sbGetPartners()!!}
 @endif
 
-@if(App::sbGetDoiLink(get_the_id()))
+@if(App\Controllers\App::sbGetDoiLink(get_the_id()))
 <h3 class="sb-aside-h3">DOI</h3>
-<p class="article-aside-doi">{!!App::sbGetDoiLink(get_the_id())!!}</p>
+<p class="article-aside-doi">{!!App\Controllers\App::sbGetDoiLink(get_the_id())!!}</p>
 @endif
 
-@if(App::sbGetCitation(get_the_id()))
+@if(App\Controllers\App::sbGetCitation(get_the_id()))
 <h3 class="sb-aside-h3">Citation</h3>
-<p class="article-citation">{!!App::sbGetCitation(get_the_id())!!}</p>
+<p class="article-citation">{!!App\Controllers\App::sbGetCitation(get_the_id())!!}</p>
 @endif
 
-@if(App::sbGetProgramme())
+@if(App\Controllers\App::sbGetProgramme())
 <h3 class="sb-aside-h3">Programme</h3>
-{!!App::sbGetProgramme()!!}
+{!!App\Controllers\App::sbGetProgramme()!!}
 @endif
 
 <div id="article-aside-wrap">
     <h3 class="sb-aside-h3"><i class="fa fa-list"></i> Contents</h3>
     <div id="sb-toc-wrap"></div>
 
-    @if(App::sbGetPdfLink(get_the_id()))
-        <h3 class="sb-aside-h3"><i class="fa fa-file-pdf-o"></i>  {!!App::sbGetPdfLink(get_the_id())!!}</h3>
+    @if(App\Controllers\App::sbGetPdfLink(get_the_id()))
+        <h3 class="sb-aside-h3"><i class="fa fa-file-pdf-o"></i>  {!!App\Controllers\App::sbGetPdfLink(get_the_id())!!}</h3>
         <p class="article-citation"></p>
     @endif
 

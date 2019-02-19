@@ -17,8 +17,8 @@ $speed-super-fast: 0.2s;
 $speed-fast: 0.5s;
 $speed-normal: 1s;
 
-/* ------- Fix production eror caused by bootstrap 4 -------- */
-/* https://github.com/roots/sage/issues/2017#issuecomment-361054297 */ 
+/* ------- Fix production eror caused by bootstrap 4 -------- *
+ * https://github.com/roots/sage/issues/2017#issuecomment-361054297 */
 
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;

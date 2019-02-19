@@ -24,6 +24,15 @@ h3.sb-aside-h3:first-child {
   margin-left: 0;
 }
 
+.article-aside-doi a {
+  word-wrap: break-word;
+  font-size: 12px;
+}
+
+#article-aside-wrap a {
+  font-size: 14px;
+}
+
 /* unvisited link */
 .sb-toc-item-a,
 #sb-article-aside a,
@@ -31,9 +40,7 @@ h3.sb-aside-h3:first-child {
   color: #333;
 }
 
-.sb-toc-item-a:link,
-#sb-article-aside a:link,
-#article-aside-wrap .keywords_list a:link {
+#sb-article-aside a:link {
   color: #333;
 }
 
@@ -45,21 +52,17 @@ h3.sb-aside-h3:first-child {
   text-decoration: none;
 }
 
+.sb-toc-item-a:link,
+#article-aside-wrap .keywords_list a:link {
+  color: #333;
+}
+
 li.sb-toc-item {
   border-bottom: 1px dotted #ccc;
   padding: 5px 0;
 }
 
-#article-aside-wrap a {
-  font-size: 14px;
-}
-
 .article-citation {
   font-size: 12px;
   line-height: 18px;
-}
-
-.article-aside-doi a {
-  word-wrap: break-word;
-  font-size: 12px;
 }

@@ -14,8 +14,8 @@
 }
 
 .type-article ul > li::before {
-  font-family: 'FontAwesome';
-  content: '\f054';
+  font-family: FontAwesome, serif;
+  content: "\f054";
   margin: 0 15px 0 -22.5px;
   color: $primary-color;
   font-size: 11px;
@@ -25,6 +25,23 @@
 
 .type-article ul {
   list-style: none;
+}
+
+.index-entry-title a {
+  font-size: 32px;
+  line-height: 1.5em;
+}
+
+.project-ref a,
+.project-ref a:active,
+.project-ref a:link,
+.project-ref a:hover,
+.project-ref a:visited {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
 }
 
 .type-article .article-content a,
@@ -42,10 +59,6 @@
   transition: $speed-super-fast;
 }
 
-.type-article ul {
-  list-style: none;
-}
-
 .type-article p + ul:not(.keep-space),
 .type-article p + ol:not(.keep-space) {
   margin-top: -20px;
@@ -58,7 +71,7 @@
 .type-article blockquote::before {
   content: "\f1d8";
   font-size: 80px;
-  font-family: FontAwesome;
+  font-family: FontAwesome, serif;
   color: #eee;
   position: relative;
   bottom: -42px;
@@ -125,23 +138,6 @@ p.byline {
   color: #bbb;
 }
 
-.project-ref a,
-.project-ref a:active,
-.project-ref a:link,
-.project-ref a:hover,
-.project-ref a:visited {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #333;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.index-entry-title a {
-  font-size: 32px;
-  line-height: 1.5em;
-}
-
 .article-table-wrap {
   max-height: 400px;
   overflow: hidden;
@@ -171,18 +167,6 @@ p.byline {
   background: linear-gradient(rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, 1) 90%);
 }
 
-.article-table-overlay:hover {
-  background: #333;
-  opacity: 0.75;
-  cursor: pointer;
-}
-
-.article-table-overlay:hover .view-table-text {
-  cursor: pointer;
-  background: #333;
-  border: none;
-}
-
 .view-table-text {
   padding: 5px 20px;
   border-radius: 10px;
@@ -194,6 +178,18 @@ p.byline {
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transition: 0.3s ease;
+}
+
+.article-table-overlay:hover {
+  background: #333;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.article-table-overlay:hover .view-table-text {
+  cursor: pointer;
+  background: #333;
+  border: none;
 }
 
 .article-table,
@@ -271,14 +267,14 @@ p.byline {
   display: none;
 }
 
-.ref-popup__close-button:hover {
-  cursor: pointer;
-}
-
 .ref-popup__close-button {
   margin-top: -40px;
   font-size: 2em;
   margin-right: -14px;
+}
+
+.ref-popup__close-button:hover {
+  cursor: pointer;
 }
 
 .slideInUp {

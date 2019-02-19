@@ -52,6 +52,12 @@ a.home-grid-title {
   display: block;
 }
 
+.home-featured-h1 a {
+  font-size: 24px;
+  font-family: $serif;
+  font-weight: 500;
+}
+
 a.home-grid-title:link,
 .home-featured-h1 a:link {
   color: #333;
@@ -64,12 +70,6 @@ a.home-grid-title:link,
 
 p#home-keywords-list {
   line-height: 2em;
-}
-
-.home-featured-h1 a {
-  font-size: 24px;
-  font-family: $serif;
-  font-weight: 500;
 }
 
 /* visited link */
@@ -113,15 +113,12 @@ a.home-grid-title:hover,
   margin-right: 10px;
 }
 
-.home-article-grid__thumbnail:hover > .home-article-grid__caption {
-  background: rgba(255, 255, 255, 0.92);
-}
-
-.home-article-grid__thumbnail:hover > .home-article-grid__caption {
+.home-article-grid__caption:hover {
   max-height: 500px;
 }
 
-.home-article-grid__caption:hover {
+.home-article-grid__thumbnail:hover > .home-article-grid__caption {
+  background: rgba(255, 255, 255, 0.92);
   max-height: 500px;
 }
 
@@ -129,15 +126,15 @@ a.home-grid-title:hover,
   margin-bottom: 6px;
 }
 
-.home-article-grid__thumbnail:hover {
-  box-shadow: 0 0 8px #bbb;
-  transition: $speed-fast;
-}
-
 .home-article-grid__thumbnail {
   box-shadow: 0 0 8px #eee;
   transition: $speed-fast;
   min-height: 220px;
+}
+
+.home-article-grid__thumbnail:hover {
+  box-shadow: 0 0 8px #bbb;
+  transition: $speed-fast;
 }
 
 .home-grid__button,
