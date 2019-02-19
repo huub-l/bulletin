@@ -18,7 +18,6 @@
 @include 'article/tax-corresponding-author.php';
 @include 'cron.php';
 
-
 // Hide the "post" menu in wp-admin
 add_action('admin_menu', function () {
     remove_menu_page('edit.php');

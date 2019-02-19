@@ -3,10 +3,16 @@
 namespace App\Controllers;
 
 use Sober\Controller\Controller;
+use Dotenv\Dotenv;
 use WP_Query;
 
 class App extends Controller
 {
+  public function __construct () {
+    $dotenv = Dotenv::create(dirname(__DIR__, 2));
+    $dotenv->load();
+  }
+
     public function siteName()
     {
         return get_bloginfo('name');

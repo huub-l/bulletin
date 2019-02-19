@@ -10,3 +10,8 @@
     </div>
   </div>
 </footer>
+<pre>{{print_r(_get_cron_array())}}</pre>
+<?php $citation = new App\Controllers\Citation('', '10.30852/sb.2018.436'); ?>
+<pre>{{$citation->getFormattedCitation() }}</pre>
+<pre>{{ $citation->getCitedBy() }}</pre>
+<pre>{{ $citation->getCitedByCount() }}</pre>
