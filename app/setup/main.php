@@ -1,5 +1,7 @@
 <?php
 
+use App\Controllers\Article;
+
 @include 'sidebars.php';
 @include 'post-type-article.php';
 @include 'tax-keyword.php';
@@ -16,7 +18,6 @@
 @include 'article/meta.php';
 @include 'article/meta-box-authors.php';
 @include 'article/tax-corresponding-author.php';
-@include 'cron.php';
 
 // Hide the "post" menu in wp-admin
 add_action('admin_menu', function () {
@@ -57,4 +58,28 @@ add_filter('next_posts_link_attributes', function () {
 
 add_filter('previous_posts_link_attributes', function () {
     return 'class="btn btn-primary btn-square next-post"';
+});
+
+// Update citations periodically (7-day interval)
+
+add_action( 'the_post', function(){
+
+    $article = new Article(get_the_ID());
+    $timeForNextCheck = $article->getNextCitedByCheckTime();
+
+    if (time() > $timeForNextCheck) {
+
+        // Update cited-by count and forward links:
+        // '_sb-citedby-count': unique field
+        // '_sb-citedby-auto': not unique
+
+        if($article->updateCitedByCount()){
+            $article->updateForwardLinks();
+        }
+
+        // Update the time for next check
+        // '_sb-citedby-next-check-time'
+
+        $article->setNextCitedByCheckTime();
+    }
 });

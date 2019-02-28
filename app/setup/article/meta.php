@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Controllers\App;
+use App\Controllers\Article;
 
 /*
  * Add metadata to the article
@@ -11,11 +11,13 @@ use App\Controllers\App;
 
 add_action('wp_head', function () {
     if ('article' == get_post_type()) {
-        $articleId = get_the_ID();
-        $authors = App::sbGetCoauthorsByPostId($articleId);
-        $pdfUrl = App::sbGetPdfUrl($articleId);
-        $doi = App::sbGetDoi($articleId);
-        $keywords = App::sbGetKeywords($articleId);
+
+        $article = new Article(get_the_ID());
+
+        $authors = $article->getCoauthors();
+        $pdfUrl = $article->getPdfUrl();
+        $doi = $article->getDoi();
+        $keywords = $article->getKeywords();
 
         echo "\n<!-- Article meta -->\n";
 

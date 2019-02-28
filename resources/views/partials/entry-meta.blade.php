@@ -1,8 +1,14 @@
+<?php 
+use App\Controllers\Article;
+
+$article = new Article(get_the_ID());
+?>
+
 <?php if ( function_exists( 'coauthors_posts_links' ) ) : ?>
 
   <p class="byline author vcard">
     {{ __('By', 'sage') }} 
-    {!! App\Controllers\App::sbGetCoauthorsLinks(get_the_ID()) !!}
+    {!! $article->getCoauthorsLinks() !!}
   </p>
 
 <?php else: ?>

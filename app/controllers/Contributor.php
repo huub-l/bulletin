@@ -6,7 +6,6 @@ class Contributor
 {
     public $function;
     public $first;
-    public $middle;
     public $last;
 
     public function __construct($function = 'author')
@@ -31,4 +30,20 @@ class Contributor
 
         return $this;
     }
+
+    public function setFirst($display_name)
+    {
+        $name_array = explode(' ', $display_name);
+        array_pop($name_array);
+
+        $this->first = ucfirst(strtolower(implode(' ', $name_array)));
+    }
+
+    public function setLast($display_name)
+    {
+        $name_array = explode(' ', $display_name);
+
+        $this->last = ucfirst(strtolower(end($name_array)));
+    }
+
 }

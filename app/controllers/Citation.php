@@ -158,29 +158,29 @@ class Citation extends Controller
     /**
      * Get Cited by XML Result from CrossRef API
      *
-     * @return String
+     * @return Object SimpleXMLEliment
      */
-    public function getCitedBy($doi = null)
+    public function getCitedByXml($doi = null)
     {
       $doi = $doi ? $doi : $this->doi;
       $batchId = time();
       $email = $this->email;
        
       $xmlData = <<<EOT
-        <?xml version = "1.0" encoding="UTF-8"?>
-        <query_batch version="2.0" xmlns = "http://www.crossref.org/qschema/2.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.crossref.org/qschema/2.0 http://www.crossref.org/qschema/crossref_query_input2.0.xsd">
-        <head>
-            <email_address>{$email}</email_address>
-            <doi_batch_id>{$batchId}</doi_batch_id>
-        </head>
-        <body>
-            <fl_query alert="true">
-              <doi>{$doi}</doi>
-            </fl_query>
-        </body>
-        </query_batch>
+<?xml version = "1.0" encoding="UTF-8"?>
+<query_batch version="2.0" xmlns = "http://www.crossref.org/qschema/2.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.crossref.org/qschema/2.0 http://www.crossref.org/qschema/crossref_query_input2.0.xsd">
+<head>
+    <email_address>{$email}</email_address>
+    <doi_batch_id>{$batchId}</doi_batch_id>
+</head>
+<body>
+    <fl_query alert="true">
+      <doi>{$doi}</doi>
+    </fl_query>
+</body>
+</query_batch>
 EOT;
 
       $queryUrl = 'https://doi.crossref.org/servlet/query?usr='
@@ -188,7 +188,10 @@ EOT;
         .getenv('CROSSREF_PASSWORD').'&format=unixref&qdata='
         .urlencode($xmlData);
 
-      return file_get_contents($queryUrl);
+      $xml = simplexml_load_string(file_get_contents($queryUrl));
+      $xml->registerXPathNamespace('x', "http://www.crossref.org/qrschema/2.0");
+
+      return $xml;
     }
 
     /**
@@ -196,9 +199,34 @@ EOT;
      *
      * @return String
      */
-    public function getCitedByCount($doi = null){
+    public function retrieveCitedByCount($doi = null){
+      
+      $doi = $doi ? $doi : $this->doi;
+      $metadata = $this->getCrossRefMetadata($doi);
+      $metaJson = json_decode($metadata, true);
+
+      if($metadata){
+        $hasCitedBy = strpos($metadata, 'is-referenced-by-count') > 0 ? true : false;
+      }else{
+        $hasCitedBy = false;
+      }
+      
+      $count = $hasCitedBy ? $metaJson['message']['is-referenced-by-count'] : 0;
+
+      return $count;
+    }
+
+    /**
+     * Get Cited by Count from CrossRef API
+     *
+     * @return String
+     */
+    public function getCrossRefMetadata($doi = null){
       $doi = $doi ? $doi : $this->doi;
       $queryUrl='https://api.crossref.org/works/'.$doi.'?mailto='.$this->email;
-      return file_get_contents($queryUrl);
+      $content = @file_get_contents($queryUrl);
+      if($content){
+        return $content;
+      }
     }
 }

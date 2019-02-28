@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Controllers\App;
+use APp\Controllers\Article;
 
 /*
  * Create a meta box that shows author IDs
@@ -13,7 +13,8 @@ add_action('add_meta_boxes', function () {
         'article-side-help',
         'IDs for metadata',
         function () {
-            $authors = App::sbGetCoauthorsByPostId(get_the_ID());
+            $article = new Article(get_the_ID());
+            $authors = $article->getCoauthors();
             echo '<p><strong>Article ID:</strong> '.get_the_ID().'</p>';
             echo '<p><strong>Authors:</strong></p>';
             foreach ($authors as $author) {

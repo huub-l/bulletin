@@ -1,7 +1,9 @@
-<?php $terms = App\Controllers\App::sbGetAllIssues(); ?>
+<?php use App\Controllers\App; ?>
 
 <div class="row">
   <?php
+    $terms = App::sbGetAllIssues();
+    
     foreach ( $terms as $term ): 
       $termLink = get_term_link( $term );
       $termLegacyCoverMd5 = get_term_meta( $term->term_id, 'cover_image_md5', true );

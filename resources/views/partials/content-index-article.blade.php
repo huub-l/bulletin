@@ -1,3 +1,7 @@
+<?php
+  use App\Controllers\Article;
+  $article = new Article(get_the_ID());
+?>
 <article @php(post_class())>
   <div class="row">
     <div class="col-md-4">
@@ -8,7 +12,7 @@
           <img class="sb-fade archive-block__img" src="//via.placeholder.com/255x100?text=Science+Bulletin" alt="{{get_the_title()}}" width="100%">
         @endif
       </a>
-      <div class="archive-keywords__div"><strong><i class="fa fa-key"></i> Keywords:</strong> {!!App\Controllers\App::sbKeywords()!!}</div>
+      <div class="archive-keywords__div"><strong><i class="fa fa-key"></i> Keywords:</strong> {!! $article->getKeywordsList() !!}</div>
     </div><!--col-->
     <div class="col-md-8">
       <h3 class="index-entry-title archive-block__h3">
@@ -18,7 +22,7 @@
         {{wp_trim_words(get_the_excerpt(), 55, '...')}}
       </div>
       <p class="archive-entry-citation__p">
-        <i class="fa fa-share-alt"></i> {!! App\Controllers\App::sbGetCitation(get_the_id()) !!}
+        <i class="fa fa-share-alt"></i> {!! $article->getCitation() !!}
       </p>
     </div><!--col-->
   </div><!--row-->

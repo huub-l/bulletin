@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Controllers\App;
+use App\Controllers\Article;
 use App\Controllers\Citation;
 use App\Controllers\PubJournal;
 use App\Controllers\Contributor;
@@ -24,8 +25,9 @@ add_action('save_post', function ($post_id, $post, $update) {
 
     $citation = new Citation(get_the_title($post_id));
     $journal = new PubJournal();
-    $authors = App::sbGetCoauthorsByPostId($post_id);
-    $issueTerm = App::sbGetIssueTermByPostId($post_id);
+    $article = new Article($post_id);
+    $authors = $article->getCoauthors();
+    $issueTerm = $article->getIssueTerm($post_id);
     $contributors = [];
 
     foreach ($authors as $author) {
@@ -33,16 +35,16 @@ add_action('save_post', function ($post_id, $post, $update) {
 
         $contributor = new Contributor('author');
 
-        if ('' != $author->first_name) {
+        if (!empty($author->first_name)) {
             $contributor->first = $author->first_name;
         } else {
-            $contributor->first = App::sbGetContributorFirst($author->display_name);
+            $contributor->setFirst($author->display_name);
         }
 
-        if ('' != $author->last_name) {
+        if (!empty($author->last_name)) {
             $contributor->last = $author->last_name;
         } else {
-            $contributor->last = App::sbGetContributorLast($author->display_name);
+            $contributor->setLast($author->display_name);
         }
 
         $contributors[] = $contributor;

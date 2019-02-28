@@ -4,7 +4,8 @@
   @include('partials.page-header')
 
   <div class="archive-desc author_disc">
-    {!! nl2br(e(App\Controllers\App::sbGetCoauthorDescription())) !!}
+    <?php $author = get_queried_object(); ?>
+    {!! nl2br(e($author->description)) !!}
   </div>
   <div class="archive-header-rule"></div>
 

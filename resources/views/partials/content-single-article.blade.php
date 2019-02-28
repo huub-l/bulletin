@@ -1,3 +1,8 @@
+<?php 
+  use App\Controllers\Article;
+  $article = new Article(get_the_ID()); 
+?>
+
 <div class="row">
   <div class="entry-content col-md-12 col-lg-8">
     <article @php(post_class())>
@@ -11,8 +16,16 @@
           </div>
         </div>
 
-        <?php echo App\Controllers\App::sbGetProjectRef(get_the_ID()); ?>
-        
+        @if($article->getProjectRef())
+        <p class="text-muted project-ref">
+          <a data-toggle="tooltip" title="Read more about this project on APN E-Lib" href="{{$article->getElibUrl()}}">
+          <i class="fa fa-external-link-square"></i> {{ $article->getProjectRef() }}
+          </a>
+        </p>
+        @else
+          <p class="text-muted project-ref" style="color:red !important;">Missing field: sb-project-ref</p>
+        @endif
+
         <h1 id="sb-entry-title">{{ get_the_title() }}</h1>
         @include('partials.entry-meta')
       </header>
@@ -22,7 +35,7 @@
 
         <div id="article-keywords">
           <h1 id="h2-keywords">Keywords</h1>
-          {!! App\Controllers\App::sbKeywords() !!}
+          {!! $article->getKeywordsList() !!}
         </div>
 
         <div class="index-divider">

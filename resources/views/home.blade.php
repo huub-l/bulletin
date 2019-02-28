@@ -1,14 +1,14 @@
+<?php use App\Controllers\App;?>
+
 @extends('layouts.app')
 
 @section('content')
 
-  <?php
-    $query = App\Controllers\App::sbGetFeaturedQuery();
-  ?>
+  <?php $featureQuery = App::sbGetFeaturedQuery(); ?>
 
   <div class="row">
-  @while ($query->have_posts()) 
-    <?php $query->the_post() ?>
+  @while ($featureQuery->have_posts()) 
+    <?php $featureQuery->the_post() ?>
     @include('partials.home-featured')
   @endwhile
   </div>
@@ -25,7 +25,7 @@
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </div>
     <div class="row">
-      <?php $query = App\Controllers\App::sbGetArticleQuery(); ?>
+      <?php $query = App::sbGetArticleQuery(); ?>
       @while ($query->have_posts()) 
         <?php $query->the_post(); ?>
         @include('partials.home-grid')

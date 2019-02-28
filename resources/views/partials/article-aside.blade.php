@@ -1,32 +1,68 @@
+<?php
+
+use App\Controllers\Article;
+
+$article = new Article(get_the_ID());
+
+?>
+
 <h3 class="sb-aside-h3">Issue</h3>
-{!!App\Controllers\App::sbGetIssue()!!}
 
-@if(App\Controllers\App::sbGetPartners())
-<h3 class="sb-aside-h3">Partners</h3>
-{!!App\Controllers\App::sbGetPartners()!!}
+{!! $article->getIssueLink() !!}
+
+@if(!empty($article->getDoi()))
+  <h3 class="sb-aside-h3">DOI</h3>
+  <p class="article-aside-doi">
+    <a href="https://doi.org/{{ $article->getDoi() }}">
+      https://doi.org/{{ $article->getDoi() }}
+    </a>
+  </p>
 @endif
 
-@if(App\Controllers\App::sbGetDoiLink(get_the_id()))
-<h3 class="sb-aside-h3">DOI</h3>
-<p class="article-aside-doi">{!!App\Controllers\App::sbGetDoiLink(get_the_id())!!}</p>
+@if($article->getCitation())
+  <h3 class="sb-aside-h3">Citation</h3>
+  <p class="article-citation">{!! $article->getCitation() !!}</p>
 @endif
 
-@if(App\Controllers\App::sbGetCitation(get_the_id()))
-<h3 class="sb-aside-h3">Citation</h3>
-<p class="article-citation">{!!App\Controllers\App::sbGetCitation(get_the_id())!!}</p>
+@if($article->getCitedByCount())
+  <h3 class="sb-aside-h3">Cited by</h3>
+
+  <button type="button" class="btn btn-default btn-sm cited-by-btn" data-toggle="modal" data-target="#citedByModal">
+    {{ $article->getCitedByCount() }}
+  </button >
+
+  <div class="modal fade" id="citedByModal" tabindex="-1" role="dialog" aria-labelledby="citedByModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <p class="modal-title" id="citedByModalLabel" style="margin-top:8px;"><strong>This article is cited by:</strong></p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          @foreach($article->getForwardLinks() as $link)
+            <p class="citedby-articles">{{ $link }}</p>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
 @endif
 
-@if(App\Controllers\App::sbGetProgramme())
-<h3 class="sb-aside-h3">Programme</h3>
-{!!App\Controllers\App::sbGetProgramme()!!}
+@if($article->getProgrammeString())
+  <h3 class="sb-aside-h3">Programme</h3>
+  <p class="keywords_list">{{$article->getProgrammeString()}}</p>
 @endif
 
 <div id="article-aside-wrap">
     <h3 class="sb-aside-h3"><i class="fa fa-list"></i> Contents</h3>
     <div id="sb-toc-wrap"></div>
 
-    @if(App\Controllers\App::sbGetPdfLink(get_the_id()))
-        <h3 class="sb-aside-h3"><i class="fa fa-file-pdf-o"></i>  {!!App\Controllers\App::sbGetPdfLink(get_the_id())!!}</h3>
+    @if(!empty($article->getPdfUrl()))
+        <h3 class="sb-aside-h3"><i class="fa fa-file-pdf-o"></i>  
+          <a href="{{$article->getPdfUrl()}}">View PDF</a>
+        </h3>
         <p class="article-citation"></p>
     @endif
 
