@@ -2,15 +2,16 @@
 
 namespace App\Controllers;
 
-use Sober\Controller\Controller;
 use Dotenv\Dotenv;
+use Sober\Controller\Controller;
 use WP_Query;
 
 class App extends Controller
 {
-    public function __construct () {
-      $dotenv = Dotenv::create(dirname(__DIR__, 2));
-      $dotenv->load();
+    public function __construct()
+    {
+        $dotenv = Dotenv::create(dirname(__DIR__, 2));
+        $dotenv->load();
     }
 
     public function siteName()
@@ -110,5 +111,4 @@ class App extends Controller
                 'order'      => 'DESC',
                 ]);
     }
-
 }

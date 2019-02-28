@@ -45,5 +45,4 @@ class Contributor
 
         $this->last = ucfirst(strtolower(end($name_array)));
     }
-
 }

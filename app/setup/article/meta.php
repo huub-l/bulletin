@@ -11,7 +11,6 @@ use App\Controllers\Article;
 
 add_action('wp_head', function () {
     if ('article' == get_post_type()) {
-
         $article = new Article(get_the_ID());
 
         $authors = $article->getCoauthors();

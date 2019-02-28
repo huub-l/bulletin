@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use Sober\Controller\Controller;
-use App\Controllers\Citation;
 
 class Article extends Controller
 {
@@ -16,14 +15,14 @@ class Article extends Controller
 
     /**
      * Returns the sb-citedby-count-auto field of the article
-     * or 0 if not found
+     * or 0 if not found.
      *
-     * @return boolean 
+     * @return bool
      */
     public function getCitedByCount()
     {
         $citedByCount = get_post_meta($this->id, '_sb-citedby-count', true);
-        
+
         if (!empty($citedByCount)) {
             return $citedByCount;
         }
@@ -33,7 +32,6 @@ class Article extends Controller
 
     /**
      * Returns the doi field of the article or false if not found.
-     *
      */
     public function getDoi()
     {
@@ -45,10 +43,8 @@ class Article extends Controller
         return false;
     }
 
-
     /**
      * Returns the pdf-url field of the article or false if not found.
-     *
      */
     public function getPdfUrl()
     {
@@ -63,7 +59,6 @@ class Article extends Controller
 
     /**
      * Return the coauthors or author, if CoAuthorPlus plugin does not exist.
-     * 
      */
     public function getCoauthors()
     {
@@ -74,10 +69,9 @@ class Article extends Controller
         }
     }
 
-  /**
-   * Return formatted links of authors of an article
-   *
-   */
+    /**
+     * Return formatted links of authors of an article.
+     */
     public function getCoauthorsLinks()
     {
         if (function_exists('coauthors_posts_links')) {
@@ -113,9 +107,10 @@ class Article extends Controller
     }
 
     /**
-     * Return formatted link of an author
+     * Return formatted link of an author.
      *
      * @param object $author
+     *
      * @return string $link
      */
     private function getIndividualCoauthorLink($author)
@@ -146,9 +141,10 @@ class Article extends Controller
     }
 
     /**
-     * Return formatted link of an author
+     * Return formatted link of an author.
      *
      * @param object $author
+     *
      * @return array
      */
     private function getCorrespondingAuthorIds()
@@ -161,7 +157,7 @@ class Article extends Controller
     }
 
     /**
-     * Return keywords of an article or false if not found
+     * Return keywords of an article or false if not found.
      */
     public function getKeywords()
     {
@@ -175,7 +171,7 @@ class Article extends Controller
     }
 
     /**
-     * Return a formatted html string of keywords
+     * Return a formatted html string of keywords.
      *
      * @return string
      */
@@ -208,7 +204,7 @@ class Article extends Controller
     }
 
     /**
-     * Return the formatted citation of an article
+     * Return the formatted citation of an article.
      *
      * @return void
      */
@@ -224,7 +220,7 @@ class Article extends Controller
     }
 
     /**
-     * Return issue term of an article or false if not found
+     * Return issue term of an article or false if not found.
      */
     public function getIssueTerm()
     {
@@ -238,7 +234,7 @@ class Article extends Controller
     }
 
     /**
-     * Returns a string of an article or false if not found
+     * Returns a string of an article or false if not found.
      */
     public function getProgrammeString()
     {
@@ -246,8 +242,8 @@ class Article extends Controller
 
         if (!empty($terms) && !is_wp_error($terms)) {
             return implode(', ', wp_list_pluck($terms, 'name'));
-        }else{
-          return false;
+        } else {
+            return false;
         }
     }
 
@@ -284,81 +280,81 @@ class Article extends Controller
         }
     }
 
-
     /**
-     * Returns the project reference of an article
+     * Returns the project reference of an article.
      */
     public function getProjectRef()
     {
         $ref = get_post_meta($this->id, 'sb-project-ref', true);
 
-        if (!empty($ref)){
-          return $ref;
-        }else{
-          return false;
+        if (!empty($ref)) {
+            return $ref;
+        } else {
+            return false;
         }
     }
 
     /**
-     * Returns the e-lib URL of reference of an article
+     * Returns the e-lib URL of reference of an article.
      */
     public function getElibUrl()
     {
         $url = get_post_meta($this->id, 'sb-project-elib-url', true);
 
-        if (!empty($url)){
-          return $url;
-        }else{
-          return false;
+        if (!empty($url)) {
+            return $url;
+        } else {
+            return false;
         }
     }
 
     /**
      * Returns the Unix timestamp of the next_check.
      *
-     * @return int 
+     * @return int
      */
     public function getNextCitedByCheckTime()
     {
         $next = get_post_meta($this->id, '_sb-citedby-next-check-time', true);
 
         if (!$next) {
-          return 0;
-        }else{
-          return (int)$next;
+            return 0;
+        } else {
+            return (int) $next;
         }
     }
 
     /**
      * Update the the Unix timestamp of the next_check.
      *
-     * @return int 
+     * @return int
      */
     public function setNextCitedByCheckTime()
     {
-        $next = time() + 60*60*24*7;
+        $next = time() + 60 * 60 * 24 * 7;
         update_post_meta($this->id, '_sb-citedby-next-check-time', $next);
     }
 
     /**
-     * Updates the sb-citedby-count-auto field if the count 
+     * Updates the sb-citedby-count-auto field if the count
      * is different from its last value.
      *
-     * @return boolean True if changed, false if unchanged.
+     * @return bool True if changed, false if unchanged.
      */
     public function updateCitedByCount()
     {
         $doi = $this->getDoi();
 
-        if($doi) {
+        if ($doi) {
             $citation = new Citation(get_the_title($this->id), $doi);
             $oldCount = $this->getCitedByCount();
             $newCount = $citation->retrieveCitedByCount();
 
-            if($oldCount != $newCount) {
+            if ($oldCount != $newCount) {
                 update_post_meta($this->id, '_sb-citedby-count', $newCount);
+
                 return true;
-            }else {
+            } else {
                 return false;
             }
         }
@@ -373,18 +369,18 @@ class Article extends Controller
     {
         $doi = $this->getDoi();
 
-        if( $doi ) {
+        if ($doi) {
             $citation = new Citation(get_the_title($this->id), $doi);
             $xmlElement = $citation->getCitedByXml();
             $citations = $this->getForwardLinkCitations($xmlElement);
 
-            if(!empty($citations)){
+            if (!empty($citations)) {
                 delete_post_meta($this->id, '_sb-citedby-auto');
-                foreach($citations as $citation){
+                foreach ($citations as $citation) {
                     add_post_meta($this->id, '_sb-citedby-auto', $citation);
                 }
-            }else{
-              return;
+            } else {
+                return;
             }
         }
     }
@@ -393,22 +389,22 @@ class Article extends Controller
      * Return an array of citations given a
      * CrossRef result XML.
      *
-     * @return array Array of citations, or empty array 
+     * @return array Array of citations, or empty array
      */
     private function getForwardLinkCitations($resultXml)
     {
         $citations = [];
 
         // Use 'x' as namespace in order to get matches.
-        $dois = $resultXml->xpath("//x:doi");
+        $dois = $resultXml->xpath('//x:doi');
 
-        if(!empty($dois)){
-            foreach($dois as $doi) {
+        if (!empty($dois)) {
+            foreach ($dois as $doi) {
                 $citation = new Citation('', $doi[0]);
                 $citations[] = $citation->getFormattedCitation();
             }
         }
-        
+
         return $citations;
     }
 
@@ -420,7 +416,7 @@ class Article extends Controller
     public function getForwardLinks()
     {
         $citations = get_post_meta($this->id, '_sb-citedby-auto', false);
+
         return $citations;
     }
-
 }
