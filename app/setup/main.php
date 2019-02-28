@@ -62,8 +62,7 @@ add_filter('previous_posts_link_attributes', function () {
 
 // Update citations periodically (7-day interval)
 
-add_action( 'the_post', function(){
-
+add_action('the_post', function () {
     $article = new Article(get_the_ID());
     $timeForNextCheck = $article->getNextCitedByCheckTime();
 
@@ -73,7 +72,7 @@ add_action( 'the_post', function(){
         // '_sb-citedby-count': unique field
         // '_sb-citedby-auto': not unique
 
-        if($article->updateCitedByCount()){
+        if ($article->updateCitedByCount()) {
             $article->updateForwardLinks();
         }
 
