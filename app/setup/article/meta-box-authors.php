@@ -2,7 +2,7 @@
 
 namespace App;
 
-use APp\Controllers\Article;
+use App\Controllers\Article;
 
 /*
  * Create a meta box that shows author IDs

@@ -1,4 +1,7 @@
-<?php use App\Controllers\App as SbApp; ?>
+<?php 
+  namespace App\Views;
+  use App\Controllers\App as SbApp; 
+?>
 
 <div class="row">
   <?php
