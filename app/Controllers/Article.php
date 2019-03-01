@@ -397,9 +397,9 @@ class Article extends Controller
         $dois = [];
 
         // Use 'x' as namespace in order to get matches.
-        if($resultXml){
+        if ($resultXml) {
             $dois = $resultXml->xpath('//x:doi');
-	}
+        }
 
         if (!empty($dois)) {
             foreach ($dois as $doi) {
