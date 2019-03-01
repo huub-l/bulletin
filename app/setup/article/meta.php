@@ -62,9 +62,9 @@ add_action('wp_head', function () {
             echo '<meta name="citation_fulltext_html_url" content="'.wp_get_shortlink().'">'."\n";
         }
 
-        if($article->getNextCitedByCheckTime()){
-          echo "\n<!-- Cited-By count expiration -->\n";
-          echo '<meta name="citedby_next_check" content="'.gmdate('r', $article->getNextCitedByCheckTime()).'">'."\n";
+        if ($article->getNextCitedByCheckTime()) {
+            echo "\n<!-- Cited-By count expiration -->\n";
+            echo '<meta name="citedby_next_check" content="'.gmdate('r', $article->getNextCitedByCheckTime()).'">'."\n";
         }
     }
 });
