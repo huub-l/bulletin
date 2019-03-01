@@ -1,11 +1,6 @@
-<?php 
-  namespace App\Views;
-  use App\Controllers\App as SbApp; 
-?>
-
 <div class="row">
   <?php
-    $terms = SbApp::sbGetAllIssues();
+    $terms = App\Controllers\App::sbGetAllIssues();
     
     foreach ( $terms as $term ): 
       $termLink = get_term_link( $term );

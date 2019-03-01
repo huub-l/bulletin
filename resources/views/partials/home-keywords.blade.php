@@ -1,7 +1,3 @@
-<?php 
-  namespace App\Views;
-  use App\Controllers\App as SbApp; 
-?>
 <div class="container">
   <div class="row">
     <div class="col-md-5">
@@ -10,7 +6,7 @@
     </div>
     <div id="home-keyword-list__div" class="col-md-7 home-keyword-list__div--short">
       <p class="keywords_list" class="home-keyword-list__p">
-      {!! SbApp::sbGetAllKeywords() !!}
+      {!! App\Controllers\App::sbGetAllKeywords() !!}
       </p>
     </div>
     <div class="col-md-5">
