@@ -1,10 +1,10 @@
-<?php use App\Controllers\App;?>
+<?php use App\Controllers\App as SbApp; ?>
 
 @extends('layouts.app')
 
 @section('content')
 
-  <?php $featureQuery = App::sbGetFeaturedQuery(); ?>
+  <?php $featureQuery = SbApp::sbGetFeaturedQuery(); ?>
 
   <div class="row">
   @while ($featureQuery->have_posts()) 
@@ -25,7 +25,7 @@
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </div>
     <div class="row">
-      <?php $query = App::sbGetArticleQuery(); ?>
+      <?php $query = SbApp::sbGetArticleQuery(); ?>
       @while ($query->have_posts()) 
         <?php $query->the_post(); ?>
         @include('partials.home-grid')
