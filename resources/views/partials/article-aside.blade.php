@@ -27,9 +27,13 @@ $article = new Article(get_the_ID());
 @if($article->getCitedByCount())
   <h3 class="sb-aside-h3">Cited by</h3>
 
-  <button type="button" class="btn btn-default btn-sm cited-by-btn" data-toggle="modal" data-target="#citedByModal">
-    {{ $article->getCitedByCount() }}
-  </button >
+  <a class="cited-by-btn" data-toggle="modal" data-target="#citedByModal" href="#">
+    @if($article->getCitedByCount() ==1 )
+      Cited by {{ $article->getCitedByCount() }} article
+    @else
+      Cited by {{ $article->getCitedByCount() }} articles
+    @endif
+  </a >
 
   <div class="modal fade" id="citedByModal" tabindex="-1" role="dialog" aria-labelledby="citedByModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

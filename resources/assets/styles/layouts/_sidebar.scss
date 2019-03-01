@@ -26,7 +26,15 @@ h3.sb-aside-h3:first-child {
 
 .article-aside-doi a {
   word-wrap: break-word;
-  font-size: 12px;
+  font-size: 13px;
+}
+
+.cited-by-btn {
+  padding: 0;
+}
+
+.cited-by-btn:focus {
+  outline: none;
 }
 
 #article-aside-wrap a {
