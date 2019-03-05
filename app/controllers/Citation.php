@@ -189,9 +189,11 @@ EOT;
         .urlencode($xmlData);
 
         $xml = simplexml_load_string(file_get_contents($queryUrl));
-        $xml->registerXPathNamespace('x', 'http://www.crossref.org/qrschema/2.0');
 
-        return $xml;
+        if ($xml !== false) {
+            $xml->registerXPathNamespace('x', 'http://www.crossref.org/qrschema/2.0');
+            return $xml;
+        }
     }
 
     /**

@@ -394,9 +394,12 @@ class Article extends Controller
     private function getForwardLinkCitations($resultXml)
     {
         $citations = [];
+        $dois = [];
 
         // Use 'x' as namespace in order to get matches.
-        $dois = $resultXml->xpath('//x:doi');
+        if ($resultXml) {
+            $dois = $resultXml->xpath('//x:doi');
+        }
 
         if (!empty($dois)) {
             foreach ($dois as $doi) {

@@ -44,15 +44,15 @@
   text-decoration: none;
 }
 
-.type-article .article-content a,
-.type-article .article-content a:link,
-.type-article .article-content a:visited {
+.type-article .article-content p a,
+.type-article .article-content p a:link,
+.type-article .article-content p a:visited {
   color: #333;
   text-decoration: none;
   border-bottom: 1px solid $shade-of-grey;
 }
 
-.type-article .article-content a:hover {
+.type-article .article-content p a:hover {
   color: $secondary-color;
   border-bottom: 1px solid $secondary-color;
   text-decoration: none;
