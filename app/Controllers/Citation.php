@@ -19,7 +19,7 @@ class Citation extends Controller
 
     public function __construct($title = 'Title missing', $doi = '')
     {
-        $this->key = '99bfaab36cf64c5d9dc86f79520acabe';
+        $this->key = getenv('EASYBIB_KEY') ? getenv('EASYBIB_KEY') : '';
         $this->source = 'journal';
         $this->style = 'apa';
         $this->pubtype = 'pubjournal';

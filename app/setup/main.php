@@ -68,17 +68,15 @@ add_action('the_post', function () {
 
     if (time() > $timeForNextCheck) {
 
-        // Update cited-by count and forward links:
-        // '_sb-citedby-count': unique field
-        // '_sb-citedby-auto': not unique
+        /** Update forward links:
+         * '_sb-citedby-count': unique field
+         * '_sb-citedby-auto': not unique 
+         */
+        $article->updateForwardLinks();
 
-        if ($article->updateCitedByCount()) {
-            $article->updateForwardLinks();
-        }
-
-        // Update the time for next check
-        // '_sb-citedby-next-check-time'
-
+        /** Update the time for next check
+         * '_sb-citedby-next-check-time'
+         */
         $article->setNextCitedByCheckTime();
     }
 });

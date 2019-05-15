@@ -372,15 +372,24 @@ class Article extends Controller
         if ($doi) {
             $citation = new Citation(get_the_title($this->id), $doi);
             $xmlElement = $citation->getCitedByXml();
-            $citations = $this->getForwardLinkCitations($xmlElement);
 
-            if (!empty($citations)) {
-                delete_post_meta($this->id, '_sb-citedby-auto');
-                foreach ($citations as $citation) {
-                    add_post_meta($this->id, '_sb-citedby-auto', $citation);
+            if($xmlElement){
+                $citations = $this->getForwardLinkCitations($xmlElement);
+
+                if (!empty($citations)) {
+                    delete_post_meta($this->id, '_sb-citedby-auto');
+                    $count = count($citations);
+
+                    if($this->getCitedByCount() != $count) {
+                      foreach ($citations as $citation) {
+                          add_post_meta($this->id, '_sb-citedby-auto', $citation);
+                      }
+                    update_post_meta($this->id, '_sb-citedby-count', $count);
+                    }
+                  
+                } else {
+                    return;
                 }
-            } else {
-                return;
             }
         }
     }
