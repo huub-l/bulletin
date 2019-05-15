@@ -68,13 +68,13 @@ add_action('the_post', function () {
 
     if (time() > $timeForNextCheck) {
 
-        /** Update forward links:
+        /* Update forward links:
          * '_sb-citedby-count': unique field
-         * '_sb-citedby-auto': not unique 
+         * '_sb-citedby-auto': not unique
          */
         $article->updateForwardLinks();
 
-        /** Update the time for next check
+        /* Update the time for next check
          * '_sb-citedby-next-check-time'
          */
         $article->setNextCitedByCheckTime();
