@@ -377,10 +377,10 @@ class Article extends Controller
                 $citations = $this->getForwardLinkCitations($xmlElement);
 
                 if (!empty($citations)) {
-                    delete_post_meta($this->id, '_sb-citedby-auto');
                     $count = count($citations);
 
                     if ($this->getCitedByCount() != $count) {
+                        delete_post_meta($this->id, '_sb-citedby-auto');
                         foreach ($citations as $citation) {
                             add_post_meta($this->id, '_sb-citedby-auto', $citation);
                         }
