@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Register sidebars
  */
