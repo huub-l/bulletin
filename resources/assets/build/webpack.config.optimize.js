@@ -26,9 +26,9 @@ module.exports = {
       uglifyOptions: {
         ecma: 5,
         compress: {
-          warnings: true,
           drop_console: true,
         },
+        warnings: true,
       },
     }),
   ],
