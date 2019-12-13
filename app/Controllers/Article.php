@@ -80,10 +80,14 @@ class Article extends Controller
 
             switch (count($authors)) {
                 case 0:
-                    break;
+                break;
                 case 1:
-                    $links .= $this->getIndividualCoauthorLink($author[0]);
-                    break;
+                    $links .= $this->getIndividualCoauthorLink($authors[0]);
+                break;
+                case 2:
+                    $links .= $this->getIndividualCoauthorLink($authors[0]);
+                    $links .= " and " . $this->getIndividualCoauthorLink($authors[1]);
+                break;
                 default:
                     $maxKey = count($authors) - 1;
 
