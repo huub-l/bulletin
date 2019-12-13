@@ -86,7 +86,7 @@ class Article extends Controller
                 break;
                 case 2:
                     $links .= $this->getIndividualCoauthorLink($authors[0]);
-                    $links .= " and " . $this->getIndividualCoauthorLink($authors[1]);
+                    $links .= ' and '.$this->getIndividualCoauthorLink($authors[1]);
                 break;
                 default:
                     $maxKey = count($authors) - 1;
