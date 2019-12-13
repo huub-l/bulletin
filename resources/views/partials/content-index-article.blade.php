@@ -9,10 +9,12 @@
         @if(has_post_thumbnail())
           <img class="sb-fade archive-block__img" src="@php(the_post_thumbnail_url( 'home-small' ))" alt="{{get_the_title()}}" width="100%">
         @else
-          <img class="sb-fade archive-block__img" src="//via.placeholder.com/255x100?text=Science+Bulletin" alt="{{get_the_title()}}" width="100%">
+          <img class="sb-fade archive-block__img" src="{{get_template_directory_uri()}}/images/asb-dummy.png" alt="{{get_the_title()}}" width="100%">
         @endif
       </a>
-      <div class="archive-keywords__div"><strong><i class="fa fa-key"></i> Keywords:</strong> {!! $article->getKeywordsList() !!}</div>
+      @if( $article->getKeywordsList() !== false )
+        <div class="archive-keywords__div"><strong><i class="fa fa-key"></i> Keywords:</strong> {!! $article->getKeywordsList() !!}</div>
+      @endif
     </div><!--col-->
     <div class="col-md-8">
       <h3 class="index-entry-title archive-block__h3">
@@ -22,7 +24,9 @@
         {{wp_trim_words(get_the_excerpt(), 55, '...')}}
       </div>
       <p class="archive-entry-citation__p">
-        <i class="fa fa-share-alt"></i> {!! $article->getCitation() !!}
+        @if( $article->getCitation()  !== false)
+          <i class="fa fa-share-alt"></i> {!! $article->getCitation() !!}
+        @endif
       </p>
     </div><!--col-->
   </div><!--row-->

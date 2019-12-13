@@ -36,6 +36,8 @@ class App extends Controller
             $title = post_type_archive_title('', false);
         } elseif (is_tax()) {
             $title = single_term_title('', false);
+        } elseif (is_search()) {
+            $title = sprintf(__('<Strong>Search:</strong> %s'), get_search_query());
         } else {
             $title = get_the_title();
         }

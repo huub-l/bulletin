@@ -199,7 +199,7 @@ class Article extends Controller
 
             return $term_list;
         } else {
-            return '<p class="keywords_list" style="color:red">To be added</p>';
+            return false;
         }
     }
 
