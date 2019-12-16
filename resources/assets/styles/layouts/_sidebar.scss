@@ -17,7 +17,7 @@ h3.sb-aside-h3:first-child {
 .sb-toc {
   list-style: none;
   padding: 0;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 .type-article li {
@@ -73,4 +73,32 @@ li.sb-toc-item {
 .article-citation {
   font-size: 12px;
   line-height: 18px;
+}
+
+.article-get-pdf-h3 {
+  font-size: 18px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+a#article-get-pdf-link,
+a#article-get-pdf-link:link {
+  font-size: 18px;
+  text-transform: none;
+}
+
+a#article-get-pdf-link:hover {
+  color: #333;
+}
+
+a#article-get-pdf-link:hover > h3 {
+  background-color: #f0f0f0;
+  animation-duration: $speed-fast;
+}
+
+.article-get-pdf-h3 > .fa-file-pdf-o {
+  margin-right: 10px;
 }

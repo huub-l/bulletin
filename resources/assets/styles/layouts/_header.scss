@@ -6,18 +6,15 @@ header.banner {
   z-index: 999;
   background: #fff;
   margin-bottom: 32px;
+  height: 80px;
+  box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.2);
 }
 
 nav.nav-primary {
   float: right;
 }
 
-.banner {
-  height: 80px;
-  border-bottom: 1px solid #ccc;
-}
-
-.bannder .container {
+.banner .container {
   height: 100%;
 }
 
@@ -37,7 +34,7 @@ nav.nav-primary {
 a.brand {
   font-size: 32px;
   letter-spacing: -1px;
-  top: 10px;
+  top: 14px;
   position: relative;
 }
 

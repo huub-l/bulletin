@@ -54,6 +54,14 @@ $article = new Article(get_the_ID());
   </div>
 @endif
 
+@if(!empty($article->getPdfUrl()))
+  <a id="article-get-pdf-link" href="{{$article->getPdfUrl()}}">
+    <h3 class="article-get-pdf-h3"><i class="fa fa-file-pdf-o"></i>  
+      View PDF
+    </h3>
+  </a>
+@endif
+
 @if($article->getProgrammeString())
   <h3 class="sb-aside-h3">Programme</h3>
   <p class="keywords_list">{{$article->getProgrammeString()}}</p>
@@ -62,14 +70,7 @@ $article = new Article(get_the_ID());
 <div id="article-aside-wrap">
     <h3 class="sb-aside-h3"><i class="fa fa-list"></i> Contents</h3>
     <div id="sb-toc-wrap"></div>
-
-    @if(!empty($article->getPdfUrl()))
-        <h3 class="sb-aside-h3"><i class="fa fa-file-pdf-o"></i>  
-          <a href="{{$article->getPdfUrl()}}">View PDF</a>
-        </h3>
-        <p class="article-citation"></p>
-    @endif
-
     <h3 class="sb-aside-h3"><i class="fa fa-share-alt"></i> Share</h3>
     <div class="addthis_inline_share_toolbox"></div>
+
 </div>
