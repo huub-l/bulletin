@@ -58,6 +58,19 @@ a.home-grid-title {
   font-weight: 500;
 }
 
+.keywords_list a,
+.keywords_list a:link {
+  color: $muted-color;
+}
+
+.keywords_list a:hover {
+  color: $secondary-color;
+}
+
+.keywords_list a:visited {
+  color: #333;
+}
+
 a.home-grid-title:link,
 .home-featured-h1 a:link {
   color: #333;
@@ -95,8 +108,13 @@ a.home-grid-title:hover,
 }
 
 #home-keyword-list__div.home-keyword-list__div--short {
-  max-height: 200px;
+  max-height: 300px;
   overflow: hidden;
+}
+
+#home-keywords__less {
+  display: inline;
+  margin-right: 20px;
 }
 
 .home-article-grid__caption {
