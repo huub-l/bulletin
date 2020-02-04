@@ -10,6 +10,49 @@ header.banner {
   box-shadow: 0 4px 4px -3px rgba(0, 0, 0, 0.2);
 }
 
+.nav-sm .menu-top-menu-container {
+  position: fixed;
+  top: 47px;
+  left: 0;
+}
+
+#top-nav-burger {
+  position: fixed;
+  right: 0;
+  top: 0;
+  color: #333;
+  font-size: 32px;
+  padding: 16px;
+  transition: 0.25s;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 0% 0% 0% 100%;
+}
+
+#top-nav-quit {
+  position: fixed;
+  right: 0;
+  top: 0;
+  color: #333;
+  font-size: 32px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+#top-nav-links {
+  flex-direction: column;
+  background: #fff;
+  color: #000;
+  width: 100vw;
+  justify-content: space-around;
+  top: 30px;
+  left: -34px;
+  position: relative;
+  height: auto;
+  margin: 0 16px;
+  padding: 0;
+}
+
 nav.nav-primary {
   float: right;
 }
@@ -44,4 +87,21 @@ a.brand:hover {
 
 #menu-top-menu a {
   padding: 25px !important;
+}
+
+#top-nav-links li {
+  list-style: none;
+  text-align: center;
+  padding: 16px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.6em;
+}
+
+#top-nav-links a {
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  font-size: 2em;
+  z-index: 10;
 }
