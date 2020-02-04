@@ -92,8 +92,8 @@ class App extends Controller
                               esc_attr(sprintf(__('View all articles with keyword %s',
                               'sage'), ucfirst($term->name))).
                               '">'.ucfirst($term->name);
-                if($term->count > 1) {
-                  $term_list .= ' ('.$term->count.') ';
+                if ($term->count > 1) {
+                    $term_list .= ' ('.$term->count.') ';
                 }
                 $term_list .= '</a>';
                 if ($count != $i) {
