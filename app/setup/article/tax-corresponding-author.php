@@ -22,7 +22,7 @@ add_action('init', function () {
         'choose_from_most_used'      => __('Choose from the most used IDs', 'sage'),
         'not_found'                  => __('No Ids found.', 'sage'),
         'menu_name'                  => __('Corresponding Authors ID', 'sage'),
-       ];
+    ];
 
     $args = [
         'label'              => __('Corresponding Author ID', 'sage'),
@@ -38,6 +38,6 @@ add_action('init', function () {
         'rewrite'            => false,
         'show_admin_column'  => false,
         'show_in_quick_edit' => true,
-       ];
+    ];
     register_taxonomy('corresponding-author-id', ['article'], $args);
 });

@@ -6,10 +6,10 @@ add_action('init', function () {
      * Taxonomy: Programmes.
      */
     $labels = [
-               'name'   => __('Programmes', 'sage'),
+        'name'          => __('Programmes', 'sage'),
         'singular_name' => __('Programme', 'sage'),
         'add_new_item'  => __('Add New Programme', 'sage'),
-       ];
+    ];
 
     $args = [
         'label'              => __('Programmes', 'sage'),
@@ -26,6 +26,6 @@ add_action('init', function () {
         'show_in_rest'       => false,
         'rest_base'          => '',
         'show_in_quick_edit' => true,
-       ];
+    ];
     register_taxonomy('programme', ['article'], $args);
 });
