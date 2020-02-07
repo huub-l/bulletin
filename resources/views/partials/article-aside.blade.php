@@ -19,10 +19,36 @@ $article = new Article(get_the_ID());
   </p>
 @endif
 
+  <h3 class="sb-aside-h3">Licence information</h3>
+  <p class="article-citation">
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+      <img alt="Creative Commons License" style="border-width:0" 
+      src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+      <br />This work is licensed under a 
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+      Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+  </p>
+
 @if($article->getCitation())
   <h3 class="sb-aside-h3">Citation</h3>
   <p class="article-citation">{!! $article->getCitation() !!}</p>
 @endif
+
+<div data-badge-popover="bottom" 
+  data-hide-no-mentions="true"
+  data-doi="{!! $article->getDoi(); !!}" 
+  class="altmetric-embed">
+</div>
+
+<div style="margin: 4px 0 0 -10px;">
+  <a href="https://plu.mx/plum/a/?doi={!! $article->getDoi(); !!}" 
+    data-popup="bottom" 
+    data-badge="true" 
+    class="plumx-plum-print-popup plum-bigben-theme" 
+    data-site="plum" 
+    data-hide-when-empty="true">
+  </a>
+</div>
 
 @if($article->getCitedByCount())
   <h3 class="sb-aside-h3">Cited by</h3>
@@ -68,9 +94,12 @@ $article = new Article(get_the_ID());
 @endif
 
 <div id="article-aside-wrap">
+
     <h3 class="sb-aside-h3"><i class="fa fa-list"></i> Contents</h3>
     <div id="sb-toc-wrap"></div>
+
     <h3 class="sb-aside-h3"><i class="fa fa-share-alt"></i> Share</h3>
     <div class="addthis_inline_share_toolbox"></div>
+
 
 </div>
