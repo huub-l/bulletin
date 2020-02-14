@@ -20,5 +20,7 @@
     @php(do_action('get_footer'))
     @include('partials.footer')
     @php(wp_footer())
+    <script type="text/javascript" src="//cdn.plu.mx/widget-popup.js"></script>
+    <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
   </body>
 </html>

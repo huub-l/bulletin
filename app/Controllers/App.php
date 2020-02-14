@@ -36,6 +36,8 @@ class App extends Controller
             $title = post_type_archive_title('', false);
         } elseif (is_tax()) {
             $title = single_term_title('', false);
+        } elseif (is_search()) {
+            $title = '<Strong>Search: </strong>'.get_search_query();
         } else {
             $title = get_the_title();
         }
@@ -73,10 +75,10 @@ class App extends Controller
     {
         $terms = get_terms([
             'taxonomy'   => 'keyword',
-            'orderby'    => 'name',
-            'order'      => 'ASC',
+            'orderby'    => 'count',
+            'order'      => 'DESC',
             'hide_empty' => true,
-            'number'     => 100,
+            'number'     => 80,
         ]);
 
         if (!empty($terms) && !is_wp_error($terms)) {
@@ -89,7 +91,11 @@ class App extends Controller
                               '" alt="'.
                               esc_attr(sprintf(__('View all articles with keyword %s',
                               'sage'), ucfirst($term->name))).
-                              '">'.ucfirst($term->name).'</a>';
+                              '">'.ucfirst($term->name);
+                if ($term->count > 1) {
+                    $term_list .= ' ('.$term->count.') ';
+                }
+                $term_list .= '</a>';
                 if ($count != $i) {
                     $term_list .= ' &middot; ';
                 } else {
@@ -106,9 +112,9 @@ class App extends Controller
     public static function sbGetAllIssues()
     {
         return get_terms('issue', [
-                'hide_empty' => false,
-                'orderby'    => 'name',
-                'order'      => 'DESC',
-                ]);
+            'hide_empty' => false,
+            'orderby'    => 'name',
+            'order'      => 'DESC',
+        ]);
     }
 }

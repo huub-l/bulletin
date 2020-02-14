@@ -14,7 +14,7 @@
     <div col-md-7">
       <p>
         <a id="home-keywords__more" class="home-keywords__button btn btn-primary btn-square" href="#">Show more</a>
-        <a id="home-keywords__more" class="home-keywords__button hidden btn btn-primary btn-square" href="#">Show less</a>
+        <a id="home-keywords__less" class="home-keywords__button hidden btn btn-primary btn-square" href="#">Show less</a>
       </p>
     </div>
   </div>

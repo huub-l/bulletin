@@ -6,10 +6,10 @@ add_action('init', function () {
      * Taxonomy: Issues.
      */
     $labels = [
-               'name'   => __('Issues', 'sage'),
+        'name'          => __('Issues', 'sage'),
         'singular_name' => __('Issue', 'sage'),
         'add_new_item'  => __('Add New Issue', 'sage'),
-       ];
+    ];
 
     $args = [
         'label'              => __('Issue', 'sage'),
@@ -26,6 +26,6 @@ add_action('init', function () {
         'show_in_rest'       => false,
         'rest_base'          => '',
         'show_in_quick_edit' => true,
-       ];
+    ];
     register_taxonomy('issue', ['article'], $args);
 });

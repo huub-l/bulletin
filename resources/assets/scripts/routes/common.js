@@ -3,6 +3,13 @@ export default {
     // JavaScript to be fired on all pages
 
     /**
+    * Toggle burger button.
+    */
+    $('.nav-sm').on('click', function () {
+      $('.nav-sm').toggleClass('hidden');
+    });
+
+    /**
      * Beautify first 3 words in the "Abstract" of articles
      */ 
     $('#single-article-exerpt').each(function () {

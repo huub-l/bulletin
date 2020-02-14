@@ -15,10 +15,10 @@ add_action('issue_add_form_fields', function ($taxonomy) {
     ]; ?><div class="form-field term-group">
         <label for="issue_type"><?php _e('Publication form', 'sage'); ?></label>
         <select class="postform" id="issue_type" name="issue_type">
-            <?php foreach ($issue_types as $key => $issue_type) : ?>
+            <?php foreach ($issue_types as $key => $issue_type) { ?>
                 <option value="<?php echo $key; ?>" class=""><?php echo $issue_type; ?>
             </option>
-            <?php endforeach; ?>
+            <?php } ?>
         </select>
     </div><?php
 }, 100, 2);
@@ -42,9 +42,9 @@ add_action('issue_edit_form_fields', function ($term, $taxonomy) {
     $selected_issue_type = get_term_meta($term->term_id, 'issue_type', true); ?><tr class="form-field term-group-wrap">
         <th scope="row"><label for="issue_type"><?php _e('Publication form', 'sage'); ?></label></th>
         <td><select class="postform" id="issue_type" name="issue_type">
-            <?php foreach ($issue_types as $key => $issue_type) : ?>
+            <?php foreach ($issue_types as $key => $issue_type) { ?>
                 <option value="<?php echo $key; ?>" <?php selected($selected_issue_type, $key); ?>><?php echo $issue_type; ?></option>
-            <?php endforeach; ?>
+            <?php } ?>
         </select></td>
     </tr><?php
 }, 100, 2);
