@@ -112,9 +112,9 @@ class App extends Controller
     public static function sbGetAllIssues()
     {
         return get_terms('issue', [
-                'hide_empty' => false,
-                'orderby'    => 'name',
-                'order'      => 'DESC',
-                ]);
+            'hide_empty' => false,
+            'orderby'    => 'name',
+            'order'      => 'DESC',
+        ]);
     }
 }

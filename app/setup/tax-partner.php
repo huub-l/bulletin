@@ -6,10 +6,10 @@ add_action('init', function () {
      * Taxonomy: Partners.
      */
     $labels = [
-               'name'   => __('Partners', 'sage'),
+        'name'          => __('Partners', 'sage'),
         'singular_name' => __('Partner', 'sage'),
         'add_new_item'  => __('Add New Partner', 'sage'),
-       ];
+    ];
 
     $args = [
         'label'              => __('Partner', 'sage'),
@@ -26,6 +26,6 @@ add_action('init', function () {
         'show_in_rest'       => false,
         'rest_base'          => '',
         'show_in_quick_edit' => false,
-       ];
+    ];
     register_taxonomy('partner', ['article'], $args);
 });
